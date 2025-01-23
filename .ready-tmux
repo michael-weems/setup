@@ -5,12 +5,12 @@ if [[ $windows == "3" ]]; then
 	exit 0
 fi
 
-# window 2
+# window 2 (access via <prefix> 2 --> C-a 2)
 tmux neww -d -n notes
 tmux send-keys -t notes "nvim todo.md" ^M
 
-# window 3
+# window 3 (access via <prefix> 3 --> C-a 3)
 tmux neww -d -n terminal
 
-# start nvim in the main window
+# start nvim in the main window (access via <prefix> 1 --> C-a 1)
 nvim .
