@@ -40,7 +40,7 @@ log() {
 	fi
 }
 execute() {
-	log "execute $@"
+	log "$@"
 	if [[ $dry == "true" ]]; then
 		return
 	fi
@@ -48,6 +48,11 @@ execute() {
 }
 
 log "----------- dev-env -----------"
+
+log "ensure submodules are up to date"
+execute git fetch --prune
+execute git submodule init
+execute git submodule update
 
 copy_dir() {
 	from=$1

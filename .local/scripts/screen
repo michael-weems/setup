@@ -42,7 +42,7 @@ log() {
 	fi
 }
 execute() {
-	log "execute $@"
+	log "$@"
 	if [[ $dry == "true" ]]; then
 		return
 	fi
