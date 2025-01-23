@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+echo "$script_dir"
+
+dry="false"
+
+usage() {
+	echo "$script_dir/dev-env"
+	echo ""
+	echo "Usage:"
+	echo "Overwrite your .dotfiles, config files, utility scripts, and more on this computer with what is in $HOME/projects/setup/"
+	echo ""
+	echo "Flags:"
+	echo "-d, --dry-run   | perform a dry-run of the operations"
+	echo "-h, --help      | print usage"
+}
+
+while [[ $# > 0 ]]; do
+	if   [[ "$1" == "-d" ]] || [[ "$1" == "--dry" ]]; then
+		dry="true"
+	elif [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+		usage
+		exit 0
+	fi
+	shift
+done
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+echo "$script_dir"
+
+cd $script_dir
+scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f) # find every executable in the runs dir
+
+log() {
+	if [[ $dry == "true" ]]; then
+		echo "[DRY_RUN]: $@"
+	else
+		echo "$@"
+	fi
+}
+execute() {
+	log "execute $@"
+	if [[ $dry == "true" ]]; then
+		return
+	fi
+	$@
+}
+
+log "----------- dev-env -----------"
+
+copy_dir() {
+	from=$1
+	to=$2
+
+	pushd $from > /dev/null
+	dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
+	for dir in $dirs; do
+		execute rm -rf $to/$dir
+		execute cp -r $dir $to/$dir
+	done
+	popd > /dev/null
+}
+
+copy_file() {
+	from=$1
+	to=$2
+	name=$(basename $from)
+
+	execute rm $to/$name
+	execute cp $from $to/$name
+}
+
+copy_dir .config $HOME/.config
+copy_dir .local $HOME/.local
+
+copy_file .ready-tmux $HOME
+copy_file .profile $HOME
+copy_file .bashrc $HOME
+copy_file .bash_aliases $HOME
+copy_file .bash_logout $HOME
+
+source $HOME/.profile
+source $HOME/.bashrc
+source $HOME/.bash_aliases
+source $HOME/.bash_logout
+

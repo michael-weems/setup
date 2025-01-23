@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+sudo apt install alacritty
+sudo apt install bsdutils
+sudo apt install build-essentials
+sudo apt install doc-base
+sudo apt install gcc
+sudo apt install git
+sudo apt install i3
+sudo apt install make
+sudo apt install nitrogen
+sudo apt install picom
+sudo apt install pulseaudio-utils
+sudo apt install pulseaudio
+sudo apt install ripgrep
+sudo apt install tmux
+sudo apt install unzip
+sudo apt install valgrind
+sudo apt install xclip
+
+sudo snap install zig --classic --beta # v0.13.0

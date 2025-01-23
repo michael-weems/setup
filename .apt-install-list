@@ -1,0 +1,21 @@
+# TODO: create scripts to just do all these --> similar to the neovim one
+
+alacritty
+bsdutils
+build-essentials
+doc-base
+gcc
+git
+i3
+make
+neovim
+nitrogen
+picom
+pulseaudio-utils
+pulseaudio
+ripgrep
+stow
+tmux
+unzip
+valgrind
+xclip

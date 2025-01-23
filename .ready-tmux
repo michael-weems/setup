@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+windows=$(tmux display-message -p '#{session_windows}')
+if [[ $windows == "3" ]]; then
+	exit 0
+fi
+
+# window 2
+tmux neww -d -n notes
+tmux send-keys -t notes "nvim todo.md" ^M
+
+# window 3
+tmux neww -d -n terminal
+
+# start nvim in the main window
+nvim .

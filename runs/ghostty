@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# build from source instructions: https://ghostty.org/docs/install/build
+
+sudo apt install libgtk-4-dev libadwaita-1-dev git
+
+git clone https://github.com/ghostty-org/ghostty $HOME/projects/ghostty
+cd $HOME/projects/ghostty
+zig build -p $HOME/.local -Doptimize=ReleaseFast # unprivileged install location $HOME/.local
+
