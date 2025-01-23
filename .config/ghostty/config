@@ -1,1 +1,23 @@
-background-opacity = 0.55
+keybind = ctrl+shift+r=reload_config
+background-opacity = 0.65
+#theme = iTerm2 Tango Dark 
+#theme = iTerm2 Tango Light 
+#theme = peppermint
+#theme = Rippedcasts
+#theme = rose-pine-moon
+#theme = Shaman
+#theme = SpaceGray Bright
+#theme = Sugarplum
+theme = synthwave-everything
+#theme = Tango Adapted
+#theme = Terminal Basic
+#theme = tokyonight
+#theme = tokyonight-day
+#theme = Ubuntu
+#theme = UltraDark
+#theme = UnderTheSea
+#theme = Vaughn
+#theme = Wombat
+#theme = LiquidCarbonTransparent
+#theme = LiquidCarbonTransparentInverse
+
