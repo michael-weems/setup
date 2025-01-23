@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+scripts="$HOME/.local/scripts"
+ls -1a "$scripts"
+

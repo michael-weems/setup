@@ -16,6 +16,16 @@ To install applications and setup application specific configurations, like for 
 ./run # please run with --help first
 ```
 
+### Utility scripts
+
+```bash
+# all live under $HOME/.local/scriptsconnect bluetooth headphones
+scripts # run this command to list the utility scripts under $HOME/.local/scripts
+reload  # run this command to reload the i3 config
+headphones  # run this command to connect bluetooth headphones
+screen  # run this command to manage monitor setup
+```
+
 ## Overview
 
 - `.config/` contains config files for various applications (for `./dev-env`)

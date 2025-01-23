@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 
-sudo apt install alacritty
-sudo apt install bsdutils
-sudo apt install build-essentials
-sudo apt install doc-base
-sudo apt install gcc
-sudo apt install git
-sudo apt install i3
-sudo apt install make
-sudo apt install nitrogen
-sudo apt install picom
-sudo apt install pulseaudio-utils
-sudo apt install pulseaudio
-sudo apt install ripgrep
-sudo apt install tmux
-sudo apt install unzip
-sudo apt install valgrind
-sudo apt install xclip
+sudo apt install bsdutils         # 
+sudo apt install build-essentials # 
+sudo apt install doc-base         # 
+sudo apt install gcc              # tiling window manager
+sudo apt install git              # version control
+sudo apt install i3               # tiling window manager
+sudo apt install make             # general build script tool
+sudo apt install nitrogen         # desktop wallpapers
+sudo apt install picom            #
+sudo apt install pulseaudio-utils #
+sudo apt install pulseaudio       #
+sudo apt install ripgrep          # alternative to grep, usually better, sometimes worse
+sudo apt install tmux             # terminal-multiplexer for switching contexts efficiently
+sudo apt install unzip            # unzip things
+sudo apt install valgrind         # detect memory leaks in programs
+sudo apt install xclip            # 
 
-sudo snap install zig --classic --beta # v0.13.0
+sudo snap install zig --classic --beta # zig v0.13.0
