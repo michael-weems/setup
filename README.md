@@ -19,7 +19,8 @@ To install applications and setup application specific configurations, like for 
 ### Utility scripts
 
 ```bash
-# all live under $HOME/.local/scriptsconnect bluetooth headphones
+# all live under $HOME/.local/scripts/
+# all are put on the path for convenient usage
 scripts # run this command to list the utility scripts under $HOME/.local/scripts
 reload  # run this command to reload the i3 config
 headphones  # run this command to connect bluetooth headphones

@@ -61,5 +61,7 @@ else
 	execute xrandr --output HDMI-A-0 --off
 fi
 
+execute nitrogen --restore
+
 exit 0
 
