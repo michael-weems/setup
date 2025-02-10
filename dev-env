@@ -83,6 +83,7 @@ copy_file .profile $HOME
 copy_file .bashrc $HOME
 copy_file .bash_aliases $HOME
 copy_file .bash_logout $HOME
+copy_file .ready-tmux $HOME
 
 source $HOME/.profile
 source $HOME/.bashrc
