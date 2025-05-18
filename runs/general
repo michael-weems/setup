@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
+sudo pacman -S meson
+sudo pacman -S cmake
+sudo pacman -S libmpdclient
+sudo pacman -S startup-notification
+sudo pacman -S firefox
 sudo pacman -S ghostty          # my preferred terminal-emulator
 sudo pacman -S ripgrep          # alternative to grep, usually better, sometimes worse
+sudo pacman -S fzf              # search utility
 sudo pacman -S tmux             # terminal-multiplexer for switching contexts efficiently
 sudo pacman -S unzip            # unzip things
 sudo pacman -S valgrind         # detect memory leaks in programs
 sudo pacman -S xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
+

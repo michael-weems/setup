@@ -113,7 +113,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Where should I put you?
 function sessionizer() {
-    /home/mweems/.local/scripts/tmux-sessionizer
+    /home/dangatang/.local/scripts/tmux-sessionizer
 }
 
 bind -x '"\C-f": sessionizer'
