@@ -7,13 +7,12 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-right": ["pipewire", "network", "cpu", "memory", "battery", "tray", "clock"],
     "hyprland/workspaces": {
-        "format": "{icon} {name}",
+        "format": "{icon}",
         "format-icons": {
             "1:web": "",
             "2:web": "",
             "3:term": "",
             "4:term": "",
-            "4:work": "",
             "5:music": ""
         },
 	"persistent-workspaces": {
@@ -25,8 +24,7 @@
         "spacing": 10
     },
     "clock": {
-	"format": "{:%H:%M}  ",
-	"format-alt": "{:%A, %B %d, %Y (%R)}  ",
+	"format": "{:%A, %B %d, %Y %H:%M}  ",
 	"tooltip-format": "<tt><small>{calendar}</small></tt>",
 	"calendar": {
 		"mode"          : "year",
