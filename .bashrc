@@ -12,14 +12,11 @@ export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
 export GIT_EDITOR=$VIM
-# NOTE uncomment these when I actually use them
-#export CC="clang-12"
-#export CXX="clang++-12"
-#export GOPATH=$HOME/go
 
 PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/scripts:$PATH"
+PATH="$HOME/vendor/neovim/bin:$PATH"
 export PATH
 
 
