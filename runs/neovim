@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
-git clone --depth 1 -b v0.10.1 https://github.com/neovim/neovim.git $HOME/projects/neovim
-cd $HOME/projects/neovim
-git fetch
-git checkout v0.10.1
+sudo pacman -S base-devel cmake ninja curl
 
-sudo apt install cmake gettext lua5.1 liblua5.1-0-dev
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+git clone --depth 1 -b v0.11.1 https://github.com/neovim/neovim.git $HOME/vendor/neovim-source
+cd $HOME/vendor/neovim-source
+git fetch
+git checkout v0.11.1
+
+# sudo apt install cmake gettext lua5.1 liblua5.1-0-dev
+rm -r build/
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/vendor/neovim"
+make install
+export PATH="$HOME/vendor/neovim/bin:$PATH"
+#make CMAKE_BUILD_TYPE=Release
+#sudo make install
