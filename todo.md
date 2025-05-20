@@ -7,7 +7,8 @@
         - [ ] blue tooth
         - [ ] wifi
 - [ ] config rofi to look nice
-- [ ] config ghostty colors / blur / transparency
+- [x] config ghostty colors / blur / transparency
+    - chose catppuccin-mocha
 - [ ] look through the rest of hyprland setup: awesome-hyprland + the setup instructions recommendations 
     - https://wiki.hyprland.org/Hypr-Ecosystem/
     - https://wiki.hyprland.org/Getting-Started/Master-Tutorial/
