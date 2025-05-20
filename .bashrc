@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+eval "$(starship init bash)"
+
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
