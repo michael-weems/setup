@@ -13,7 +13,8 @@ eval "$(starship init bash)"
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
-export GIT_EDITOR=$VIM
+export EDITOR=$VIM
+export GIT_EDITOR=$EDITOR
 
 PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
