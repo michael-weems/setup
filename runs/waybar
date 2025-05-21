@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-sudo pacman -S waybar
-sudo pacman -S ttf-font-awesome

@@ -25,7 +25,7 @@ usage() {
 echo "$script_dir -- $filter"
 
 cd $script_dir
-scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f) # find every executable in the runs dir
+scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
 
 while [[ $# > 0 ]]; do
 	if   [[ "$1" == "-d" ]] || [[ "$1" == "--dry" ]]; then

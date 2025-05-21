@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# make sure yay is available
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git ~/vendor/yay
+cd ~/vendor/yay
+makepkg -si 
+
+yay -Y --gendb
+yay -Syu --devel
+yay -Y --devel --save
+
+# dependencies
+yes | sudo pacman -S meson
+yes | sudo pacman -S cmake
+yes | sudo pacman -S libmpdclient
+yes | sudo pacman -S startup-notification
+
+# desktop environment tools
+yes | sudo pacman -S hyprpaper
+yes | sudo pacman -S hyprpicker
+yes | sudo pacman -S waybar
+yes | sudo pacman -S ttf-font-awesome
+yes | sudo yay -S wlogout
+
+# desktop apps
+yes | sudo pacman -S firefox
+
+# devtools
+yes | sudo pacman -S ghostty          # my preferred terminal-emulator
+yes | sudo pacman -S ripgrep          # alternative to grep, usually better, sometimes worse
+yes | sudo pacman -S fzf              # search utility
+yes | sudo pacman -S tmux             # terminal-multiplexer for switching contexts efficiently
+yes | sudo pacman -S unzip            # unzip things
+yes | sudo pacman -S valgrind         # detect memory leaks in programs
+yes | sudo pacman -S xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
+

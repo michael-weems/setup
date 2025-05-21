@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-sudo pacman -S hyprpaper
-sudo pacman -S hyprpicker
