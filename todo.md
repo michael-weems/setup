@@ -1,7 +1,7 @@
 # Todo
 
 - [x] operational waybar
-    - [ ] workspaces toggle on alt+number
+    - [x] workspaces toggle on alt+number
     - [ ] configure waybar theming, margins, fonts, etc...
     - [ ] waybar menus operational
         - [ ] blue tooth
@@ -12,3 +12,4 @@
 - [ ] look through the rest of hyprland setup: awesome-hyprland + the setup instructions recommendations 
     - https://wiki.hyprland.org/Hypr-Ecosystem/
     - https://wiki.hyprland.org/Getting-Started/Master-Tutorial/
+- [ ] create a terminal based, hjkl-navigated image viewer
