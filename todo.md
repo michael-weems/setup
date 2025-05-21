@@ -2,14 +2,33 @@
 
 - [x] operational waybar
     - [x] workspaces toggle on alt+number
-    - [ ] configure waybar theming, margins, fonts, etc...
-    - [ ] waybar menus operational
-        - [ ] blue tooth
-        - [ ] wifi
-- [ ] config rofi to look nice
+    - [x] configure waybar theming, margins, fonts, etc...
 - [x] config ghostty colors / blur / transparency
     - chose catppuccin-mocha
+- [x] config rofi to look nice
 - [ ] look through the rest of hyprland setup: awesome-hyprland + the setup instructions recommendations 
     - https://wiki.hyprland.org/Hypr-Ecosystem/
     - https://wiki.hyprland.org/Getting-Started/Master-Tutorial/
+- [ ] look through https://github.com/linuxmobile/hyprland-dots
+    - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
+    - [ ] bind restart / shutdown / etc to keyboard shortcuts
+    - [ ] .local/bin/startw --> starts hyprland on boot ?
+    - [ ] anything else from this repo worth grabbing?
+- [ ] fix border flicker on desktop 3
 - [ ] create a terminal based, hjkl-navigated image viewer
+- [ ] tailor rofi to my color theme
+    - [ ] add specific icons for commonly used programs
+- [ ] tailor waybar to my fonts / color theme
+    - [ ] configure background color opacity + background color of icons to fit with theme more
+    - [ ] put arch logo in top left instead of naruto logo
+    - [ ] move the cpu and ram usage to the top right instead of the middle
+    - [ ] fix the time + re-arrange the icon location
+    - [ ] re-arrange the icon location for volume
+    - [ ] add specific icons for each workspace icon
+- [ ] configure tmux look and feel
+    - [ ] configure tmux to start window at 1 instead of 0
+    - [ ] setup .ready-tmux in ./projects/setup differently than ~/ such that it actually inits the project the way I like
+- [ ] build theme-switching system
+    - [ ] tie in wallpaper changing
+    - [ ] tie colors to wallpaper manually
+    - [ ] have different configurations for each theme
