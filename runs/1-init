@@ -17,12 +17,19 @@ yes | sudo pacman -S libmpdclient
 yes | sudo pacman -S startup-notification
 
 # desktop environment tools
-yes | sudo pacman -S hyprpaper
-yes | sudo pacman -S hyprpicker
-yes | sudo pacman -S waybar
-yes | sudo pacman -S ttf-font-awesome
-yes | sudo yay -S wlogout
-yes | sudo pacman -S yazi fd zoxide imagemagick chafa
+yes | sudo pacman -S uwsm libnewt # enable wayland to interact with systemd better
+yes | sudo pacman -S qt5-wayland qt6-wayland # enable qt applications
+yes | sudo pacman -S pipewire wireplumber # audio server
+# https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
+yes | sudo pacman -S xdg-desktop-portal-hyprland # enable file-pickers / screensharing
+yes | sudo pacman -S hyprpaper 	# wallpaper
+yes | sudo pacman -S hyprpicker # desktop color-picker
+yes | sudo pacman -S waybar     # status bar
+yes | sudo pacman -S ttf-font-awesome # nerd-font
+yes | sudo yay -S wlogout # logout menu
+yes | sudo pacman -S yazi fd zoxide imagemagick chafa # terminal-based file-navigator
+yes | sudo pacman -S libnotify dunst # notification popups
+yes | sudo pacman -S udiskie
 
 # desktop apps
 yes | sudo pacman -S firefox

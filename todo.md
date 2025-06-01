@@ -9,6 +9,7 @@
 - [ ] look through the rest of hyprland setup: awesome-hyprland + the setup instructions recommendations 
     - https://wiki.hyprland.org/Hypr-Ecosystem/
     - https://wiki.hyprland.org/Getting-Started/Master-Tutorial/
+- [ ] setup neofetch
 - [ ] look through https://github.com/linuxmobile/hyprland-dots
     - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
     - [ ] bind restart / shutdown / etc to keyboard shortcuts
