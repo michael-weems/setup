@@ -6,10 +6,6 @@
     font-size: 14px;
     font-style: normal;
     min-height: 0;
-
-    --border-radius: 7px;
-
-    --grey-9: #282828;
 }
 
 window#waybar {
@@ -49,19 +45,20 @@ window#waybar {
     background: transparent;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 5px;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     border: solid 0px #f4d9e1;
 }
 
 #custom-os-logo {
     color: blue;
+    /* https://docs.gtk.org/gtk3/css-overview.html#scaled-images-in-css */
     background-image: url('/usr/share/pixmaps/archlinux-logo.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     font-size: 20px;
-    background-color: var(--grey-9);
-    border-radius: 0 var(--border-radius) 0 0;
+    background-color: #282828;
+    border-radius: 0 7px 0 0;
     margin: 0px 0px 0px 0px;
     padding: 0 20px 0 13px;
     /*border-right: solid 1px #282738;*/
@@ -75,7 +72,7 @@ window#waybar {
 #custom-power {
     color: #24283b;
     background-color: #db4b4b;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -86,7 +83,7 @@ window#waybar {
 #tray {
     background: #282828;
     margin: 5px 5px 5px 5px;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     padding: 0px 5px;
     /*border-right: solid 1px #282738;*/
 }
@@ -94,7 +91,7 @@ window#waybar {
 #clock {
     color: #E6B9C6;
     background-color: #282828;
-    border-radius: 0 0 0 var(--border-radius);
+    border-radius: 0 0 0 7px;
     padding-left: 13px;
     padding-right: 15px;
     margin-right: 0px;
@@ -116,7 +113,7 @@ window#waybar {
 #battery.warning:not(.charging) {
     background-color: #f7768e;
     color: #24283b;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
 }
 
 #backlight {
@@ -131,27 +128,27 @@ window#waybar {
 
 #network {
     color: #f4d9e1;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin-right: 5px;
 }
 
 #pipewire {
     color: #f4d9e1;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin-left: 0px;
 }
 
 #pipewire.muted {
     background: transparent;
     color: #928374;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin-left: 0px;
 }
 
 #custom-launcher button:hover {
     background-color: #FB4934;
     color: transparent;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin-right: -5px;
     margin-left: 10px;
 }
@@ -160,7 +157,7 @@ window#waybar {
     background: #282828;
     padding-left: 15px;
     padding-right: 14px;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
   /*border-left: solid 1px #282738;*/
   /*border-right: solid 1px #282738;*/
     margin-top: 5px;
@@ -175,7 +172,7 @@ window#waybar {
     background: transparent;
     padding-left: 10px;
     padding-right: 15px;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     /*border-left: solid 1px #282738;*/
     /*border-right: solid 1px #282738;*/
     margin-top: 5px;
@@ -188,7 +185,7 @@ window#waybar {
     background: #282828;
     padding-left: 15px;
     padding-right: 15px;
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     /*border-left: solid 1px #282738;*/
     /*border-right: solid 1px #282738;*/
     margin-top: 5px;
@@ -206,7 +203,7 @@ window#waybar {
 #cpu {
     background-color: #282828;
     /*color: #FABD2D;*/
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin: 5px;
     margin-left: 5px;
     margin-right: 5px;
@@ -217,7 +214,7 @@ window#waybar {
 #memory {
     background-color: #282828;
     /*color: #83A598;*/
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin: 5px;
     margin-left: 5px;
     margin-right: 5px;
@@ -228,7 +225,7 @@ window#waybar {
 #disk {
     background-color: #282828;
     /*color: #8EC07C;*/
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin: 5px;
     margin-left: 5px;
     margin-right: 5px;
@@ -239,7 +236,7 @@ window#waybar {
 #custom-hyprpicker {
     background-color: #282828;
     /*color: #8EC07C;*/
-    border-radius: var(--border-radius);
+    border-radius: 7px;
     margin: 5px;
     margin-left: 5px;
     margin-right: 5px;
