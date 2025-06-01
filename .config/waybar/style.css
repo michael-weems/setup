@@ -1,3 +1,5 @@
+@define-color grey_9 #000000;
+
 * {
     border: none;
     border-radius: 0px;
@@ -10,12 +12,12 @@
 
 window#waybar {
     background: rgba(30, 30, 46, 0.5);
-    border-bottom: 1px solid #282828;
+    border-bottom: 1px solid @grey_9;
     color: #f4d9e1
 }
 
 #workspaces {
-    background: #282828;
+    background: @grey_9;
     margin: 5px 5px 5px 5px;
     padding: 0px 5px 0px 5px;
     border-radius: 16px;
@@ -50,14 +52,14 @@ window#waybar {
 }
 
 #custom-os-logo {
-    color: blue;
+    color: #1C92CE; /* from official logo */
     /* https://docs.gtk.org/gtk3/css-overview.html#scaled-images-in-css */
     background-image: url('/usr/share/pixmaps/archlinux-logo.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     font-size: 20px;
-    background-color: #282828;
+    background-color: @grey_9;
     border-radius: 0 7px 0 0;
     margin: 0px 0px 0px 0px;
     padding: 0 20px 0 13px;
@@ -81,7 +83,7 @@ window#waybar {
 }
 
 #tray {
-    background: #282828;
+    background: @grey_9;
     margin: 5px 5px 5px 5px;
     border-radius: 7px;
     padding: 0px 5px;
@@ -90,7 +92,7 @@ window#waybar {
 
 #clock {
     color: #E6B9C6;
-    background-color: #282828;
+    background-color: @grey_9;
     border-radius: 0 0 0 7px;
     padding-left: 13px;
     padding-right: 15px;
@@ -154,7 +156,7 @@ window#waybar {
 }
 
 #custom-playerctl {
-    background: #282828;
+    background: @grey_9;
     padding-left: 15px;
     padding-right: 14px;
     border-radius: 7px;
@@ -182,7 +184,7 @@ window#waybar {
 }
 
 #window {
-    background: #282828;
+    background: @grey_9;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 7px;
@@ -201,7 +203,7 @@ window#waybar {
 }
 
 #cpu {
-    background-color: #282828;
+    background-color: @grey_9;
     /*color: #FABD2D;*/
     border-radius: 7px;
     margin: 5px;
@@ -212,7 +214,7 @@ window#waybar {
 }
 
 #memory {
-    background-color: #282828;
+    background-color: @grey_9;
     /*color: #83A598;*/
     border-radius: 7px;
     margin: 5px;
@@ -223,7 +225,7 @@ window#waybar {
 }
 
 #disk {
-    background-color: #282828;
+    background-color: @grey_9;
     /*color: #8EC07C;*/
     border-radius: 7px;
     margin: 5px;
@@ -234,7 +236,7 @@ window#waybar {
 }
 
 #custom-hyprpicker {
-    background-color: #282828;
+    background-color: @grey_9;
     /*color: #8EC07C;*/
     border-radius: 7px;
     margin: 5px;

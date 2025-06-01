@@ -137,7 +137,7 @@
 		"on-click-right": "pavucontrol"
   },
   "custom/os-logo": {
-    "format": "󰈸",
+    "format": "   ",
   },
 
   "custom/wf-recorder": {
