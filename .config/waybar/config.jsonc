@@ -7,8 +7,8 @@
     "margin-left": 0,
     "margin-right": 0,
     "modules-left": ["custom/os-logo", "hyprland/workspaces", "custom/playerctl", "custom/playerlabel"],
-    "modules-center": ["cpu", "memory", "disk"],
-    "modules-right": ["tray", "network", "pipewire", "clock"],
+    "modules-center": [],
+    "modules-right": ["tray", "network", "pipewire", "cpu", "memory", "disk", "clock"],
     // Modules configuration
 	"clock": {
 		"format": "  {:%H:%M}",
