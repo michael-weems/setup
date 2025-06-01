@@ -1,4 +1,5 @@
-@define-color grey_9 #000000;
+@define-color bg rgba(30, 30, 46, 0.5);
+@define-color bg_more rgba(15,15,25,0.6);
 
 * {
     border: none;
@@ -11,13 +12,13 @@
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.5);
-    border-bottom: 1px solid @grey_9;
+    background: @bg;
+    border-bottom: 1px solid @bg_more;
     color: #f4d9e1
 }
 
 #workspaces {
-    background: @grey_9;
+    background: @bg_more;
     margin: 5px 5px 5px 5px;
     padding: 0px 5px 0px 5px;
     border-radius: 16px;
@@ -58,8 +59,8 @@ window#waybar {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    font-size: 20px;
-    background-color: @grey_9;
+    font-size: 16px;
+    background-color: transparent;
     border-radius: 0 7px 0 0;
     margin: 0px 0px 0px 0px;
     padding: 0 20px 0 13px;
@@ -83,7 +84,7 @@ window#waybar {
 }
 
 #tray {
-    background: @grey_9;
+    background: @bg_more;
     margin: 5px 5px 5px 5px;
     border-radius: 7px;
     padding: 0px 5px;
@@ -92,7 +93,7 @@ window#waybar {
 
 #clock {
     color: #E6B9C6;
-    background-color: @grey_9;
+    background-color: @bg_more;
     border-radius: 0 0 0 7px;
     padding-left: 13px;
     padding-right: 15px;
@@ -156,7 +157,7 @@ window#waybar {
 }
 
 #custom-playerctl {
-    background: @grey_9;
+    background: @bg_more;
     padding-left: 15px;
     padding-right: 14px;
     border-radius: 7px;
@@ -184,7 +185,7 @@ window#waybar {
 }
 
 #window {
-    background: @grey_9;
+    background: @bg_more;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 7px;
@@ -203,7 +204,7 @@ window#waybar {
 }
 
 #cpu {
-    background-color: @grey_9;
+    background-color: @bg_more;
     /*color: #FABD2D;*/
     border-radius: 7px;
     margin: 5px;
@@ -214,7 +215,7 @@ window#waybar {
 }
 
 #memory {
-    background-color: @grey_9;
+    background-color: @bg_more;
     /*color: #83A598;*/
     border-radius: 7px;
     margin: 5px;
@@ -225,7 +226,7 @@ window#waybar {
 }
 
 #disk {
-    background-color: @grey_9;
+    background-color: @bg_more;
     /*color: #8EC07C;*/
     border-radius: 7px;
     margin: 5px;
@@ -236,7 +237,7 @@ window#waybar {
 }
 
 #custom-hyprpicker {
-    background-color: @grey_9;
+    background-color: @bg_more;
     /*color: #8EC07C;*/
     border-radius: 7px;
     margin: 5px;
