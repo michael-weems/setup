@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ensure system time updates automatically (why is this needed?)
-sudo cp -rf conf/timesyncd.conf /etc/systemd/timesyncd.conf
+sudo cp -rf assets/timesyncd.conf /etc/systemd/timesyncd.conf
 
 # make sure yay is available
 sudo pacman -S --needed git base-devel

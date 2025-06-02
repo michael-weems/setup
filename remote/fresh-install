@@ -7,7 +7,7 @@ yes | sudo pacman -S git
 cd ~
 mkdir -p projects
 cd projects
-git clone --recursive https://github.com/michael-weems/setup.git
+git clone --recursive git@github.com:michael-weems/setup.git
 cd setup
 
 ./run
