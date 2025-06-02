@@ -121,3 +121,4 @@ function sessionizer() {
 
 bind -x '"\C-f": sessionizer'
 
+fastfetch # display system info on terminal load
