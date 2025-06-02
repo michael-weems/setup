@@ -92,10 +92,15 @@ source $HOME/.bash_logout
 
 reload # reloads hyprland config
 
-if [ ! -d "~/projects/wallpapers" ]; then
+if [[ ! -d "$HOME/projects/wallpapers" ]]; then
+	echo "no wallpapers found, applying default wallpapers"
 	mkdir -p ~/projects/wallpapers
 	cp ./assets/wallpapers/* ~/projects/wallpapers
 	hyprctl hyprpaper reload , ~/projects/wallpapers/arch-underwater.png
+	echo "run the below command to change your wallpaper"
+	echo ""
+	echo "    wallpaper"
+	echo ""
 fi
 
 
