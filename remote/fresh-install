@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-echo "from remote"
-
-if [ -d "~/projects/wallpapers" ]; then
-	wallpaper
-else 
-	mkdir -p ~/projects/wallpapers
-	cp ./assets/wallpaper.png ~/projects/wallpapers
-	hyprctl hyprpaper reload, ~/projects/wallpapers/wallpaper.png
-fi
-
 yes | sudo pacman -S git
 
 cd ~
