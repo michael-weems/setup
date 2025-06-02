@@ -4,6 +4,14 @@ Configuration files and scripts, .dotfiles, and other odds and ends for setting 
 
 ## Usage
 
+### "One command" from fresh install
+
+```bash
+curl -s <URL_of_script> | bash
+```
+
+### From local clone
+
 To copy all dotfiles, scripts, and configurations from this repo to the proper places on the computer, run the below command. Overwrites whatever existed there before.
 
 ```bash
