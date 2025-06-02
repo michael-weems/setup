@@ -65,3 +65,8 @@ for script in $scripts; do
 	execute ./$script
 done
 
+log "done: please run the below command"
+log ""
+log "    cd ~/projects/setup && ./dev-env"
+log ""
+
