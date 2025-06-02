@@ -7,7 +7,7 @@ Configuration files and scripts, .dotfiles, and other odds and ends for setting 
 ### "One command" from fresh install
 
 ```bash
-curl -s <URL_of_script> | bash
+curl -s https://raw.githubusercontent.com/michael-weems/setup/refs/heads/master/remote/fresh-install | bash
 ```
 
 ### From local clone

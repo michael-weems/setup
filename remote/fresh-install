@@ -2,3 +2,13 @@
 
 echo "from remote"
 
+yes | sudo pacman -S git
+
+cd ~
+mkdir -p projects
+cd projects
+git clone --recursive https://github.com/michael-weems/setup.git
+cd setup
+
+./run
+./dev-env
