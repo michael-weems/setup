@@ -9,31 +9,27 @@
   "modules-left": [
     "custom/os-logo",
     "hyprland/workspaces",
-    "custom/playerctl",
+  ],
+  "modules-center": [
     "custom/playerlabel"
   ],
-  "modules-center": [],
   "modules-right": [
-    "tray",
-    "network",
-    "pipewire",
+    "custom/hyprpicker",
     "cpu",
     "memory",
     "disk",
+    "network",
+    "backlight",
+    "wireplumber",
     "clock"
   ],
-  "clock": {
-    "format": "  {:%H:%M}",
-    "tooltip": "true",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "  {:%d/%m}"
+  "custom/os-logo": {
+    "format": "   "
   },
   "hyprland/workspaces": {
     "active-only": false,
     "all-outputs": true,
-    "disable-scroll": false,
-    "on-scroll-up": "hyprctl dispatch workspace -1",
-    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "disable-scroll": true,
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
@@ -45,31 +41,46 @@
       "sort-by-number": true
     }
   },
-  "custom/playerctl": {
-    "format": "{icon}",
-    "return-type": "json",
-    "max-length": 64,
-    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-    "on-click-middle": "playerctl play-pause",
-    "on-click": "playerctl previous",
-    "on-click-right": "playerctl next",
-    "format-icons": {
-      "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
-      "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
-    }
+  "wireplumber": {
+    "format": "{icon}   {volume}%",
+    "format-muted": "",
+    "on-click": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "on-click-right": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "format-icons": ["", "", ""]
   },
   "custom/playerlabel": {
     "format": "<span>{}</span>",
     "return-type": "json",
-    "max-length": 64,
-    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-    "on-click-middle": "playerctl play-pause",
-    "on-click": "playerctl previous",
-    "on-click-right": "playerctl next",
-    "format-icons": {
-      "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
-      "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
-    }
+    "max-length": 80,
+    "exec": "playerctl -a metadata --format '{\"text\": \"󰎇 {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F"
+  },
+  "custom/hyprpicker": {
+    "format": "󰈋",
+    "on-click": "hyprpicker -a -f hex",
+    "on-click-right": "hyprpicker -a -f rgb"
+  },
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": " {ifname}: Aesthetic",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "󰤭",
+    "format-alt": " {ifname}: {ipaddr}/{cidr}",
+    "tooltip-format": "{essid}",
+    "on-click-right": "nm-connection-editor"
   },
   "battery": {
     "states": {
@@ -105,64 +116,9 @@
     "interval": 5,
     "path": "/mnt/Datos"
   },
-  "network": {
-    "format-wifi": "󰤨",
-    "format-ethernet": " {ifname}: Aesthetic",
-    "format-linked": " {ifname} (No IP)",
-    "format-disconnected": "󰤭",
-    "format-alt": " {ifname}: {ipaddr}/{cidr}",
-    "tooltip-format": "{essid}",
-    "on-click-right": "nm-connection-editor"
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip": "true",
+    "tooltip-format": "{:%d/%m}"
   },
-  "tray": {
-    "icon-size": 16,
-    "spacing": 5
-  },
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  "custom/pipewire": {
-    "format": "{icon}",
-    "return-type": "json",
-    "signal": 8,
-    "interval": "once",
-    "format-icons": {
-      "mute": "",
-      "default": [
-        "",
-        "",
-        "",
-        ""
-      ]
-    },
-    "exec": "pw-volume status"
-  },
-  "custom/os-logo": {
-    "format": "   "
-  },
-  "custom/wf-recorder": {
-    "format": "{}",
-    "interval": "once",
-    "exec": "echo ''",
-    "tooltip": "false",
-    "exec-if": "pgrep 'wf-recorder'",
-    "on-click": "exec ./scripts/wlrecord.sh",
-    "signal": 8
-  },
-  "custom/hyprpicker": {
-    "format": "󰈋",
-    "on-click": "hyprpicker -a -f hex",
-    "on-click-right": "hyprpicker -a -f rgb"
-  }
 }

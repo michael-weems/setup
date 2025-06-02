@@ -1,5 +1,9 @@
 @define-color bg rgba(30, 30, 46, 0.5);
+/*@define-color bg_more black; */
 @define-color bg_more rgba(15,15,25,0.6);
+@define-color primary #C33CE8; /* NOTE: tied into wallpaper's color theme */
+@define-color fg #C2B3A4;
+@define-color fg_less #928374;
 
 * {
     border: none;
@@ -11,45 +15,27 @@
     min-height: 0;
 }
 
+#window {
+    background: @bg_more;
+    margin: 5px 0px;
+    padding: 0px 10px;
+    border-radius: 7px;
+    font-weight: normal;
+    font-style: normal;
+}
+
 window#waybar {
     background: @bg;
     border-bottom: 1px solid @bg_more;
     color: #f4d9e1
 }
 
-#workspaces {
-    background: @bg_more;
-    margin: 5px 5px 5px 5px;
-    padding: 0px 5px 0px 5px;
-    border-radius: 16px;
-    border: solid 0px #f4d9e1;
-    font-weight: normal;
-    font-style: normal;
-}
-#workspaces button {
-    padding: 0px 5px;
-    border-radius: 16px;
-    color: #928374;
-}
-
-#workspaces button.active {
-    color: #f4d9e1;
-    background-color: transparent;
-    border-radius: 16px;
-}
-
-#workspaces button:hover {
-    background-color: #E6B9C6;
-    color: black;
-    border-radius: 16px;
-}
-
-#custom-date, #clock, #battery, #pipewire, #network, #custom-os-logo {
+#custom-os-logo, #battery, #wireplumber, #network, #custom-os-logo, #custom-date, #clock {
     background: transparent;
-    padding: 5px 5px 5px 5px;
-    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    margin: 5px 0px 5px 5px;
     border-radius: 7px;
-    border: solid 0px #f4d9e1;
+    border: solid 0px #f4d9e1; /* todo */
 }
 
 #custom-os-logo {
@@ -59,190 +45,142 @@ window#waybar {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    font-size: 16px;
-    background-color: transparent;
-    border-radius: 0 7px 0 0;
-    margin: 0px 0px 0px 0px;
-    padding: 0 20px 0 13px;
-    /*border-right: solid 1px #282738;*/
-    font-size: 20px;
-}
-
-#custom-date {
-    color: #D3869B;
-}
-
-#custom-power {
-    color: #24283b;
-    background-color: #db4b4b;
-    border-radius: 7px;
-    margin-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 0px;
-    padding: 5px 10px;
-}
-
-#tray {
-    background: @bg_more;
-    margin: 5px 5px 5px 5px;
-    border-radius: 7px;
-    padding: 0px 5px;
-    /*border-right: solid 1px #282738;*/
-}
-
-#clock {
-    color: #E6B9C6;
     background-color: @bg_more;
-    border-radius: 0 0 0 7px;
-    padding-left: 13px;
-    padding-right: 15px;
-    margin-right: 0px;
-    margin-left: 10px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-weight: bold;
-    /*border-left: solid 1px #282738;*/
-}
-
-#battery {
-    color: #9ece6a;
-}
-
-#battery.charging {
-    color: #9ece6a;
-}
-
-#battery.warning:not(.charging) {
-    background-color: #f7768e;
-    color: #24283b;
+    font-size: 8px;
     border-radius: 7px;
+    margin: 5px 0px 5px 5px;
+    padding: 0px 8px; /* NOTE: padding functions as 'content size' here */
+    border-width: 8px;/* NOTE: border functions as padding here */
+    border-color: @bg_more;
 }
 
-#backlight {
-    background-color: #24283b;
-    color: #db4b4b;
-    border-radius: 0px 0px 0px 0px;
-    margin: 5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px 0px;
-}
-
-#network {
-    color: #f4d9e1;
-    border-radius: 7px;
-    margin-right: 5px;
-}
-
-#pipewire {
-    color: #f4d9e1;
-    border-radius: 7px;
-    margin-left: 0px;
-}
-
-#pipewire.muted {
-    background: transparent;
-    color: #928374;
-    border-radius: 7px;
-    margin-left: 0px;
-}
-
-#custom-launcher button:hover {
-    background-color: #FB4934;
-    color: transparent;
-    border-radius: 7px;
-    margin-right: -5px;
-    margin-left: 10px;
-}
-
-#custom-playerctl {
+#workspaces {
     background: @bg_more;
-    padding-left: 15px;
-    padding-right: 14px;
+    margin: 5px 0px 5px 5px;
+    padding: 5px 5px 5px 0px;
     border-radius: 7px;
-  /*border-left: solid 1px #282738;*/
-  /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 0px;
+    border: solid 0px #f4d9e1; /* todo */
     font-weight: normal;
     font-style: normal;
-    font-size: 16px;
+}
+#workspaces button {
+    border-radius: 7px;
+    color: #928374; /* todo */
+}
+
+#workspaces button.active {
+    color: @primary; 
+    background-color: transparent;
+    border-radius: 7px;
+}
+
+#workspaces button:hover {
+    background-color: orange;
+    color: blue;
+    border-radius: 7px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/Module:-WirePlumber */
+#wireplumber {
+    background-color: @bg_more;
+    color: @fg_less; /* todo */
+    border-radius: 7px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 #custom-playerlabel {
-    background: transparent;
-    padding-left: 10px;
-    padding-right: 15px;
-    border-radius: 7px;
-    /*border-left: solid 1px #282738;*/
-    /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-weight: normal;
-    font-style: normal;
-}
-
-#window {
     background: @bg_more;
-    padding-left: 15px;
-    padding-right: 15px;
+    color: @fg;
+    padding: 5px;
+    margin: 5px;
     border-radius: 7px;
-    /*border-left: solid 1px #282738;*/
-    /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
     font-weight: normal;
     font-style: normal;
 }
 
-#custom-wf-recorder {
-    padding: 0 20px;
-    color: #e5809e;
-    background-color: #1E1E2E;
+#custom-power {
+    color: #24283b; /* todo */
+    background-color: #db4b4b; /* todo */
+    border-radius: 7px;
+    margin: 5px;
+    padding: 5px;
+}
+
+#battery {
+    color: #9ece6a; /* todo */
+}
+
+#battery.charging {
+    color: #9ece6a; /* todo */
+}
+
+#battery.warning:not(.charging) {
+    background-color: #f7768e; /* todo */
+    color: #24283b; /* todo */
+    border-radius: 7px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/Module:-Backlight-Slider */
+#backlight {
+    background-color: @bg_more; /* todo */
+    color: @fg_less; /* todo */
+    border-radius: 7px;
+    margin: 5px 0px 5px 5px;
+    padding: 5px;
+}
+
+#network {
+    background-color: @bg_more;
+    color: @fg_less;
+    border-radius: 7px;
+    margin: 5px 0px 5px 5px;
+    padding: 0px 10px 0px 5px;
+}
+
+#custom-hyprpicker {
+    background-color: @bg_more;
+    color: @primary;
+    border-radius: 7px;
+    margin: 5px 0px;
+    padding: 0px 10px;
+    font-weight: bold;
 }
 
 #cpu {
     background-color: @bg_more;
-    /*color: #FABD2D;*/
+    color: @fg_less;
     border-radius: 7px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+    margin: 5px 0px 5px 5px;
+    padding: 0px 5px;
     font-weight: bold;
 }
 
 #memory {
     background-color: @bg_more;
-    /*color: #83A598;*/
+    color: @fg_less;
     border-radius: 7px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+    margin: 5px 0px 5px 5px;
+    padding: 0px 5px;
     font-weight: bold;
 }
 
 #disk {
     background-color: @bg_more;
-    /*color: #8EC07C;*/
+    color: @fg_less;
     border-radius: 7px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+    margin: 5px 0px 5px 5px;
+    padding: 0px 5px;
     font-weight: bold;
 }
 
-#custom-hyprpicker {
+#clock {
     background-color: @bg_more;
-    /*color: #8EC07C;*/
+    color: @fg_less;
     border-radius: 7px;
     margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 11px 0px 9px;
-    font-weight: bold;
+    padding: 5px;
+}
+#custom-date {
+    color: @fg_less;
 }

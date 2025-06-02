@@ -38,6 +38,13 @@ screen  # run this command to manage monitor setup
 
 Note that since this does not use symlinks, if you go to modify a script / config file outside of the `setup` repo, it will be overwritten the next time this repo's scripts are run. This is good when you are aware this is the behavior, bad when you are not. In general, change your configs in this repo and then run the scripts to apply them to your computer. If you want to test out changes, you can modify them outside this repo and see how they work - if they don't work the way you want, you can always just re-run these scripts to reset. Just make sure to copy your working test configs back into this repo when you're done!
 
+## Once Setup
+
+### Waybar
+
+- Volume: (+) right-click (-) left-click
+- Brightness: scroll to change (I'd prefer click but we'll figure that out another day)
+
 ## Links
 
 - [UTF-8 Icons](https://www.nerdfonts.com/cheat-sheet)
