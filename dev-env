@@ -92,11 +92,10 @@ source $HOME/.bash_logout
 
 reload # reloads hyprland config
 
-if [ -d "~/projects/wallpapers" ]; then
-else 
+if [ ! -d "~/projects/wallpapers" ]; then
 	mkdir -p ~/projects/wallpapers
-	cp ./assets/wallpaper.png ~/projects/wallpapers
-	hyprctl hyprpaper reload, ~/projects/wallpapers/wallpaper.png
+	cp ./assets/wallpapers/* ~/projects/wallpapers
+	hyprctl hyprpaper reload , ~/projects/wallpapers/arch-underwater.png
 fi
 
 
