@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+timedatectl set-ntp true
+sudo ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+sudo hwclock --systohc
