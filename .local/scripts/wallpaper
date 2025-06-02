@@ -5,4 +5,4 @@ if [[ -z "$selected" ]]; then
     exit 0
 fi
 
-hyprctl hyprpaper reload, $selected
+hyprctl hyprpaper reload , $selected
