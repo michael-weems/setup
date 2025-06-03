@@ -3,10 +3,10 @@
 # for examples
 
 # If not running interactively, don't do anything
-#case $- in
-#    *i*) ;;
-#      *) return;;
-#esac
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 eval "$(starship init bash)"
 
@@ -118,6 +118,7 @@ export NVM_DIR="$HOME/.nvm"
 function sessionizer() {
     $HOME/.local/scripts/tmux-sessionizer
 }
+
 bind -x '"\C-f": sessionizer'
 
 sleep 1

@@ -117,7 +117,7 @@
     "path": "/mnt/Datos"
   },
   "clock": {
-    "format": "{:%H:%M}",
+    "format": "{:%I:%M}",
     "tooltip": "true",
     "tooltip-format": "{:%d/%m}"
   },
