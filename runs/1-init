@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# ensure system time updates automatically (why is this needed?)
-sudo cp -rf assets/timesyncd.conf /etc/systemd/timesyncd.conf
-
 # make sure yay is available
 sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git ~/vendor/yay
