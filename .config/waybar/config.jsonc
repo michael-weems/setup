@@ -1,11 +1,6 @@
 {
   "position": "top",
   "layer": "top",
-  "height": 16,
-  "margin-top": 0,
-  "margin-bottom": 0,
-  "margin-left": 0,
-  "margin-right": 0,
   "modules-left": [
     "custom/os-logo",
     "hyprland/workspaces",
@@ -14,14 +9,12 @@
     "custom/playerlabel"
   ],
   "modules-right": [
-    "custom/hyprpicker",
-    "cpu",
-    "memory",
-    "disk",
-    "network",
-    "backlight",
     "wireplumber",
-    "clock"
+    "backlight",
+    "battery",
+    "clock",
+    "custom/hyprpicker",
+    "custom/power"
   ],
   "custom/os-logo": {
     "format": "   "
@@ -51,8 +44,8 @@
   "custom/playerlabel": {
     "format": "<span>{}</span>",
     "return-type": "json",
-    "max-length": 80,
-    "exec": "playerctl -a metadata --format '{\"text\": \"󰎇 {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F"
+    "max-length": 50,
+    "exec": "playerctl -a metadata --format '{\"text\": \"   {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F"
   },
   "custom/hyprpicker": {
     "format": "󰈋",
@@ -60,18 +53,9 @@
     "on-click-right": "hyprpicker -a -f rgb"
   },
   "backlight": {
-    "format": "{icon}  {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+        "device": "intel_backlight",
+        "format": "{icon}  {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
   },
   "network": {
     "format-wifi": "󰤨",
@@ -117,8 +101,15 @@
     "path": "/mnt/Datos"
   },
   "clock": {
-    "format": "{:%I:%M}",
+    "format": "  {:%I:%M}",
     "tooltip": "true",
     "tooltip-format": "{:%d/%m}"
   },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "~/.config/rofi/scripts/power",
+    "format": "⏻ "
+
+  }
 }
+
