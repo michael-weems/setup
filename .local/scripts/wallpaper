@@ -1,8 +1,22 @@
 #!/usr/bin/env bash
 
-selected=$(find ~/projects/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf)
-if [[ -z "$selected" ]]; then
-    exit 0
+wp="$1"
+
+if [[ -z "$wp" ]]; then
+        wp=$(find ~/projects/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf)
+else
+	wp=$(ls $HOME/projects/wallpapers | grep $wp)
 fi
 
-hyprctl hyprpaper reload , $selected
+if [[ -z "$wp" ]]; then
+	echo "error: could not determine wallpaper to apply - none matched your input"
+	exit 1
+fi
+
+line_count=$(echo "$wp" | wc -l)
+if [[ "$line_count" != "1" ]]; then
+	echo "error: could not determine wallpaper to apply: $wp"
+	exit 1
+fi
+
+hyprctl hyprpaper reload , $wp
