@@ -1,0 +1,12 @@
+@define-color bg        #FF0000;
+@define-color active    #FF0000;
+@define-color inactive  #FF0000;
+@define-color hover     #FF0000;
+@define-color danger    #FF0000;
+
+@define-color sound     #FF0000; 
+@define-color backlight #FF0000;
+@define-color battery   #FF0000;
+@define-color clock     #FF0000;
+@define-color picker    #FF0000;
+@define-color network   #FF0000;

@@ -1,6 +1,5 @@
 # Todo
 
-- [ ] continue tailoring rofi - spacing / margins aren't quite right
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
@@ -15,20 +14,23 @@
     - [ ] catppuccin 
     - [ ] rose-pine
     - [ ] custom senjou theme
+- [ ] hypr theme setup
 - [ ] look through https://github.com/linuxmobile/hyprland-dots
     - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
     - [ ] bind restart / shutdown / etc to keyboard shortcuts
     - [ ] .local/bin/startw --> starts hyprland on boot ?
     - [ ] anything else from this repo worth grabbing?
+- [ ] build theme-switching system: start with senjou, rose-pine, and catppuccin-mocha
+    - [x] create script to change theme on the fly
+    - [x] waybar
+    - [ ] rofi
+    - [ ] hyprland
+    - [ ] hyprpaper
 
 ### Good follow up projects
 
 - [ ] project: create a terminal based, hjkl-navigated image viewer
     - [ ] update the wallpaper script to use it
-- [ ] build theme-switching system
-    - [ ] tie in wallpaper changing
-    - [ ] tie colors to wallpaper manually
-    - [ ] have different configurations for each theme
 
 ### Completed
 
@@ -53,3 +55,4 @@
     - [x] fix the time + re-arrange the icon location
     - [x] re-arrange the icon location for volume
     - [x] add specific icons for each workspace icon
+- [x] continue tailoring waybar - spacing / margins aren't quite right

@@ -14,6 +14,7 @@
     "battery",
     "clock",
     "custom/hyprpicker",
+    "network",
     "custom/power"
   ],
   "custom/os-logo": {
@@ -72,7 +73,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
+    "format": "{icon}   {capacity}%",
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{icon} {time}",
@@ -84,22 +85,6 @@
       ""
     ]
   },
-  "memory": {
-    "format": "󰍛 {}%",
-    "format-alt": "󰍛 {used}/{total} GiB",
-    "interval": 5
-  },
-  "cpu": {
-    "format": "󰻠 {usage}%",
-    "format-alt": "󰻠 {avg_frequency} GHz",
-    "interval": 5
-  },
-  "disk": {
-    "format": "󰋊 {}%",
-    "format-alt": "󰋊 {used}/{total} GiB",
-    "interval": 5,
-    "path": "/mnt/Datos"
-  },
   "clock": {
     "format": "  {:%I:%M}",
     "tooltip": "true",
@@ -109,7 +94,6 @@
     "tooltip": false,
     "on-click": "~/.config/rofi/scripts/power",
     "format": "⏻ "
-
   }
 }
 

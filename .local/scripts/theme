@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+preselected="$1"
+
+if [[ -z "$preselected" ]]; then
+	theme=$(cat $HOME/.themes | fzf)
+else
+	theme=$(cat $HOME/.themes | grep $preselected)
+fi
+
+if [[ -z "$theme" ]]; then
+	echo "error: could not determine theme to apply - none matched your input"
+	exit 1
+fi
+
+line_count=$(echo "$theme" | wc -l)
+echo "line_count: $line_count"
+
+if [[ "$line_count" != "1" ]]; then
+	echo "error: could not determine theme to apply: $theme"
+	exit 1
+fi
+
+./.config/waybar/theme $theme
+
+# TODO
+# rofi
+# hyprland
+# hyprpaper
+
+# reload everything
+reload
