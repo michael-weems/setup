@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+export argv=("$@")
+export argc=${#argv[@]}
+
+dry="false"
+usage="false"
+
+for ((i=0; i<argc; i++)); do
+	if   [[ "-d" == "${argv[$i]}" ]] || [[ "--dry" == "${argv[$i]}" ]]; then
+		dry="true"
+	elif [[ "-h" == "${argv[$i]}" ]] || [[ "--help" == "${argv[$i]}" ]]; then
+		usage="true"
+	fi
+done
+export dry
+export usage
+
+_lib_usage() {
+	echo "-d, --dry-run   | perform a dry-run of the operations"
+	echo "-h, --help      | print usage"
+}
+export -f _lib_usage
+
+# EXAMPLE
+# $ copy_dir .config $HOME/.config
+copy_dir() {
+	from=$1
+	to=$2
+
+	pushd $from > /dev/null
+	dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
+	for dir in $dirs; do
+		execute rm -rf $to/$dir
+		execute cp -r $dir $to/$dir
+	done
+	popd > /dev/null
+}
+export -f copy_dir
+
+# EXAMPLE
+# $ copy_file home/.profile $HOME
+copy_file() {
+	from=$1
+	to=$2
+	if [[ -z "$3" ]]; then
+		name=$(basename $from)
+	else
+		name="$3"
+	fi
+
+	execute rm $to/$name
+	execute cp $from $to/$name
+}
+export -f copy_file
+
+# EXAMPLE
+# $ log "----------- dev-env -----------"
+log() {
+	if [[ $dry == "true" ]]; then
+		echo "[DRY_RUN]: $@"
+	else
+		echo "$@"
+	fi
+}
+export -f log
+
+# EXAMPLE
+# $ execute git fetch --prune
+execute() {
+	log "$@"
+	if [[ $dry == "true" ]]; then
+		return
+	fi
+	$@
+}
+export -f execute
+
+

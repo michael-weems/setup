@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-
-filter=""
-dry="false"
+source ./_lib
 
 usage() {
 	echo "$script_dir/run"
@@ -15,47 +12,31 @@ usage() {
 	echo "filter          | run only the installation for the applications that match this input filter"
 	echo ""
 	echo "Flags:"
-	echo "-d, --dry-run   | perform a dry-run of the operations"
-	echo "-h, --help      | print usage"
+	_lib_usage
 	echo ""
 	echo "Examples:"
 	echo "./run ghostty   # runs the installation for ghostty"
 }
+if [[ "$usage" == "true" ]]; then
+	usage
+	exit 0
+fi
 
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+filter=""
 echo "$script_dir -- $filter"
 
 cd $script_dir
-scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
 
-while [[ $# > 0 ]]; do
-	if   [[ "$1" == "-d" ]] || [[ "$1" == "--dry" ]]; then
-		dry="true"
-	elif [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
-		usage
-		exit 0
-	else
-		filter="$1"
+for ((i=0; i<argc; i++)); do
+	if   [[ "-g" == "${argv[$i]}" ]] || [[ "--grep" == "${argv[$i]}" ]]; then
+		i=$(i + 1)
+		filter="${argv[$i]}"
 	fi
-	shift
 done
 
-log() {
-	if [[ $dry == "true" ]]; then
-		echo "[DRY_RUN]: $@"
-	else
-		echo "$@"
-	fi
-}
-execute() {
-	log "$@"
-	if [[ $dry == "true" ]]; then
-		return
-	fi
-	$@
-}
-
 log "run: filter=$filter"
-
+scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
 for script in $scripts; do
 	# does this script not contain this filter
 	if echo "$script" | grep -qv "$filter"; then

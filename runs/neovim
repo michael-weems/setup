@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pacman -S base-devel cmake ninja curl
+yes | sudo pacman -S base-devel cmake ninja curl
 
 git clone --depth 1 -b v0.11.1 https://github.com/neovim/neovim.git $HOME/vendor/neovim-source
 cd $HOME/vendor/neovim-source

@@ -1,67 +1,21 @@
 #!/usr/bin/env bash
 
-# NOTE: script variables
-dry="false"
-dock="true"
+source $HOME/_lib
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+to="$HOME/.config/hypr"
 
-usage() {
-	echo "$script_dir/screen <flags>"
-	echo ""
-	echo "Usage:"
-	echo "-u, --undock    | use the built-in laptop screen"
-	echo "-d, --dry-run   | perform a dry-run of the operations"
-	echo "-h, --help      | print usage"
-	echo ""
-	echo "Example:"
-	echo "./.local/scripts/screen    # dock the laptop and display via the external monitor"
-	echo "./.local/scripts/screen -u # undock the laptop and display via the external monitor"
-	echo ""
-}
-
-# NOTE: parse inputs
-while [[ $# > 0 ]]; do
-	if   [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
-		usage
-		exit 0
-	elif [[ "$1" == "-d" ]] || [[ "$1" == "--dry-run" ]]; then
-		dry="true"
-	elif [[ "$1" == "-u" ]] || [[ "$1" == "--undock" ]]; then
-		dock="false"
-	fi
-	shift
-done
-
-# NOTE: utility functions
-log() {
-	if [[ $dry == "true" ]]; then
-		echo "[DRY_RUN]: $@"
-	else
-		echo "$@"
-	fi
-}
-execute() {
-	log "$@"
-	if [[ $dry == "true" ]]; then
-		return
-	fi
-	$@
-}
-
-# NOTE: Actual script starts here
-
-if [ "$dock" == "true" ]; then
-	log "dock the laptop"
-	execute xrandr --output HDMI-A-0 --auto
-	execute xrandr --output eDP --off
+monitor=$(hyprctl monitors all | grep "DP-8")
+if [[ -z "$monitor" ]]; then
+	from=$to/monitors/laptop.conf
 else
-	log "undock the laptop"
-	execute xrandr --output eDP --auto
-	execute xrandr --output HDMI-A-0 --off
+	from=$to/monitors/qdoled.conf
 fi
 
-execute nitrogen --restore &
+name=$(basename $from)
 
-exit 0
+log "use screen: $name"
 
+copy_file $from $to "monitor.conf"
+
+# reload everything
+execute reload

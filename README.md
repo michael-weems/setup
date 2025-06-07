@@ -30,16 +30,17 @@ To install applications and setup application specific configurations, like for 
 # all live under $HOME/.local/scripts/
 # all are put on the path for convenient usage
 scripts # run this command to list the utility scripts under $HOME/.local/scripts
-reload  # run this command to reload the i3 config
+reload  # run this command to reload the hypr + other configs
 headphones  # run this command to connect bluetooth headphones
-screen  # run this command to manage monitor setup
+screen  # manage monitor setup
+theme   # select a theme to apply
 ```
 
 ## Overview
 
 - `.config/` contains config files for various applications (for `./dev-env`)
 - `.local/` contains utility scripts for general usage (for `./dev-env`)
-- `.*` files at the root are config files to go in the $HOME directory (for `./dev-env`)
+- `home/` contains files to go in the $HOME directory (for `./dev-env`)
 - `runs/` contains specific installation instructions for various applications (for `./run`)
 
 ## Incidental benefit / pain point
