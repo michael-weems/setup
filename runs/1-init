@@ -20,6 +20,7 @@ yes | sudo pacman -S startup-notification
 yes | sudo pacman -S uwsm libnewt # enable wayland to interact with systemd better
 yes | sudo pacman -S qt5-wayland qt6-wayland # enable qt applications
 yes | sudo pacman -S pipewire wireplumber # audio server
+yes | sudo pacman -S xrandr # monitor setup
 # https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
 yes | sudo pacman -S xdg-desktop-portal-hyprland # enable file-pickers / screensharing
 yes | sudo pacman -S hyprpaper 	# wallpaper
