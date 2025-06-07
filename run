@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./_lib
+source ./.bashlib
 
 usage() {
 	echo "$script_dir/run"

@@ -1,7 +1,7 @@
 # Todo
 
+- [ ] fix sound
 - [ ] waybar: change network ethernet look
-- [ ] hyprland: on boot, load a wallpaper
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
@@ -17,6 +17,8 @@
     - [ ] rose-pine
     - [ ] custom senjou theme
 - [ ] hypr theme setup
+- [ ] configure dunst to match theme
+    - can test it by turning on and off the wifi
 - [ ] look through https://github.com/linuxmobile/hyprland-dots
     - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
     - [ ] bind restart / shutdown / etc to keyboard shortcuts
@@ -27,7 +29,7 @@
     - [x] waybar
     - [ ] rofi
     - [ ] hyprland
-    - [ ] hyprpaper
+    - [x] hyprpaper
     - [ ] neovim
 
 ### Good follow up projects
@@ -59,3 +61,4 @@
     - [x] re-arrange the icon location for volume
     - [x] add specific icons for each workspace icon
 - [x] continue tailoring waybar - spacing / margins aren't quite right
+- [x] hyprland: on boot, load a wallpaper

@@ -5,7 +5,7 @@ wp="$1"
 if [[ -z "$wp" ]]; then
         wp=$(find ~/projects/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf)
 else
-	wp=$(ls $HOME/projects/wallpapers | grep $wp)
+	wp="$HOME/projects/wallpapers/$(ls $HOME/projects/wallpapers | grep $wp)"
 fi
 
 if [[ -z "$wp" ]]; then

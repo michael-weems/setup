@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/_lib
+source $HOME/.bashlib
 
 to="$HOME/.config/hypr/monitor.conf"
 
