@@ -2,20 +2,16 @@
 
 source $HOME/_lib
 
-to="$HOME/.config/hypr"
+to="$HOME/.config/hypr/monitor.conf"
 
-monitor=$(hyprctl monitors all | grep "DP-8")
+monitor=$(hyprctl monitors all | grep "(ID 1)")
 if [[ -z "$monitor" ]]; then
-	from=$to/monitors/laptop.conf
+	echo "monitor=eDP-1,preferred,auto,auto" > $to
 else
-	from=$to/monitors/qdoled.conf
+	id=$(echo $monitor | awk -F" " '{ print $2 }')
+	echo "monitor=$id,preferred,auto,auto" > $to
+	echo "monitor=eDP-1,disable" >> $to
 fi
-
-name=$(basename $from)
-
-log "use screen: $name"
-
-copy_file $from $to "monitor.conf"
 
 # reload everything
 execute reload

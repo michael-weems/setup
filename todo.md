@@ -1,5 +1,7 @@
 # Todo
 
+- [ ] waybar: change network ethernet look
+- [ ] hyprland: on boot, load a wallpaper
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
@@ -26,6 +28,7 @@
     - [ ] rofi
     - [ ] hyprland
     - [ ] hyprpaper
+    - [ ] neovim
 
 ### Good follow up projects
 

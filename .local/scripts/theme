@@ -14,19 +14,23 @@ if [[ -z "$theme" ]]; then
 fi
 
 line_count=$(echo "$theme" | wc -l)
-echo "line_count: $line_count"
-
 if [[ "$line_count" != "1" ]]; then
 	echo "error: could not determine theme to apply: $theme"
 	exit 1
 fi
+
+wp=$(echo $theme | awk -F": " '{ print $2 }')
+theme=$(echo $theme | awk -F": " '{ print $1 }')
 
 ./.config/waybar/theme $theme
 
 # TODO
 # rofi
 # hyprland
+./.config/hypr/theme $theme
+
 # hyprpaper
+wallpaper $wp
 
 # reload everything
 reload
