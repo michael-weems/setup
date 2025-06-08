@@ -48,19 +48,12 @@ execute source $HOME/.bash_profile
 execute source $HOME/.bash_aliases
 execute source $HOME/.bash_logout
 
-execute toggledock # setup config files for hypr config
-execute reload # reloads hyprland config
-
 if [[ ! -d "$HOME/projects/wallpapers" ]]; then
 	log "no wallpapers found, applying default wallpapers"
 	execute mkdir -p ~/projects/wallpapers
 	execute cp ./assets/wallpapers/* ~/projects/wallpapers
-	execute hyprctl hyprpaper reload , ~/projects/wallpapers/arch-underwater.png
-	log "run the below command to change your wallpaper"
-	log ""
-	log "    wallpaper"
-	log ""
 fi
 
-execute theme catppuccin # sets the theme
-
+execute theme catppuccin-mocha # sets the theme
+execute toggledock # setup config files for hypr config
+execute reload # reloads hyprland config

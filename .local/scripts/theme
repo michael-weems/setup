@@ -73,4 +73,4 @@ fi
 # NOTE: fzf
 
 # NOTE: hyprpaper
-wallpaper $theme
+wallpaper -p -q $theme

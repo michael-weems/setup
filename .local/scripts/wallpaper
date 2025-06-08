@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 
-query="$1"
+source $HOME/.bashlib
+
+query=""
+prep="false"
+for ((i=0; i<argc; i++)); do
+	if   [[ "-p" == "${argv[$i]}" ]] || [[ "--prep" == "${argv[$i]}" ]]; then
+		prep="true"
+	elif [[ "-q" == "${argv[$i]}" ]] || [[ "--query" == "${argv[$i]}" ]]; then
+		i=((i + 1))
+		query="${argv[$i]}"
+	fi
+done
 
 if [[ -z "$query" ]]; then
         wp=$(find ~/projects/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf)
@@ -19,4 +30,10 @@ if [[ "$line_count" != "1" ]]; then
 	exit 1
 fi
 
-hyprctl hyprpaper reload , $wp
+if [[ "$prep" == "true" ]]; then
+	# prep the wallpaper for hyprland config to apply
+	echo "$wp" > $HOME/.config/hypr/wallpaper
+else
+	# actually set the wallpaper
+	hyprctl hyprpaper reload , $wp
+fi
