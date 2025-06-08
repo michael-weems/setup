@@ -1,7 +1,12 @@
 # Todo
 
-- [ ] fix sound
+- [ ] obtain all catppuccin + rose-pine wallpapers again
+- [ ] move themeing to .local/themes + .local/scripts/theme
+    - each module pulls in a theme file that gets overwritten by the .local/scripts/theme
+    - a reload will apply the theme
+    - this rather than each module defining every theme
 - [ ] waybar: change network ethernet look
+- [ ] waybar: stop logging to every console
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
@@ -62,3 +67,4 @@
     - [x] add specific icons for each workspace icon
 - [x] continue tailoring waybar - spacing / margins aren't quite right
 - [x] hyprland: on boot, load a wallpaper
+- [x] fix sound
