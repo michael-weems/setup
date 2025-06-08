@@ -23,4 +23,7 @@ execute cd $script_dir
 
 log "----------- _basetheme -----------"
 
+# temp path - prepend scripts dir of setup project so we don't have to have run ./dev-env yet
+PATH="$script_dir/.local/scripts:$PATH"
+
 theme --silent --base $HOME/projects/setup

@@ -1,5 +1,6 @@
 # Todo
 
+- [ ] cleanup $PATH - its full of duplicates and is super long
 - [ ] waybar: change network ethernet look
 - [ ] waybar: stop logging to every console
 - [ ] tailor rofi to my color theme
