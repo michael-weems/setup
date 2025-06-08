@@ -1,5 +1,6 @@
 # Todo
 
+- [ ] remove all unused rofi things
 - [ ] move themeing to .local/themes + .local/scripts/theme
     - each module pulls in a theme file that gets overwritten by the .local/scripts/theme
     - a reload will apply the theme
