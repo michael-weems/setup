@@ -34,37 +34,37 @@ if [[ "$line_count" != "1" ]]; then
 	exit 1
 fi
 
-from="$base/.local/themes/$theme"
-to="$base"
 fallback="$base/.local/themes/_fallback"
+f="$base/.local/themes/$theme"
+t="$base"
 
 # NOTE: waybar
-if [[ -f "$from/waybar.css" ]]; then
-	copy_file "$from/waybar.css" "$to/.config/waybar" "theme.css"
+if [[ -f "$f/waybar.css" ]]; then
+	copy_file "$f/waybar.css" "$t/.config/waybar" "theme.css"
 else
-	copy_file "$fallback/waybar.css" "$to/.config/waybar" "theme.css"
+	copy_file "$fallback/waybar.css" "$t/.config/waybar" "theme.css"
 fi
 
 # NOTE: ghostty
-if [[ -f "$from/ghostty" ]]; then
-	copy_file "$from/ghostty" "$to/.config/ghostty" "theme"
+if [[ -f "$f/ghostty" ]]; then
+	copy_file "$f/ghostty" "$t/.config/ghostty" "theme"
 else
-	copy_file "$fallback/ghostty" "$to/.config/ghostty" "theme"
+	copy_file "$fallback/ghostty" "$t/.config/ghostty" "theme"
 fi
 
 # NOTE: hyprland
-if [[ -f "$from/hyprland.conf" ]]; then
-	copy_file "$from/hyprland.conf" "$to/.config/hypr" "theme.conf"
+if [[ -f "$f/hyprland.conf" ]]; then
+	copy_file "$f/hyprland.conf" "$t/.config/hypr" "theme.conf"
 else
-	copy_file "$fallback/hyprland.conf" "$to/.config/hypr" "theme.conf"
+	copy_file "$fallback/hyprland.conf" "$t/.config/hypr" "theme.conf"
 fi
 
 # TODO:
 # NOTE: rofi
-if [[ -f "$from/rofi.rasi" ]]; then
-	copy_file "$from/rofi.rasi" "$to/.local/share/rofi/themes" "custom-theme.rasi"
+if [[ -f "$f/rofi.rasi" ]]; then
+	copy_file "$f/rofi.rasi" "$t/.local/share/rofi/themes" "custom-theme.rasi"
 else
-	copy_file "$fallback/rofi.rasi" "$to/.local/share/rofi/themes" "custom-theme.rasi"
+	copy_file "$fallback/rofi.rasi" "$t/.local/share/rofi/themes" "custom-theme.rasi"
 fi
 
 # TODO:
@@ -78,7 +78,7 @@ fi
 
 # NOTE: hyprpaper
 if [[ "$silent" == "true" ]]; then
-	wallpaper --prep --query $theme
+	wallpaper --prep --query $theme --base $base
 else
 	wallpaper --query $theme
 fi

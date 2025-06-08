@@ -16,5 +16,5 @@ hyprpaper &
 wp="$(cat ~/.config/hypr/wallpaper)"
 
 if [[ ! -z "$wp" ]]; then
-	sleep 10 && wallpaper --query "$wp"
+	sleep 0.1 && wallpaper --query "$wp"
 fi

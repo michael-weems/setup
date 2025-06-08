@@ -2,31 +2,61 @@
 /* Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
-    /* Rose Pine: https://rosepinetheme.com/palette/ingredients/ */
-    base: #191724F2; /* App Frames, sidebars, tabs */
-    surface: #1f1d2e;/* cards, inputs, status lines */
-    overlay: #26233a80;/* popovers, notifications, dialogs */
-    muted: #6e6a86;/* diabled elements, unfocused text */
-    subtle: #908caa;/* comments, punctuation, tab names */
-    text: #e0def4;/* normal text, variables, active content */
-    love: #eb6f92;/* diagnostic errors, deleted git files, terminal red, bright red */
-    gold: #f6c177;/* diagnostic warnings, terminal yellow, bright yellow */
-    rose: #ebbcba;/* matching search background paired with base foreground, modified git files, terminal cyan, bright cyan */
-    pine: #31748f;/* renamed git files, terminal green, bright green */
-    foam: #9ccfd8;/* diagnostic information, git additions, terminal blue, bright blue */
-    iris: #c4a7e7;/* diagnostic hints, inline links, merged and staged git modifications, terminal magenta, bright magenta */
-    highlight-low: #21202e;/* cursorline background */
-    highlight-med: #403d52;/* selection background paired with text foreground */
-    highlight-high: #524f67F2;/* borders / visual dividers, cursor background paired with text foreground */
 
-    bg0:    @base;
-    bg1:    @surface;
-    bg2:    @overlay;
-    bg3:    @highlight-high;
-    fg0:    @text;
-    fg1:    @muted;
-    fg2:    @rose;
-    fg3:    @pine;
+    /*
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+@define-color bg        #313244;
+@define-color active    #fab387;
+@define-color inactive  #89b4fa;
+@define-color hover     #f9e2af;
+@define-color danger    #f38ba8;
+
+@define-color sound     #cba6f7; 
+@define-color backlight #f9e2af;
+@define-color battery   #a6e3a1;
+@define-color clock     #89b4fa;
+@define-color picker    #f5c2e7;
+@define-color network   #89dceb;
+*/
+
+    bg0:    #6c7086;
+    bg1:    #7f8f9c;
+    bg2:    #9399b280;
+    bg3:    #313244F2;
+    fg0:    #cdd6f4;
+    fg1:    #a6adc8;
+    fg2:    #bac2de;
+    fg3:    #cba6f7;
 }
 
 @import "template/rounded-template.rasi"

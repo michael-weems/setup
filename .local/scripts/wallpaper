@@ -4,12 +4,16 @@ source $HOME/.bashlib
 
 query=""
 prep="false"
+base="$HOME"
 for ((i=0; i<argc; i++)); do
 	if   [[ "-p" == "${argv[$i]}" ]] || [[ "--prep" == "${argv[$i]}" ]]; then
 		prep="true"
 	elif [[ "-q" == "${argv[$i]}" ]] || [[ "--query" == "${argv[$i]}" ]]; then
 		i=$((i + 1))
 		query="${argv[$i]}"
+	elif [[ "-b" == "${argv[$i]}" ]] || [[ "--base" == "${argv[$i]}" ]]; then
+		i=$((i + 1))
+		base="${argv[$i]}"
 	fi
 done
 
@@ -32,7 +36,7 @@ fi
 
 if [[ "$prep" == "true" ]]; then
 	# prep the wallpaper for hyprland config to apply
-	echo "$(basename $wp)" > $HOME/.config/hypr/wallpaper
+	echo "$(basename $wp)" > $base/.config/hypr/wallpaper
 else
 	# actually set the wallpaper
 	hyprctl hyprpaper reload , $wp

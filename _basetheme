@@ -23,4 +23,4 @@ execute cd $script_dir
 
 log "----------- _basetheme -----------"
 
-theme --base $HOME/projects/setup
+theme --silent --base $HOME/projects/setup
