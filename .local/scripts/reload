@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
 
-# hyprpaper
 pkill hyprpaper 
-hyprpaper &
+pkill waybar 
 
 # hypr
 hyprctl reload
 
 # waybar
-pkill waybar 
 waybar &
+
+# hyprpaper
+pkill hyprpaper 
+hyprpaper &
+
+wp="$(cat ~/.config/hypr/wallpaper)"
+
+if [[ ! -z "$wp" ]]; then
+	sleep 10 && wallpaper --query "$wp"
+fi

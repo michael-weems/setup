@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: have this one also provide -s,--silent option so it can do "setup" and also "the thing" to work better with hyprland reload
+
 source $HOME/.bashlib
 
 dock="$1"

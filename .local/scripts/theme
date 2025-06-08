@@ -4,20 +4,23 @@ source $HOME/.bashlib
 
 silent="false"
 preselected=""
+base="$HOME"
 for ((i=0; i<argc; i++)); do
 	if   [[ "-s" == "${argv[$i]}" ]] || [[ "--silent" == "${argv[$i]}" ]]; then
 		silent="true"
-	elif [[ "-p" == "${argv[$i]}" ]] || [[ "--preselected" == "${argv[$i]}" ]]; then
+	elif [[ "-t" == "${argv[$i]}" ]] || [[ "--theme" == "${argv[$i]}" ]]; then
 		i=$((i + 1))
 		preselected="${argv[$i]}"
+	elif [[ "-b" == "${argv[$i]}" ]] || [[ "--base" == "${argv[$i]}" ]]; then
+		i=$((i + 1))
+		base="${argv[$i]}"
 	fi
 done
 
-
 if [[ -z "$preselected" ]]; then
-	theme=$(ls $HOME/.local/themes | fzf)
+	theme=$(ls $base/.local/themes | fzf)
 else
-	theme=$(ls $HOME/.local/themes | fzf -q $preselected --bind one:accept)
+	theme=$(ls $base/.local/themes | fzf -q $preselected --bind one:accept)
 fi
 
 if [[ -z "$theme" ]]; then
@@ -31,36 +34,37 @@ if [[ "$line_count" != "1" ]]; then
 	exit 1
 fi
 
-dir="$HOME/.local/themes/$theme"
-fallback="$HOME/.local/themes/_fallback"
+from="$base/.local/themes/$theme"
+to="$base"
+fallback="$base/.local/themes/_fallback"
 
 # NOTE: waybar
-if [[ -f "$dir/waybar.css" ]]; then
-	copy_file "$dir/waybar.css" "$HOME/.config/waybar" "theme.css"
+if [[ -f "$from/waybar.css" ]]; then
+	copy_file "$from/waybar.css" "$to/.config/waybar" "theme.css"
 else
-	copy_file "$fallback/waybar.css" "$HOME/.config/waybar" "theme.css"
+	copy_file "$fallback/waybar.css" "$to/.config/waybar" "theme.css"
 fi
 
 # NOTE: ghostty
-if [[ -f "$dir/ghostty" ]]; then
-	copy_file "$dir/ghostty" "$HOME/.config/ghostty" "theme"
+if [[ -f "$from/ghostty" ]]; then
+	copy_file "$from/ghostty" "$to/.config/ghostty" "theme"
 else
-	copy_file "$fallback/ghostty" "$HOME/.config/ghostty" "theme"
+	copy_file "$fallback/ghostty" "$to/.config/ghostty" "theme"
 fi
 
 # NOTE: hyprland
-if [[ -f "$dir/hyprland.conf" ]]; then
-	copy_file "$dir/hyperland.conf" "$HOME/.config/hypr" "theme.conf"
+if [[ -f "$from/hyprland.conf" ]]; then
+	copy_file "$from/hyprland.conf" "$to/.config/hypr" "theme.conf"
 else
-	copy_file "$fallback/hyprland.conf" "$HOME/.config/hypr" "theme.conf"
+	copy_file "$fallback/hyprland.conf" "$to/.config/hypr" "theme.conf"
 fi
 
 # TODO:
 # NOTE: rofi
-if [[ -f "$dir/rofi.rasi" ]]; then
-	copy_file "$dir/rofi.rasi" "$HOME/.local/share/rofi/themes/" "custom-theme.rasi"
+if [[ -f "$from/rofi.rasi" ]]; then
+	copy_file "$from/rofi.rasi" "$to/.local/share/rofi/themes" "custom-theme.rasi"
 else
-	copy_file "$fallback/rofi.rasi" "$HOME/.local/share/rofi/themes/" "custom-theme.rasi"
+	copy_file "$fallback/rofi.rasi" "$to/.local/share/rofi/themes" "custom-theme.rasi"
 fi
 
 # TODO:
@@ -73,4 +77,8 @@ fi
 # NOTE: fzf
 
 # NOTE: hyprpaper
-wallpaper --prep --query $theme
+if [[ "$silent" == "true" ]]; then
+	wallpaper --prep --query $theme
+else
+	wallpaper --query $theme
+fi

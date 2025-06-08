@@ -32,7 +32,7 @@ fi
 
 if [[ "$prep" == "true" ]]; then
 	# prep the wallpaper for hyprland config to apply
-	echo "$wp" > $HOME/.config/hypr/wallpaper
+	echo "$(basename $wp)" > $HOME/.config/hypr/wallpaper
 else
 	# actually set the wallpaper
 	hyprctl hyprpaper reload , $wp

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+source ./.bashlib
+
+usage() {
+	echo "$script_dir/_basetheme"
+	echo ""
+	echo "Usage:"
+	echo "setup the config files to have a default theme"
+	echo ""
+	echo "Flags:"
+	_lib_usage
+}
+if [[ "$usage" == "true" ]]; then
+	usage
+	exit 0
+fi
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+log "$script_dir"
+
+execute cd $script_dir
+
+log "----------- _basetheme -----------"
+
+theme --base $HOME/projects/setup
