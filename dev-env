@@ -48,9 +48,8 @@ execute source $HOME/.bash_profile
 execute source $HOME/.bash_aliases
 execute source $HOME/.bash_logout
 
-execute screen # ensures the ~/.config/hypr/monitor.conf exists for hyprland config
+execute toggledock # setup config files for hypr config
 execute reload # reloads hyprland config
-execute theme catppuccin # sets the theme
 
 if [[ ! -d "$HOME/projects/wallpapers" ]]; then
 	log "no wallpapers found, applying default wallpapers"
@@ -63,4 +62,5 @@ if [[ ! -d "$HOME/projects/wallpapers" ]]; then
 	log ""
 fi
 
+execute theme catppuccin # sets the theme
 
