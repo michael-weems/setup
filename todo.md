@@ -1,6 +1,5 @@
 # Todo
 
-- [x] obtain all catppuccin + rose-pine wallpapers again
 - [ ] move themeing to .local/themes + .local/scripts/theme
     - each module pulls in a theme file that gets overwritten by the .local/scripts/theme
     - a reload will apply the theme
@@ -41,11 +40,11 @@
 - [ ] build theme-switching system: start with senjou, rose-pine, and catppuccin-mocha
     - [x] create script to change theme on the fly
     - [x] waybar
-    - [ ] ghostty
-    - [ ] rofi
-    - [ ] hyprland
-    - [ ] dunst
+    - [x] ghostty
+    - [x] hyprland
     - [x] hyprpaper
+    - [ ] rofi
+    - [ ] dunst
     - [ ] neovim
     - [ ] fzf
 - [ ] config fastfetch output
@@ -81,3 +80,4 @@
 - [x] continue tailoring waybar - spacing / margins aren't quite right
 - [x] hyprland: on boot, load a wallpaper
 - [x] fix sound
+- [x] obtain all catppuccin + rose-pine wallpapers again

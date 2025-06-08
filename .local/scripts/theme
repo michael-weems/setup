@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source $HOME/.bashlib
+
 preselected="$1"
 
 if [[ -z "$preselected" ]]; then
@@ -19,14 +21,41 @@ if [[ "$line_count" != "1" ]]; then
 	exit 1
 fi
 
-# TODO: invert this, write the theme files from this script, don't have a waybar-specific theme script
-./.config/waybar/theme $theme
+dir="$HOME/.local/themes/$theme"
+fallback="$HOME/.local/themes/_fallback"
 
-# TODO
-# rofi
-# dunst
-# hyprland
-./.config/hypr/theme $theme
+# NOTE: waybar
+if [[ -f "$dir/waybar.css" ]]; then
+	copy_file "$dir/waybar.css" "$HOME/.config/waybar" "theme.css"
+else
+	copy_file "$fallback/waybar.css" "$HOME/.config/waybar" "theme.css"
+fi
 
-# hyprpaper
+# NOTE: ghostty
+if [[ -f "$dir/ghostty" ]]; then
+	copy_file "$dir/ghostty" "$HOME/.config/ghostty" "theme"
+else
+	copy_file "$fallback/ghostty" "$HOME/.config/ghostty" "theme"
+fi
+
+# NOTE: hyprland
+if [[ -f "$dir/hyprland.conf" ]]; then
+	copy_file "$dir/hyperland.conf" "$HOME/.config/hypr" "theme.conf"
+else
+	copy_file "$fallback/hyprland.conf" "$HOME/.config/hypr" "theme.conf"
+fi
+
+# TODO:
+# NOTE: rofi
+
+# TODO:
+# NOTE: dunst
+
+# TODO:
+# NOTE: neovim
+
+# TODO:
+# NOTE: fzf
+
+# NOTE: hyprpaper
 wallpaper $theme
