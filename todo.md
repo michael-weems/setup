@@ -1,6 +1,6 @@
 # Todo
 
-- [ ] obtain all catppuccin + rose-pine wallpapers again
+- [x] obtain all catppuccin + rose-pine wallpapers again
 - [ ] move themeing to .local/themes + .local/scripts/theme
     - each module pulls in a theme file that gets overwritten by the .local/scripts/theme
     - a reload will apply the theme
@@ -10,16 +10,19 @@
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
+    - [ ] hyprland
     - [ ] setup catppuccin theme
 - [ ] change waybar to use the catppuccin layout
     - [ ] tweaked so time is on far right
 - [ ] setup waybar to be able to hot-swap between themes
     - [ ] catppuccin https://github.com/catppuccin/waybar
     - [ ] rose-pine
+    - [ ] hyprland
     - [ ] custom senjou theme
 - [ ] setup tmux to be able to hot-swap between themes
     - [ ] catppuccin 
     - [ ] rose-pine
+    - [ ] hyprland
     - [ ] custom senjou theme
 - [ ] hypr theme setup
 - [ ] configure dunst to match theme
@@ -29,13 +32,23 @@
     - [ ] bind restart / shutdown / etc to keyboard shortcuts
     - [ ] .local/bin/startw --> starts hyprland on boot ?
     - [ ] anything else from this repo worth grabbing?
+- [ ] theme fzf
+    - https://vitormv.github.io/fzf-themes/
+    - [ ] catppuccin-mocha
+    - [ ] rose-pine
+    - [ ] senjou
+    - [ ] hyprland
 - [ ] build theme-switching system: start with senjou, rose-pine, and catppuccin-mocha
     - [x] create script to change theme on the fly
     - [x] waybar
+    - [ ] ghostty
     - [ ] rofi
     - [ ] hyprland
+    - [ ] dunst
     - [x] hyprpaper
     - [ ] neovim
+    - [ ] fzf
+- [ ] config fastfetch output
 
 ### Good follow up projects
 

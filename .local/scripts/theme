@@ -3,9 +3,9 @@
 preselected="$1"
 
 if [[ -z "$preselected" ]]; then
-	theme=$(cat $HOME/.themes | fzf)
+	theme=$(ls $HOME/.local/themes | fzf)
 else
-	theme=$(cat $HOME/.themes | grep $preselected)
+	theme=$(ls $HOME/.local/themes | fzf -q $preselected)
 fi
 
 if [[ -z "$theme" ]]; then
@@ -19,18 +19,14 @@ if [[ "$line_count" != "1" ]]; then
 	exit 1
 fi
 
-wp=$(echo $theme | awk -F": " '{ print $2 }')
-theme=$(echo $theme | awk -F": " '{ print $1 }')
-
+# TODO: invert this, write the theme files from this script, don't have a waybar-specific theme script
 ./.config/waybar/theme $theme
 
 # TODO
 # rofi
+# dunst
 # hyprland
 ./.config/hypr/theme $theme
 
 # hyprpaper
-wallpaper $wp
-
-# reload everything
-reload
+wallpaper $theme

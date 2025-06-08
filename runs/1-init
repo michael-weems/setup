@@ -17,7 +17,7 @@ yes | sudo pacman -S libmpdclient
 yes | sudo pacman -S startup-notification
 
 # desktop environment tools
-yes | sudo pacman -S uwsm libnewt # enable wayland to interact with systemd better
+# TODO: yes | sudo pacman -S uwsm libnewt # enable autostart into hyprland via uwsm + autostart (haven't got this working yet)
 yes | sudo pacman -S qt5-wayland qt6-wayland # enable qt applications
 yes | sudo pacman -S pipewire wireplumber # audio server
 # https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
@@ -28,7 +28,6 @@ yes | sudo pacman -S rofi-wayland     # application launcher
 yes | sudo pacman -S waybar     # status bar
 yes | sudo pacman -S ttf-font-awesome # nerd-font
 yes | sudo yay -S wlogout # logout menu
-yes | sudo pacman -S yazi fd zoxide imagemagick chafa # terminal-based file-navigator
 yes | sudo pacman -S libnotify dunst # notification popups
 yes | sudo pacman -S udiskie # enable mounting flashdrives
 yes | sudo pacman -S fastfetch # print system info
