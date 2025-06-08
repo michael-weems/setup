@@ -2,12 +2,22 @@
 
 source $HOME/.bashlib
 
-preselected="$1"
+silent="false"
+preselected=""
+for ((i=0; i<argc; i++)); do
+	if   [[ "-s" == "${argv[$i]}" ]] || [[ "--silent" == "${argv[$i]}" ]]; then
+		silent="true"
+	elif [[ "-p" == "${argv[$i]}" ]] || [[ "--preselected" == "${argv[$i]}" ]]; then
+		i=((i + 1))
+		preselected="${argv[$i]}"
+	fi
+done
+
 
 if [[ -z "$preselected" ]]; then
 	theme=$(ls $HOME/.local/themes | fzf)
 else
-	theme=$(ls $HOME/.local/themes | fzf -q $preselected)
+	theme=$(ls $HOME/.local/themes | fzf -q $preselected --bind one:accept)
 fi
 
 if [[ -z "$theme" ]]; then
@@ -47,6 +57,11 @@ fi
 
 # TODO:
 # NOTE: rofi
+if [[ -f "$dir/rofi.rasi" ]]; then
+	copy_file "$dir/rofi.rasi" "$HOME/.local/share/rofi/themes/" "custom-theme.rasi"
+else
+	copy_file "$fallback/rofi.rasi" "$HOME/.local/share/rofi/themes/" "custom-theme.rasi"
+fi
 
 # TODO:
 # NOTE: dunst

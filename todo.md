@@ -1,10 +1,5 @@
 # Todo
 
-- [ ] remove all unused rofi things
-- [ ] move themeing to .local/themes + .local/scripts/theme
-    - each module pulls in a theme file that gets overwritten by the .local/scripts/theme
-    - a reload will apply the theme
-    - this rather than each module defining every theme
 - [ ] waybar: change network ethernet look
 - [ ] waybar: stop logging to every console
 - [ ] tailor rofi to my color theme
@@ -12,10 +7,8 @@
     - [ ] setup senjou theme
     - [ ] hyprland
     - [ ] setup catppuccin theme
-- [ ] change waybar to use the catppuccin layout
-    - [ ] tweaked so time is on far right
 - [ ] setup waybar to be able to hot-swap between themes
-    - [ ] catppuccin https://github.com/catppuccin/waybar
+    - [x] catppuccin https://github.com/catppuccin/waybar
     - [ ] rose-pine
     - [ ] hyprland
     - [ ] custom senjou theme
@@ -49,6 +42,7 @@
     - [ ] neovim
     - [ ] fzf
 - [ ] config fastfetch output
+- [ ] remove all unused rofi things
 
 ### Good follow up projects
 
@@ -82,3 +76,9 @@
 - [x] hyprland: on boot, load a wallpaper
 - [x] fix sound
 - [x] obtain all catppuccin + rose-pine wallpapers again
+- [x] move themeing to .local/themes + .local/scripts/theme
+    - each module pulls in a theme file that gets overwritten by the .local/scripts/theme
+    - a reload will apply the theme
+    - this rather than each module defining every theme
+- [x] change waybar to use the catppuccin layout
+    - ~~[ ] tweaked so time is on far right~~
