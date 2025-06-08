@@ -8,7 +8,7 @@ for ((i=0; i<argc; i++)); do
 	if   [[ "-s" == "${argv[$i]}" ]] || [[ "--silent" == "${argv[$i]}" ]]; then
 		silent="true"
 	elif [[ "-p" == "${argv[$i]}" ]] || [[ "--preselected" == "${argv[$i]}" ]]; then
-		i=((i + 1))
+		i=$((i + 1))
 		preselected="${argv[$i]}"
 	fi
 done
@@ -73,4 +73,4 @@ fi
 # NOTE: fzf
 
 # NOTE: hyprpaper
-wallpaper -p -q $theme
+wallpaper --prep --query $theme
