@@ -14,6 +14,7 @@ if [[ "$dock" == "laptop" ]]; then
 	echo "monitor=eDP-1,preferred,auto,auto" > $to
 	echo "monitor= , disable" >> $to
 else
+	monitor=$(hyprctl monitors all | grep "(ID 1)")
 	id=$(echo $monitor | awk -F" " '{ print $2 }')
 	echo "monitor=$id,preferred,auto,auto" > $to
 	echo "monitor= , disable"  >> $to
