@@ -24,6 +24,7 @@ yes | sudo pacman -S pipewire wireplumber # audio server
 yes | sudo pacman -S xdg-desktop-portal-hyprland # enable file-pickers / screensharing
 yes | sudo pacman -S hyprpaper 	# wallpaper
 yes | sudo pacman -S hyprpicker # desktop color-picker
+yes | sudo pacman -S rofi-wayland     # application launcher
 yes | sudo pacman -S waybar     # status bar
 yes | sudo pacman -S ttf-font-awesome # nerd-font
 yes | sudo yay -S wlogout # logout menu

@@ -2,11 +2,21 @@
 
 yes | sudo pacman -S base-devel cmake ninja curl
 
-git clone --depth 1 -b v0.11.1 https://github.com/neovim/neovim.git $HOME/vendor/neovim-source
-cd $HOME/vendor/neovim-source
-git fetch
-git checkout v0.11.1
+if [ -d "$HOME/vendor/neovim-source" ]; then
+	# NOTE: update neovim
+	cd $HOME/vendor/neovim-source
+	git fetch 
+	git checkout v0.11.1
+else
+	# NOTE: clone neovim
+	git clone --depth 1 -b v0.11.1 https://github.com/neovim/neovim.git $HOME/vendor/neovim-source
+	cd $HOME/vendor/neovim-source
+	git fetch
+	git checkout v0.11.1
+fi
 
+
+cd $HOME/vendor/neovim-source
 # sudo apt install cmake gettext lua5.1 liblua5.1-0-dev
 rm -r build/
 make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/vendor/neovim"

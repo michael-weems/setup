@@ -23,19 +23,19 @@ if [[ "$usage" == "true" ]]; then
 fi
 
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-filter=""
-echo "$script_dir -- $filter"
 
 cd $script_dir
 
+filter=""
 for ((i=0; i<argc; i++)); do
 	if   [[ "-g" == "${argv[$i]}" ]] || [[ "--grep" == "${argv[$i]}" ]]; then
-		i=$(i + 1)
+		i=$((i + 1))
 		filter="${argv[$i]}"
 	fi
 done
 
-log "run: filter=$filter"
+echo "$script_dir -- $filter"
+
 scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
 for script in $scripts; do
 	# does this script not contain this filter
