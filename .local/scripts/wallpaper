@@ -8,7 +8,7 @@ for ((i=0; i<argc; i++)); do
 	if   [[ "-p" == "${argv[$i]}" ]] || [[ "--prep" == "${argv[$i]}" ]]; then
 		prep="true"
 	elif [[ "-q" == "${argv[$i]}" ]] || [[ "--query" == "${argv[$i]}" ]]; then
-		i=((i + 1))
+		i=$((i + 1))
 		query="${argv[$i]}"
 	fi
 done
