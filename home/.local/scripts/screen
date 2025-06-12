@@ -4,7 +4,7 @@ source $HOME/.bashlib
 
 dock="$1"
 
-to="$HOME/.config/hypr/monitor.conf"
+to="$XDG_CONFIG_HOME/hypr/monitor.conf"
 
 if [[ -z "$dock" ]]; then
 	dock="laptop"

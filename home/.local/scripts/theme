@@ -40,31 +40,31 @@ t="$base"
 
 # NOTE: waybar
 if [[ -f "$f/waybar.css" ]]; then
-	copy_file "$f/waybar.css" "$t/.config/waybar" "theme.css"
+	copy "$f/waybar.css" "$t/.config/waybar/theme.css"
 else
-	copy_file "$fallback/waybar.css" "$t/.config/waybar" "theme.css"
+	copy "$fallback/waybar.css" "$t/.config/waybar/theme.css"
 fi
 
 # NOTE: ghostty
 if [[ -f "$f/ghostty" ]]; then
-	copy_file "$f/ghostty" "$t/.config/ghostty" "theme"
+	copy "$f/ghostty" "$t/.config/ghostty/theme"
 else
-	copy_file "$fallback/ghostty" "$t/.config/ghostty" "theme"
+	copy "$fallback/ghostty" "$t/.config/ghostty/theme"
 fi
 
 # NOTE: hyprland
 if [[ -f "$f/hyprland.conf" ]]; then
-	copy_file "$f/hyprland.conf" "$t/.config/hypr" "theme.conf"
+	copy "$f/hyprland.conf" "$t/.config/hypr/theme.conf"
 else
-	copy_file "$fallback/hyprland.conf" "$t/.config/hypr" "theme.conf"
+	copy "$fallback/hyprland.conf" "$t/.config/hypr/theme.conf"
 fi
 
 # TODO:
 # NOTE: rofi
 if [[ -f "$f/rofi.rasi" ]]; then
-	copy_file "$f/rofi.rasi" "$t/.local/share/rofi/themes" "custom-theme.rasi"
+	copy "$f/rofi.rasi" "$t/.local/share/rofi/themes/custom-theme.rasi"
 else
-	copy_file "$fallback/rofi.rasi" "$t/.local/share/rofi/themes" "custom-theme.rasi"
+	copy "$fallback/rofi.rasi" "$t/.local/share/rofi/themes/custom-theme.rasi"
 fi
 
 # TODO:

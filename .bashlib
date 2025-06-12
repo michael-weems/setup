@@ -29,16 +29,19 @@ copy_dir() {
 	(
 		subdirs=`find . -mindepth 1 -maxdepth 1 -type d`
 		for c in $subdirs; do
-			directory=${2%/}/${c#./}
-			log "    removing: rm -rf $directory"
+			c=${c#./}
+			directory=${2%/}/${c}
+			log "    rm -rf $directory"
+			log "    mkdir -p $directory"
 
-			if [[ $dry_run == "false" ]]; then
+			if [[ $dry == "false" ]]; then
 				rm -rf $directory
+				mkdir -p $directory
 			fi
 
-			log "    copying env: cp $c $2"
-			if [[ $dry_run == "false" ]]; then
-				cp -r ./$c $2
+			log "    cp -r $1/$c $2"
+			if [[ $dry == "false" ]]; then
+				cp -r $1/$c $2
 			fi
 		done
 	)
@@ -49,12 +52,12 @@ export -f copy_dir
 # EXAMPLE
 # $ copy_file home/.profile $HOME
 copy() {
-	log "removing: $2"
-	if [[ $dry_run == "false" ]]; then
+	log "rm $2"
+	if [[ $dry == "false" ]]; then
 			rm $2
 	fi
-	log "copying: $1 to $2"
-	if [[ $dry_run == "false" ]]; then
+	log "cp $1 $2"
+	if [[ $dry == "false" ]]; then
 			cp $1 $2
 	fi
 }
@@ -64,7 +67,7 @@ export -f copy
 # $ log "----------- dev-env -----------"
 log() {
 	if [[ $dry == "true" ]]; then
-		echo "[DRY_RUN]: $@"
+		echo "[dry]: $@"
 	else
 		echo "$@"
 	fi

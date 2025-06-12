@@ -52,7 +52,7 @@ copy $DEV_ENV/home/.bash_aliases $HOME/.bash_aliases
 copy $DEV_ENV/home/.bash_logout $HOME/.bash_logout
 copy $DEV_ENV/home/.tmux-sessionizer $HOME/.tmux-sessionizer
 copy $DEV_ENV/.bashlib $HOME/.bashlib
-copy $DEV_ENV/.config/tmux/.tmux.conf $HOME/.tmux.conf
+copy $DEV_ENV/home/.config/tmux/.tmux.conf $HOME/.tmux.conf
 
 source $HOME/.profile
 source $HOME/.bashrc
@@ -60,4 +60,5 @@ source $HOME/.bash_profile
 source $HOME/.bash_aliases
 source $HOME/.bash_logout
 
+toggledock # create monitor config for current setup
 reload # reloads hyprland config
