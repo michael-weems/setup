@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 
-source ./.bashlib
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home, defaulting to: ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+fi
 
+if [ -z "$DEV_ENV" ]; then
+	echo "error: env var DEV_ENV needs to be present"
+	echo "please temporarily set (eg. 'DEV_ENV=\$(pwd)' ): normally set in ~/.bashrc"
+	exit 1
+fi
+
+source ./.bashlib
 
 usage() {
 	echo "$DEV_ENV/run"
