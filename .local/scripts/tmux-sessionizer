@@ -21,4 +21,5 @@ fi
 
 tmux new-session -ds $selected_name -c $selected
 switch_to
+sleep 0.1 # wait, tends to go too fast and doesn't send this
 tmux send-keys -t $selected_name "ready-tmux" ^M

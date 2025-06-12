@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
 windows=$(tmux display-message -p '#{session_windows}')
-if [[ $windows == "4" ]]; then
+if [[ $windows == "3" ]]; then
 	exit 0
 fi
 
 sleep 0.1 # wait for session to begin
 
-# window 1 (access via <prefix> 1 --> C-a 1)
 tmux kill-window -a # kill all but currently active window
-
-tmux rename-window scratch
 
 # window 2 (access via <prefix> 2 --> C-a 2)
 tmux neww -d -n notes
@@ -22,5 +19,7 @@ tmux neww -n vim
 # window 4 (access via <prefix> 4 --> C-a 4)
 tmux neww -d -n terminal
 
-sleep 0.1 # wait for tmux commands
+tmux kill-window -t 2 # kill original window
+
+sleep 0.2 # wait for tmux commands
 vim . # in active window open nvim

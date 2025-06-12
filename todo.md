@@ -44,6 +44,9 @@
     - [ ] fzf
 - [ ] config fastfetch output
 - [ ] remove all unused rofi things
+- [ ] theme neovim
+    - [ ] telescope
+    - [ ] 
 
 ### Good follow up projects
 
