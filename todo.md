@@ -1,6 +1,6 @@
 # Todo
 
-- [ ] wallpaper use fuzzy-find preview
+- [ ] theme preview on selection
 - [ ] waybar: change network ethernet look
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
@@ -87,3 +87,4 @@
     - ~~[ ] tweaked so time is on far right~~
 - [x] cleanup $PATH - its full of duplicates and is super long
 - ~~[ ] waybar: stop logging to every console~~
+- [x] wallpaper use fuzzy-find preview
