@@ -5,6 +5,8 @@ if [[ $windows == "4" ]]; then
 	exit 0
 fi
 
+tmux kill-window -a # kill all but currently active window
+
 # window 1 (access via <prefix> 1 --> C-a 1)
 tmux neww -d -n scratch
 
@@ -18,5 +20,5 @@ tmux neww -n vim
 # window 4 (access via <prefix> 4 --> C-a 4)
 tmux neww -d -n terminal
 
-# in active window open nvim
-vim .
+sleep 0.1 # wait for tmux commands
+vim . # in active window open nvim
