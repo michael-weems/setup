@@ -20,6 +20,7 @@ PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/scripts:$PATH"
 PATH="$HOME/vendor/neovim/bin:$PATH"
+PATH=$(echo "$PATH" | tr ':' '\n' | sort | uniq | tr '\n' ':') # deduplicate path
 export PATH
 
 
