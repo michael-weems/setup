@@ -29,6 +29,13 @@ execute git submodule update
 
 log "copy config files to runtime locations"
 
+# if no _basetheme has been applied, make sure one exists
+if ! [ -d .config/hypr/theme.conf ]; then
+	(./_basetheme) # run in sub-shell so PATH changes don't leak out here
+
+	log "----------- re-enter: dev-env -----------"
+fi
+
 copy_dir .config $HOME/.config
 copy_dir .local $HOME/.local
 
