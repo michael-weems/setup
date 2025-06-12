@@ -45,4 +45,5 @@ yes | sudo pacman -S tmux             # terminal-multiplexer for switching conte
 yes | sudo pacman -S unzip            # unzip things
 yes | sudo pacman -S valgrind         # detect memory leaks in programs
 yes | sudo pacman -S xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
+yes | sudo pacman -S chafa           # terminal image viewer
 

@@ -1,8 +1,7 @@
 # Todo
 
-- [ ] cleanup $PATH - its full of duplicates and is super long
+- [ ] wallpaper use fuzzy-find preview
 - [ ] waybar: change network ethernet look
-- [ ] waybar: stop logging to every console
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
@@ -86,3 +85,5 @@
     - this rather than each module defining every theme
 - [x] change waybar to use the catppuccin layout
     - ~~[ ] tweaked so time is on far right~~
+- [x] cleanup $PATH - its full of duplicates and is super long
+- ~~[ ] waybar: stop logging to every console~~
