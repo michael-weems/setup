@@ -30,7 +30,7 @@ fi
 
 log "----------- dev-env -----------"
 
-if ! [ -d $DEV_ENV/home/.config/hypr/theme.conf ]; then
+if ! [ -f $DEV_ENV/home/.config/hypr/theme.conf ]; then
 	log "no base theme found, please pick one now"
 	(
 		# temp path - prepend scripts dir of setup project so we don't have to have run ./dev-env yet
