@@ -11,3 +11,6 @@ pushd tmux-sessionizer
 git checkout master
 popd 
  
+pushd wallpapers
+git checkout master
+popd 

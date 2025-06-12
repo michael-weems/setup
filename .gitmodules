@@ -4,3 +4,6 @@
 [submodule "tmux-sessionizer"]
 	path = tmux-sessionizer
 	url = git@github.com:ThePrimeagen/tmux-sessionizer.git
+[submodule "wallpapers"]
+	path = wallpapers
+	url = git@github.com:michael-weems/wallpapers-personal.git
