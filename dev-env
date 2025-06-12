@@ -3,7 +3,7 @@
 source ./.bashlib
 
 usage() {
-	echo "$script_dir/dev-env"
+	echo "$DEV_ENV/dev-env"
 	echo ""
 	echo "Usage:"
 	echo "Overwrite your .dotfiles, config files, utility scripts, and more on this computer with what is in $HOME/projects/setup/"
@@ -16,49 +16,37 @@ if [[ "$usage" == "true" ]]; then
 	exit 0
 fi
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-log "$script_dir"
-
-execute cd $script_dir
 
 log "----------- dev-env -----------"
-log "ensure submodules are up to date"
-execute git fetch --prune
-execute git submodule init
-execute git submodule update
+
+if ! [ -d $DEV_ENV/home/.config/hypr/theme.conf ]; then
+	log "no base theme found, please pick one now"
+	(
+		# temp path - prepend scripts dir of setup project so we don't have to have run ./dev-env yet
+		PATH="$DEV_ENV/home/.local/scripts:$PATH"
+		theme --silent --base $DEV_ENV/home
+	)
+fi
 
 log "copy config files to runtime locations"
 
-# if no _basetheme has been applied, make sure one exists
-if ! [ -d .config/hypr/theme.conf ]; then
-	(./_basetheme) # run in sub-shell so PATH changes don't leak out here
+copy_dir $DEV_ENV/home/.config $XDG_CONFIG_HOME
+copy_dir $DEV_ENV/home/.local $HOME/.local
 
-	log "----------- re-enter: dev-env -----------"
-fi
+copy $DEV_ENV/tmux-sessionizer/tmux-sessionizer $HOME/.local/scripts/tmux-sessionizer 
+copy $DEV_ENV/home/.profile $HOME/.profile
+copy $DEV_ENV/home/.bashrc $HOME/.bashrc
+copy $DEV_ENV/home/.bash_profile $HOME/.bash_profile
+copy $DEV_ENV/home/.bash_aliases $HOME/.bash_aliases
+copy $DEV_ENV/home/.bash_logout $HOME/.bash_logout
+copy $DEV_ENV/home/.tmux-sessionizer $HOME/.tmux-sessionizer
+copy $DEV_ENV/.bashlib $HOME/.bashlib
+copy $DEV_ENV/.config/tmux/.tmux.conf $HOME/.tmux.conf
 
-copy_dir .config $HOME/.config
-copy_dir .local $HOME/.local
+source $HOME/.profile
+source $HOME/.bashrc
+source $HOME/.bash_profile
+source $HOME/.bash_aliases
+source $HOME/.bash_logout
 
-copy_file home/.profile $HOME
-copy_file home/.bashrc $HOME
-copy_file home/.bash_profile $HOME
-copy_file home/.bash_aliases $HOME
-copy_file home/.bash_logout $HOME
-copy_file home/.ready-tmux $HOME
-copy_file .bashlib $HOME
-copy_file .config/tmux/.tmux.conf $HOME
-
-execute source $HOME/.profile
-execute source $HOME/.bashrc
-execute source $HOME/.bash_profile
-execute source $HOME/.bash_aliases
-execute source $HOME/.bash_logout
-
-if [[ ! -d "$HOME/projects/wallpapers" ]]; then
-	log "no wallpapers found, applying default wallpapers"
-	execute mkdir -p ~/projects/wallpapers
-	execute cp ./assets/wallpapers/* ~/projects/wallpapers
-fi
-
-execute toggledock # setup config files for hypr config
-execute reload # reloads hyprland config
+reload # reloads hyprland config

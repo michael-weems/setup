@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+source $HOME/.bashlib
+
+force="$1"
+
+function is_docked() {
+	monitor=$(hyprctl monitors all | grep "(ID 1)")
+	if [[ -z "$monitor" ]]; then
+		echo "laptop"
+	else
+		echo "dock"
+	fi
+}
+
+if [[ -z "$force" ]]; then
+	dock=$(is_docked)
+else 
+	dock="$force"
+fi
+
+screen $dock
+audio $dock
+

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+windows=$(tmux display-message -p '#{session_windows}')
+if [[ $windows == "3" ]]; then
+	exit 0
+fi
+
+sleep 0.1 # wait for session to begin
+
+tmux kill-window -a # kill all but currently active window
+
+# window 2 (access via <prefix> 2 --> C-a 2)
+tmux neww -d -n notes
+tmux send-keys -t notes "nvim todo.md" ^M
+
+# window 3 (access via <prefix> 3 --> C-a 3)
+tmux neww -n vim
+
+# window 4 (access via <prefix> 4 --> C-a 4)
+tmux neww -d -n terminal
+
+tmux kill-window -t 2 # kill original window
+
+sleep 0.2 # wait for tmux commands
+vim . # in active window open nvim

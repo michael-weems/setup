@@ -1,0 +1,3 @@
+keybind = ctrl+shift+r=reload_config
+background-opacity = 0.55
+config-file = theme

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# TODO: have this one also provide -s,--silent option so it can do "setup" and also "the thing" to work better with hyprland reload
+
+source $HOME/.bashlib
+
+dock="$1"
+
+if [[ -z "$dock" ]]; then
+	dock="laptop"
+fi
+
+docked_sink="alsa_output.usb-1130_USB_AUDIO-00.analog-stereo"
+laptop_sink="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink"
+
+function sink_id() {
+	pw-cli info $1 | head -n 1 | awk '{print $2}'
+}
+
+wpctl clear-default
+if [[ "$dock" == "laptop" ]]; then
+	laptop_id=$(sink_id $laptop_sink)
+	wpctl set-default "$laptop_id"
+else 
+	docked_id=$(sink_id $docked_sink)
+	wpctl set-default "$docked_id"
+fi

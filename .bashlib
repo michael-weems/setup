@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home, defaulting to: ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+fi
+
+if [ -z "$DEV_ENV" ]; then
+	echo "error: env var DEV_ENV needs to be present"
+	echo "please temporarily set (eg. 'DEV_ENV=\$(pwd)' ): normally set in ~/.bashrc"
+	exit 1
+fi
+
 export argv=("$@")
 export argc=${#argv[@]}
 
@@ -22,37 +33,42 @@ _lib_usage() {
 }
 export -f _lib_usage
 
-# EXAMPLE
-# $ copy_dir .config $HOME/.config
 copy_dir() {
-	from=$1
-	to=$2
+	log "copying over files from: $1"
+	pushd $1 &> /dev/null
+	(
+		subdirs=`find . -mindepth 1 -maxdepth 1 -type d`
+		for c in $subdirs; do
+			directory=${2%/}/${c#./}
+			log "    removing: rm -rf $directory"
 
-	pushd $from > /dev/null
-	dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
-	for dir in $dirs; do
-		execute rm -rf $to/$dir
-		execute cp -r $dir $to/$dir
-	done
-	popd > /dev/null
+			if [[ $dry_run == "false" ]]; then
+				rm -rf $directory
+			fi
+
+			log "    copying env: cp $c $2"
+			if [[ $dry_run == "false" ]]; then
+				cp -r ./$c $2
+			fi
+		done
+	)
+	popd &> /dev/null
 }
 export -f copy_dir
 
 # EXAMPLE
 # $ copy_file home/.profile $HOME
-copy_file() {
-	from=$1
-	to=$2
-	if [[ -z "$3" ]]; then
-		name=$(basename $from)
-	else
-		name="$3"
+copy() {
+	log "removing: $2"
+	if [[ $dry_run == "false" ]]; then
+			rm $2
 	fi
-
-	execute rm $to/$name
-	execute cp $from $to/$name
+	log "copying: $1 to $2"
+	if [[ $dry_run == "false" ]]; then
+			cp $1 $2
+	fi
 }
-export -f copy_file
+export -f copy
 
 # EXAMPLE
 # $ log "----------- dev-env -----------"
@@ -64,16 +80,3 @@ log() {
 	fi
 }
 export -f log
-
-# EXAMPLE
-# $ execute git fetch --prune
-execute() {
-	log "$@"
-	if [[ $dry == "true" ]]; then
-		return
-	fi
-	$@
-}
-export -f execute
-
-

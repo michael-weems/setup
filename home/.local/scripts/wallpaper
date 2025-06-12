@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+source $HOME/.bashlib
+
+query=""
+prep="false"
+base="$HOME"
+for ((i=0; i<argc; i++)); do
+	if   [[ "-p" == "${argv[$i]}" ]] || [[ "--prep" == "${argv[$i]}" ]]; then
+		prep="true"
+	elif [[ "-q" == "${argv[$i]}" ]] || [[ "--query" == "${argv[$i]}" ]]; then
+		i=$((i + 1))
+		query="${argv[$i]}"
+	elif [[ "-b" == "${argv[$i]}" ]] || [[ "--base" == "${argv[$i]}" ]]; then
+		i=$((i + 1))
+		base="${argv[$i]}"
+	fi
+done
+
+if [[ -z "$query" ]]; then
+        wp=$(find ~/projects/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf --preview 'chafa -f symbols {}' --preview-window=right,70%)
+else
+        wp=$(find ~/projects/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf --preview 'chafa -f symbols {}' --preview-window=right,70% -q $query --bind one:accept)
+fi
+
+if [[ -z "$wp" ]]; then
+	echo "error: could not determine wallpaper to apply - none matched your input"
+	exit 1
+fi
+
+line_count=$(echo "$wp" | wc -l)
+if [[ "$line_count" != "1" ]]; then
+	echo "error: could not determine wallpaper to apply: $wp"
+	exit 1
+fi
+
+if [[ "$prep" == "true" ]]; then
+	# prep the wallpaper for hyprland config to apply
+	echo "$(basename $wp)" > $base/.config/hypr/wallpaper
+else
+	# actually set the wallpaper
+	hyprctl hyprpaper reload , $wp
+fi

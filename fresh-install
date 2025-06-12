@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
-yes | sudo pacman -S git
+sudo pacman -Syu update
 
-cd ~
-mkdir -p projects
-cd projects
-git clone --recursive git@github.com:michael-weems/setup.git
-cd setup
+if ! command -v git &> /dev/null; then
+    yes | sudo pacman -S git
+fi
 
+if [ ! -d $HOME/projects ]; then
+    mkdir -p $HOME/projects
+fi
+
+git clone --recursive git@github.com:michael-weems/setup.git $HOME/projects/setup
+
+pushd $HOME/projects/setup
+DEV_ENV=$HOME/projects/setup
+./init
 ./run
-./dev-env
-
+popd

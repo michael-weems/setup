@@ -12,6 +12,8 @@ eval "$(starship init bash)"
 
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
+  
+export DEV_ENV="$HOME/projects/setup"
 
 export EDITOR=$VIM
 export GIT_EDITOR=$EDITOR

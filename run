@@ -2,8 +2,9 @@
 
 source ./.bashlib
 
+
 usage() {
-	echo "$script_dir/run"
+	echo "$DEV_ENV/run"
 	echo ""
 	echo "Usage:"
 	echo "Install applications on the computer based on the scripts under $HOME/projects/setup/runs/"
@@ -22,9 +23,7 @@ if [[ "$usage" == "true" ]]; then
 	exit 0
 fi
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-
-cd $script_dir
+pushd $DEV_ENV
 
 filter=""
 for ((i=0; i<argc; i++)); do
@@ -34,7 +33,7 @@ for ((i=0; i<argc; i++)); do
 	fi
 done
 
-echo "$script_dir -- $filter"
+echo "run: $filter"
 
 scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
 for script in $scripts; do
@@ -51,3 +50,4 @@ log ""
 log "    cd ~/projects/setup && ./dev-env"
 log ""
 
+popd
