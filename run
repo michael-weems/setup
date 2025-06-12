@@ -52,7 +52,7 @@ for script in $scripts; do
 		log "filtering $script"
 		continue
 	fi
-	execute ./$script
+	./$script
 done
 
 log "done: please run the below command"
