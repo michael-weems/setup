@@ -6,9 +6,9 @@ git clone https://aur.archlinux.org/yay.git ~/vendor/yay
 cd ~/vendor/yay
 makepkg -si 
 
-yay -Y --gendb
-yay -Syu --devel
-yay -Y --devel --save
+yes | yay -Y --gendb
+yes | yay -Syu --devel
+yes | yay -Y --devel --save
 
 # dependencies
 yes | sudo pacman -S meson
