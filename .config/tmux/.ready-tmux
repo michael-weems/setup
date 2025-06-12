@@ -5,10 +5,12 @@ if [[ $windows == "4" ]]; then
 	exit 0
 fi
 
-tmux kill-window -a # kill all but currently active window
+sleep 0.1 # wait for session to begin
 
 # window 1 (access via <prefix> 1 --> C-a 1)
-tmux neww -d -n scratch
+tmux kill-window -a # kill all but currently active window
+
+tmux rename-window scratch
 
 # window 2 (access via <prefix> 2 --> C-a 2)
 tmux neww -d -n notes
