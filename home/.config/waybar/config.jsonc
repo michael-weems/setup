@@ -60,10 +60,10 @@
   },
   "network": {
     "format-wifi": "󰤨",
-    "format-ethernet": " {ifname}: Aesthetic",
-    "format-linked": " {ifname} (No IP)",
     "format-disconnected": "󰤭",
-    "format-alt": " {ifname}: {ipaddr}/{cidr}",
+    "format-ethernet": "󰈁 ",
+    "format-linked": "󰈂 ",
+    "format-alt": "󰈁 {ifname}: {ipaddr}/{cidr}",
     "tooltip-format": "{essid}",
     "on-click-right": "nm-connection-editor"
   },

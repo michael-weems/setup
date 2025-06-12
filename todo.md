@@ -1,7 +1,6 @@
 # Todo
 
-- [ ] theme preview on selection
-- [ ] waybar: change network ethernet look
+- [ ] theme: preview on selection
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
@@ -88,3 +87,4 @@
 - [x] cleanup $PATH - its full of duplicates and is super long
 - ~~[ ] waybar: stop logging to every console~~
 - [x] wallpaper use fuzzy-find preview
+- [x] waybar: change network ethernet look
