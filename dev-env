@@ -45,6 +45,7 @@ copy_dir $DEV_ENV/home/.config $XDG_CONFIG_HOME
 copy_dir $DEV_ENV/home/.local $HOME/.local
 
 copy $DEV_ENV/tmux-sessionizer/tmux-sessionizer $HOME/.local/scripts/tmux-sessionizer 
+copy $DEV_ENV/dev-env $HOME/.local/scripts/dev-env
 copy $DEV_ENV/home/.profile $HOME/.profile
 copy $DEV_ENV/home/.bashrc $HOME/.bashrc
 copy $DEV_ENV/home/.bash_profile $HOME/.bash_profile
