@@ -1,12 +1,20 @@
-@define-color bg        #141214;
-@define-color active    #633c88;
-@define-color inactive  #592849;
-@define-color hover     #FF0000;
-@define-color danger    #FF0000;
 
-@define-color sound     #633c88; 
-@define-color backlight #633c88;
-@define-color battery   #633c88;
-@define-color clock     #633c88;
-@define-color picker    #633c88;
-@define-color network   #633c88;
+/*
+skin: #FDEFE4
+eye: #836DD3
+coat: #516890
+lapel: #81374A
+*/
+
+@define-color bg        #FDEFE4;
+@define-color active    #836DD3;
+@define-color inactive  #516890;
+@define-color hover     #836DD3;
+@define-color danger    #81374A;
+
+@define-color sound     #836DD3; 
+@define-color backlight #836DD3;
+@define-color battery   #836DD3;
+@define-color clock     #836DD3;
+@define-color picker    #836DD3;
+@define-color network   #836DD3;
