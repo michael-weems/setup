@@ -6,17 +6,20 @@ eye: #1C315E
 coat: #516890
 lapel: #81374A
 scarf: #74ABB2
+space: #0E2540
+red-space: #2E1B1E
+lining: #302435
 */
 
-@define-color bg        #954C8B;
-@define-color active    #FDEFE4;
-@define-color inactive  #74ABB2;
-@define-color hover     #836DD3;
+@define-color bg        #302435;
+@define-color active    #954C8B;
+@define-color inactive  #516890;
+@define-color hover     #1C315E;
 @define-color danger    #81374A;
 
-@define-color sound     #FDEFE4; 
-@define-color backlight #FDEFE4;
-@define-color battery   #FDEFE4;
-@define-color clock     #FDEFE4;
-@define-color picker    #FDEFE4;
-@define-color network   #FDEFE4;
+@define-color sound     #954C8B; 
+@define-color backlight #954C8B;
+@define-color battery   #954C8B;
+@define-color clock     #954C8B;
+@define-color picker    #954C8B;
+@define-color network   #954C8B;
