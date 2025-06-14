@@ -4,7 +4,7 @@
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
     - [ ] hyprland
-    - [ ] setup catppuccin theme
+    - [x] setup catppuccin theme
 - [ ] setup waybar to be able to hot-swap between themes
     - [x] catppuccin https://github.com/catppuccin/waybar
     - [ ] rose-pine
