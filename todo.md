@@ -1,5 +1,11 @@
 # Todo
 
+- [ ] if directory has a README, have my terminal auto display the readme using 'bat' ?
+- [ ] use catppuccin's tmux config omg
+    - [ ] https://github.com/catppuccin/tmux
+    - [ ] and rose-pine's https://github.com/rose-pine/tmux
+    - can literally just swap between these, don't need to make them look the same but with different colors
+    - [ ] senjou theme based off the rose-pine layout
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [x] setup senjou theme
@@ -34,6 +40,7 @@
     - [ ] dunst
     - [ ] neovim
     - [ ] fzf
+    - [ ] tmux
 - [ ] config fastfetch output
 - [ ] remove all unused rofi things
 - [ ] theme: preview on selection
