@@ -2,20 +2,16 @@
 
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
-    - [ ] setup senjou theme
-    - [ ] hyprland
+    - [x] setup senjou theme
     - [x] setup catppuccin theme
 - [ ] setup waybar to be able to hot-swap between themes
     - [x] catppuccin https://github.com/catppuccin/waybar
     - [ ] rose-pine
-    - [ ] hyprland
     - [ ] custom senjou theme
 - [ ] setup tmux to be able to hot-swap between themes
     - [ ] catppuccin 
     - [ ] rose-pine
-    - [ ] hyprland
     - [ ] custom senjou theme
-- [ ] hypr theme setup
 - [ ] configure dunst to match theme
     - can test it by turning on and off the wifi
 - [ ] look through https://github.com/linuxmobile/hyprland-dots
@@ -28,7 +24,6 @@
     - [ ] catppuccin-mocha
     - [ ] rose-pine
     - [ ] senjou
-    - [ ] hyprland
 - [ ] build theme-switching system: start with senjou, rose-pine, and catppuccin-mocha
     - [x] create script to change theme on the fly
     - [x] waybar
