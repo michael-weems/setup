@@ -37,6 +37,7 @@ yes | sudo pacman -S nm-connection-editor # network connection editor
 yes | sudo pacman -S firefox
 
 # devtools
+yes | sudo pacman -S man              # for man-pages
 yes | sudo pacman -S bat              # 'cat' but with syntax highlighting
 yes | sudo pacman -S jq               # json query
 yes | sudo pacman -S 7zip             # archive util
