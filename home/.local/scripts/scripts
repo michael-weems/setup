@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-scripts="$HOME/.local/scripts"
-ls -1a "$scripts"
+dir="$HOME/.local/scripts"
+script=$(ls -1a "$dir" | fzf --preview='bat --color=always {}' --bind shift-up:preview-up,shift-down:preview-down)
 
+$script

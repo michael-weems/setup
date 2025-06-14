@@ -37,6 +37,7 @@ yes | sudo pacman -S nm-connection-editor # network connection editor
 yes | sudo pacman -S firefox
 
 # devtools
+yes | sudo pacman -S bat              # 'cat' but with syntax highlighting
 yes | sudo pacman -S jq               # json query
 yes | sudo pacman -S 7zip             # archive util
 yes | sudo pacman -S ghostty          # my preferred terminal-emulator
@@ -46,5 +47,5 @@ yes | sudo pacman -S tmux             # terminal-multiplexer for switching conte
 yes | sudo pacman -S unzip            # unzip things
 yes | sudo pacman -S valgrind         # detect memory leaks in programs
 yes | sudo pacman -S xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
-yes | sudo pacman -S chafa           # terminal image viewer
+yes | sudo pacman -S chafa            # terminal image viewer
 

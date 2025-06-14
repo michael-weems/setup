@@ -1,6 +1,5 @@
 # Todo
 
-- [ ] theme: preview on selection
 - [ ] tailor rofi to my color theme
     - [x] setup rose-pine theme
     - [ ] setup senjou theme
@@ -42,6 +41,7 @@
     - [ ] fzf
 - [ ] config fastfetch output
 - [ ] remove all unused rofi things
+- [ ] theme: preview on selection
 - [ ] theme neovim
     - [ ] telescope
     - [ ] 
@@ -88,3 +88,6 @@
 - ~~[ ] waybar: stop logging to every console~~
 - [x] wallpaper use fuzzy-find preview
 - [x] waybar: change network ethernet look
+- ~[ ] global gtk theme~
+    - upon further investigation, it appears that theming gtk applications globally is a pain and is prone to errors and inconsistency due to different distros implementing it differently? something like that
+    - also, I barely use GUI apps, so I'll just manually style each one instead of having the global fallback
