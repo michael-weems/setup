@@ -7,10 +7,10 @@ pushd home/.config/nvim
 git checkout master
 popd
 
-pushd tmux-sessionizer
-git checkout master
-popd 
- 
 pushd wallpapers
 git checkout master
 popd 
+
+# tmux-sessionizer
+# tmux-catppuccin
+# tmux-rose-pine

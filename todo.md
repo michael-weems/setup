@@ -1,6 +1,5 @@
 # Todo
 
-- [ ] if directory has a README, have my terminal auto display the readme using 'bat' ?
 - [ ] use catppuccin's tmux config omg
     - [ ] https://github.com/catppuccin/tmux
     - [ ] and rose-pine's https://github.com/rose-pine/tmux

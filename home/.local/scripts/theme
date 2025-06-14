@@ -68,6 +68,14 @@ else
 fi
 
 # TODO:
+# NOTE: tmux
+if [[ -f "$f/.tmux.conf" ]]; then
+	copy "$f/.tmux.conf" "$t/.config/tmux/.tmux.theme.conf"
+else
+	copy "$fallback/.tmux.conf" "$t/.config/tmux/.tmux.theme.conf"
+fi
+
+# TODO:
 # NOTE: dunst
 
 # TODO:
