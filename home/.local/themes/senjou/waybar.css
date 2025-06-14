@@ -1,20 +1,22 @@
 
 /*
+* hair: #954C8B
 skin: #FDEFE4
-eye: #836DD3
+eye: #1C315E
 coat: #516890
 lapel: #81374A
+scarf: #74ABB2
 */
 
-@define-color bg        #FDEFE4;
-@define-color active    #836DD3;
-@define-color inactive  #516890;
+@define-color bg        #954C8B;
+@define-color active    #FDEFE4;
+@define-color inactive  #74ABB2;
 @define-color hover     #836DD3;
 @define-color danger    #81374A;
 
-@define-color sound     #836DD3; 
-@define-color backlight #836DD3;
-@define-color battery   #836DD3;
-@define-color clock     #836DD3;
-@define-color picker    #836DD3;
-@define-color network   #836DD3;
+@define-color sound     #FDEFE4; 
+@define-color backlight #FDEFE4;
+@define-color battery   #FDEFE4;
+@define-color clock     #FDEFE4;
+@define-color picker    #FDEFE4;
+@define-color network   #FDEFE4;
