@@ -1,12 +1,12 @@
-@define-color bg        #141214aa;
-@define-color active    #633c88ee;
-@define-color inactive  #592849ee;
+@define-color bg        #141214;
+@define-color active    #633c88;
+@define-color inactive  #592849;
 @define-color hover     #FF0000;
 @define-color danger    #FF0000;
 
-@define-color sound     #633c88ee; 
-@define-color backlight #633c88ee;
-@define-color battery   #633c88ee;
-@define-color clock     #633c88ee;
-@define-color picker    #633c88ee;
-@define-color network   #633c88ee;
+@define-color sound     #633c88; 
+@define-color backlight #633c88;
+@define-color battery   #633c88;
+@define-color clock     #633c88;
+@define-color picker    #633c88;
+@define-color network   #633c88;
