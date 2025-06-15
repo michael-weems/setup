@@ -83,6 +83,13 @@ else
 	copy "$fallback/nvim.lua" "$t/.config/nvim/lua/color.lua"
 fi
 
+# NOTE: fastfetch
+if [[ -f "$f/fastfetch.jsonc" ]]; then
+	copy "$f/fastfetch.jsonc" "$t/.config/fastfetch/config.jsonc"
+else
+	copy "$fallback/fastfetch.jsonc" "$t/.config/fastfetch/config.jsonc"
+fi
+
 # TODO:
 # NOTE: fzf
 
