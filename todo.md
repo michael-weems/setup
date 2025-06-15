@@ -1,8 +1,8 @@
 # Todo
 
-- [ ] use catppuccin's tmux config omg
-    - [ ] https://github.com/catppuccin/tmux
-    - [ ] and rose-pine's https://github.com/rose-pine/tmux
+- [x] use catppuccin's tmux config omg
+    - [x] https://github.com/catppuccin/tmux
+    - [x] and rose-pine's https://github.com/rose-pine/tmux
     - can literally just swap between these, don't need to make them look the same but with different colors
     - [ ] senjou theme based off the rose-pine layout
 - [ ] tailor rofi to my color theme
