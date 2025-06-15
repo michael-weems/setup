@@ -1,22 +1,5 @@
 # Todo
 
-- [x] use catppuccin's tmux config omg
-    - [x] https://github.com/catppuccin/tmux
-    - [x] and rose-pine's https://github.com/rose-pine/tmux
-    - can literally just swap between these, don't need to make them look the same but with different colors
-    - [ ] senjou theme based off the rose-pine layout
-- [ ] tailor rofi to my color theme
-    - [x] setup rose-pine theme
-    - [x] setup senjou theme
-    - [x] setup catppuccin theme
-- [ ] setup waybar to be able to hot-swap between themes
-    - [x] catppuccin https://github.com/catppuccin/waybar
-    - [ ] rose-pine
-    - [ ] custom senjou theme
-- [ ] setup tmux to be able to hot-swap between themes
-    - [ ] catppuccin 
-    - [ ] rose-pine
-    - [ ] custom senjou theme
 - [ ] configure dunst to match theme
     - can test it by turning on and off the wifi
 - [ ] look through https://github.com/linuxmobile/hyprland-dots
@@ -35,14 +18,13 @@
     - [x] ghostty
     - [x] hyprland
     - [x] hyprpaper
-    - [ ] rofi
+    - [x] rofi
     - [ ] dunst
     - [ ] neovim
     - [ ] fzf
-    - [ ] tmux
+    - [x] tmux
 - [ ] config fastfetch output
 - [ ] remove all unused rofi things
-- [ ] theme: preview on selection
 - [ ] theme neovim
     - [ ] telescope
     - [ ] 
@@ -92,3 +74,20 @@
 - ~[ ] global gtk theme~
     - upon further investigation, it appears that theming gtk applications globally is a pain and is prone to errors and inconsistency due to different distros implementing it differently? something like that
     - also, I barely use GUI apps, so I'll just manually style each one instead of having the global fallback
+- [x] use catppuccin's tmux config omg
+    - [x] https://github.com/catppuccin/tmux
+    - [x] and rose-pine's https://github.com/rose-pine/tmux
+    - can literally just swap between these, don't need to make them look the same but with different colors
+    - [x] senjou theme based off the rose-pine layout
+- [x] tailor rofi to my color theme
+    - [x] setup rose-pine theme
+    - [x] setup senjou theme
+    - [x] setup catppuccin theme
+- [x] setup waybar to be able to hot-swap between themes
+    - [x] catppuccin https://github.com/catppuccin/waybar
+    - [x] rose-pine
+    - [x] custom senjou theme
+- [x] setup tmux to be able to hot-swap between themes
+    - [x] catppuccin 
+    - [x] rose-pine
+    - [x] custom senjou theme
