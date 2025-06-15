@@ -10,8 +10,12 @@ if [[ -z "$dock" ]]; then
 	dock="laptop"
 fi
 
-docked_sink="alsa_output.usb-1130_USB_AUDIO-00.analog-stereo"
-laptop_sink="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink"
+# NOTE:
+# run command `wpctl status --name` to get the actual name of the sink
+
+#  docked_sink="alsa_output.usb-1130_USB_AUDIO-00.analog-stereo" # cheap amazon usb speakers
+laptop_sink="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink" # built-in laptop speakers
+docked_sink="alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_4_Dock_USB_Audio_000000000000-00.analog-stereo" # klipsch speakers
 
 function sink_id() {
 	pw-cli info $1 | head -n 1 | awk '{print $2}'
