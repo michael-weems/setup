@@ -1,12 +1,16 @@
 # Todo
 
-- [ ] configure dunst to match theme
-    - can test it by turning on and off the wifi
 - [ ] look through https://github.com/linuxmobile/hyprland-dots
     - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
     - [ ] bind restart / shutdown / etc to keyboard shortcuts
     - [ ] .local/bin/startw --> starts hyprland on boot ?
     - [ ] anything else from this repo worth grabbing?
+- [ ] remove all unused rofi things
+- [ ] configure dunst to match theme
+    - can test it by turning on and off the wifi
+    - [ ] catppuccin-mocha
+    - [ ] rose-pine
+    - [ ] senjou
 - [ ] theme fzf
     - https://vitormv.github.io/fzf-themes/
     - [ ] catppuccin-mocha
@@ -20,14 +24,9 @@
     - [x] hyprpaper
     - [x] rofi
     - [ ] dunst
-    - [ ] neovim
+    - [x] neovim
     - [ ] fzf
     - [x] tmux
-- [ ] config fastfetch output
-- [ ] remove all unused rofi things
-- [ ] theme neovim
-    - [ ] telescope
-    - [ ] 
 
 ### Good follow up projects
 
@@ -91,3 +90,5 @@
     - [x] catppuccin 
     - [x] rose-pine
     - [x] custom senjou theme
+- [x] theme neovim
+- [x] config fastfetch output
