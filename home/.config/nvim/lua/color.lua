@@ -1,7 +1,5 @@
-local color = 'rose-pine'
-local prefer_light = false
+local color = "catppuccin-mocha"
 
 return {
-  color = color, -- the name of the colorscheme
-  prefer_light = prefer_light, -- prefer light during this vim session
+	color = color, -- the name of the colorscheme
 }

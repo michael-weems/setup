@@ -17,6 +17,7 @@ for ((i=0; i<argc; i++)); do
 	fi
 done
 
+
 if [[ -z "$preselected" ]]; then
 	theme=$(ls $base/.local/themes | fzf)
 else
@@ -92,6 +93,11 @@ fi
 
 # TODO:
 # NOTE: fzf
+
+if [ ! -d $HOME/.local/state/theme ]; then
+	mkdir -p $HOME/.local/state/theme 
+fi
+echo "$theme" > $HOME/.local/state/theme/active
 
 # NOTE: hyprpaper
 if [[ "$silent" == "true" ]]; then

@@ -86,11 +86,24 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --
 
 -- NOTE: color theme init
-local Color = require 'color'
+local load_theme = function()
+  local theme = 'tokyonight-moon' -- sane-default
+  local file, err, errcode = io.open('~/.config/nvim/theme', 'r')
+  if file then
+    theme = file:read '*line'
+    file:close()
+    print 'theme found, applying'
+  else
+    print "no theme found, defaulting to 'tokyonight-moon'"
+    print(errcode)
+    print(err)
+  end
 
-local ApplyColorScheme = function()
-  vim.cmd.colorscheme(Color.color)
+  return theme
 end
+
+local base_theme = load_theme()
+-- NOTE: END color theme init
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -833,7 +846,9 @@ require('lazy').setup({
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
-      ApplyColorScheme()
+
+      -- TODO move this somewhere else
+      vim.cmd.colorscheme(base_theme)
     end,
     opts = {
       transparent = true,

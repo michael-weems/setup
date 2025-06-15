@@ -34,10 +34,19 @@ if [[ "$line_count" != "1" ]]; then
 	exit 1
 fi
 
-if [[ "$prep" == "true" ]]; then
-	# prep the wallpaper for hyprland config to apply
-	echo "$(basename $wp)" > $base/.config/hypr/wallpaper
-else
+if [ ! -d $HOME/.local/state/theme ]; then
+	mkdir -p $HOME/.local/state/theme 
+fi
+
+# TODO: dev-env "basetheme" should just apply the state to .local/state/theme/active and .local/state/theme/wallpaper
+# TODO: - theme script should select a theme, write it to the state, and also apply config files
+# TODO: - todo
+
+# prep the wallpaper for hyprland config to apply
+echo "$(basename $wp)" > $HOME/.local/state/theme/wallpaper
+
+if [[ "$prep" == "false" ]]; then
 	# actually set the wallpaper
 	hyprctl hyprpaper reload , $wp
 fi
+
