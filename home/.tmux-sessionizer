@@ -11,7 +11,7 @@ tmux kill-window -a # kill all but currently active window
 
 # window 2 (access via <prefix> 2 --> C-a 2)
 tmux neww -d -n notes
-tmux send-keys -t notes "nvim todo.md" ^M
+tmux send-keys -t notes "vim todo.md" ^M
 
 # window 3 (access via <prefix> 3 --> C-a 3)
 tmux neww -n vim
