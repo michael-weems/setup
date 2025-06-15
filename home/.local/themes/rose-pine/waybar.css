@@ -17,14 +17,14 @@
 */
 
 @define-color bg        #1f1d2e;
-@define-color active    #403d52;
+@define-color active    #ebbcba;
 @define-color inactive  #6e6a86;
 @define-color hover     #21202e;
-@define-color danger    #ebbcba;
+@define-color danger    #eb6f92;
 
-@define-color sound     #31748f; 
-@define-color backlight #31748f;
-@define-color battery   #31748f;
-@define-color clock     #31748f;
-@define-color picker    #31748f;
-@define-color network   #31748f;
+@define-color sound     #ebbcba; 
+@define-color backlight #ebbcba;
+@define-color battery   #ebbcba;
+@define-color clock     #ebbcba;
+@define-color picker    #ebbcba;
+@define-color network   #ebbcba;
