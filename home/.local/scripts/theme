@@ -59,7 +59,6 @@ else
 	copy "$fallback/hyprland.conf" "$t/.config/hypr/theme.conf"
 fi
 
-# TODO:
 # NOTE: rofi
 if [[ -f "$f/rofi.rasi" ]]; then
 	copy "$f/rofi.rasi" "$t/.local/share/rofi/themes/custom-theme.rasi"
@@ -67,7 +66,6 @@ else
 	copy "$fallback/rofi.rasi" "$t/.local/share/rofi/themes/custom-theme.rasi"
 fi
 
-# TODO:
 # NOTE: tmux
 if [[ -f "$f/.tmux.conf" ]]; then
 	copy "$f/.tmux.conf" "$t/.config/tmux/.tmux.theme.conf"
@@ -78,8 +76,12 @@ fi
 # TODO:
 # NOTE: dunst
 
-# TODO:
 # NOTE: neovim
+if [[ -f "$f/nvim.lua" ]]; then
+	copy "$f/nvim.lua" "$t/.config/nvim/lua/color.lua"
+else
+	copy "$fallback/nvim.lua" "$t/.config/nvim/lua/color.lua"
+fi
 
 # TODO:
 # NOTE: fzf
