@@ -21,5 +21,5 @@ tmux neww -d -n terminal
 
 tmux kill-window -t 2 # kill original window
 
-sleep 0.2 # wait for tmux commands
+sleep 0.5 # wait for tmux commands
 vim . # in active window open nvim
