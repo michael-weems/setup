@@ -102,10 +102,10 @@ fi
 # NOTE: dunst
 
 # NOTE: neovim
-if [[ -f "$f/nvim.lua" ]]; then
-	copy "$f/nvim.lua" "$HOME/.config/nvim/lua/color.lua"
+if [[ -f "$f/neovim" ]]; then
+	copy "$f/neovim" "$HOME/.config/nvim/theme"
 else
-	copy "$fallback/nvim.lua" "$HOME/.config/nvim/lua/color.lua"
+	copy "$fallback/neovim" "$HOME/.config/nvim/theme"
 fi
 
 # NOTE: fastfetch

@@ -1,23 +1,11 @@
 # Todo
 
-- [ ] fix nvim config / theme-ing
-- [ ] remove dunst config, not really gonna use it anyway
-- [ ] look through https://github.com/linuxmobile/hyprland-dots
-    - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
-    - [ ] bind restart / shutdown / etc to keyboard shortcuts
-    - [ ] .local/bin/startw --> starts hyprland on boot ?
-    - [ ] anything else from this repo worth grabbing?
-- [ ] remove all unused rofi things
-- [ ] configure dunst to match theme
-    - can test it by turning on and off the wifi
-    - [ ] catppuccin-mocha
-    - [ ] rose-pine
-    - [ ] senjou
 - [ ] theme fzf
     - https://vitormv.github.io/fzf-themes/
     - [ ] catppuccin-mocha
     - [ ] rose-pine
     - [ ] senjou
+- [ ] remove all unused rofi things
 - [ ] build theme-switching system: start with senjou, rose-pine, and catppuccin-mocha
     - [x] create script to change theme on the fly
     - [x] waybar
@@ -25,10 +13,15 @@
     - [x] hyprland
     - [x] hyprpaper
     - [x] rofi
-    - [ ] dunst
+    - ~[ ] dunst~
     - [x] neovim
-    - [ ] fzf
     - [x] tmux
+    - [ ] fzf
+- [ ] look through https://github.com/linuxmobile/hyprland-dots
+    - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
+    - [ ] bind restart / shutdown / etc to keyboard shortcuts
+    - [ ] .local/bin/startw --> starts hyprland on boot ?
+    - [ ] anything else from this repo worth grabbing?
 
 ### Good follow up projects
 
@@ -94,3 +87,5 @@
     - [x] custom senjou theme
 - [x] theme neovim
 - [x] config fastfetch output
+- [x] fix nvim config / theme-ing
+- [x] remove dunst config, not really gonna use it anyway
