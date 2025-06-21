@@ -3,21 +3,27 @@
 source $HOME/.bashlib
 
 query=""
-prep="false"
-base="$HOME"
+state="false"
+reapply="false"
 for ((i=0; i<argc; i++)); do
-	if   [[ "-p" == "${argv[$i]}" ]] || [[ "--prep" == "${argv[$i]}" ]]; then
-		prep="true"
+	if   [[ "-s" == "${argv[$i]}" ]] || [[ "--state" == "${argv[$i]}" ]]; then
+		state="true"
 	elif [[ "-q" == "${argv[$i]}" ]] || [[ "--query" == "${argv[$i]}" ]]; then
 		i=$((i + 1))
 		query="${argv[$i]}"
-	elif [[ "-b" == "${argv[$i]}" ]] || [[ "--base" == "${argv[$i]}" ]]; then
-		i=$((i + 1))
-		base="${argv[$i]}"
+	elif [[ "-r" == "${argv[$i]}" ]] || [[ "--reapply" == "${argv[$i]}" ]]; then
+		reapply="true"
 	fi
 done
 
-if [[ -z "$query" ]]; then
+if [[ "$reapply" == "true" ]]; then
+	if [ ! -f $HOME/.local/state/theme/wallpaper ]; then
+		# sane-default
+		echo "$DEV_ENV/wallpapers/arch-sherbet.png" > $HOME/.local/state/theme/wallpaper
+	fi
+
+	wp=$(cat $HOME/.local/state/theme/wallpaper)
+elif [[ -z "$query" ]]; then
         wp=$(find $DEV_ENV/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf --preview 'chafa -f symbols {}' --preview-window=right,70%)
 else
         wp=$(find $DEV_ENV/wallpapers -mindepth 1 -maxdepth 1 -type f | fzf --preview 'chafa -f symbols {}' --preview-window=right,70% -q $query --bind one:accept)
@@ -25,7 +31,7 @@ fi
 
 if [[ -z "$wp" ]]; then
 	echo "error: could not determine wallpaper to apply - none matched your input"
-	exit 1
+exit 1
 fi
 
 line_count=$(echo "$wp" | wc -l)
@@ -33,19 +39,15 @@ if [[ "$line_count" != "1" ]]; then
 	echo "error: could not determine wallpaper to apply: $wp"
 	exit 1
 fi
+echo "using wallpaper: $wp"
 
+# prep the wallpaper for hyprland config to apply
 if [ ! -d $HOME/.local/state/theme ]; then
 	mkdir -p $HOME/.local/state/theme 
 fi
+echo "$wp" > $HOME/.local/state/theme/wallpaper
 
-# TODO: dev-env "basetheme" should just apply the state to .local/state/theme/active and .local/state/theme/wallpaper
-# TODO: - theme script should select a theme, write it to the state, and also apply config files
-# TODO: - todo
-
-# prep the wallpaper for hyprland config to apply
-echo "$(basename $wp)" > $HOME/.local/state/theme/wallpaper
-
-if [[ "$prep" == "false" ]]; then
+if [[ "$state" == "false" ]]; then
 	# actually set the wallpaper
 	hyprctl hyprpaper reload , $wp
 fi

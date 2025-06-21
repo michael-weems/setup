@@ -2,26 +2,38 @@
 
 source $HOME/.bashlib
 
-silent="false"
-preselected=""
+state="false"
+reapply="false"
+query=""
 base="$HOME"
 for ((i=0; i<argc; i++)); do
-	if   [[ "-s" == "${argv[$i]}" ]] || [[ "--silent" == "${argv[$i]}" ]]; then
-		silent="true"
-	elif [[ "-t" == "${argv[$i]}" ]] || [[ "--theme" == "${argv[$i]}" ]]; then
+	if   [[ "-s" == "${argv[$i]}" ]] || [[ "--state" == "${argv[$i]}" ]]; then
+		state="true"
+	elif [[ "-q" == "${argv[$i]}" ]] || [[ "--theme" == "${argv[$i]}" ]]; then
 		i=$((i + 1))
-		preselected="${argv[$i]}"
+		query="${argv[$i]}"
+	elif [[ "-r" == "${argv[$i]}" ]] || [[ "--reapply" == "${argv[$i]}" ]]; then
+		reapply="true"
 	elif [[ "-b" == "${argv[$i]}" ]] || [[ "--base" == "${argv[$i]}" ]]; then
 		i=$((i + 1))
 		base="${argv[$i]}"
 	fi
 done
 
-
-if [[ -z "$preselected" ]]; then
+if [[ "$reapply" == "true" ]]; then 
+	# NOTE: re-apply the active theme, default to fall-back if none exists
+	if [ -f $HOME/.local/state/theme/active ]; then
+		theme=$(cat $HOME/.local/state/theme/active) 
+	else
+		theme="_fallback"
+		echo $theme > $HOME/.local/state/theme/active 
+	fi
+elif [[ ! -z "$query" ]]; then 
+	# NOTE: find a theme based on input query
+	theme=$(ls $base/.local/themes | fzf -q $query --bind one:accept)
+else 
+	# NOTE: find a theme based on input query
 	theme=$(ls $base/.local/themes | fzf)
-else
-	theme=$(ls $base/.local/themes | fzf -q $preselected --bind one:accept)
 fi
 
 if [[ -z "$theme" ]]; then
@@ -37,62 +49,7 @@ fi
 
 fallback="$base/.local/themes/_fallback"
 f="$base/.local/themes/$theme"
-t="$base"
-
-# NOTE: waybar
-if [[ -f "$f/waybar.css" ]]; then
-	copy "$f/waybar.css" "$t/.config/waybar/theme.css"
-else
-	copy "$fallback/waybar.css" "$t/.config/waybar/theme.css"
-fi
-
-# NOTE: ghostty
-if [[ -f "$f/ghostty" ]]; then
-	copy "$f/ghostty" "$t/.config/ghostty/theme"
-else
-	copy "$fallback/ghostty" "$t/.config/ghostty/theme"
-fi
-
-# NOTE: hyprland
-if [[ -f "$f/hyprland.conf" ]]; then
-	copy "$f/hyprland.conf" "$t/.config/hypr/theme.conf"
-else
-	copy "$fallback/hyprland.conf" "$t/.config/hypr/theme.conf"
-fi
-
-# NOTE: rofi
-if [[ -f "$f/rofi.rasi" ]]; then
-	copy "$f/rofi.rasi" "$t/.local/share/rofi/themes/custom-theme.rasi"
-else
-	copy "$fallback/rofi.rasi" "$t/.local/share/rofi/themes/custom-theme.rasi"
-fi
-
-# NOTE: tmux
-if [[ -f "$f/.tmux.conf" ]]; then
-	copy "$f/.tmux.conf" "$t/.config/tmux/.tmux.theme.conf"
-else
-	copy "$fallback/.tmux.conf" "$t/.config/tmux/.tmux.theme.conf"
-fi
-
-# TODO:
-# NOTE: dunst
-
-# NOTE: neovim
-if [[ -f "$f/nvim.lua" ]]; then
-	copy "$f/nvim.lua" "$t/.config/nvim/lua/color.lua"
-else
-	copy "$fallback/nvim.lua" "$t/.config/nvim/lua/color.lua"
-fi
-
-# NOTE: fastfetch
-if [[ -f "$f/fastfetch.jsonc" ]]; then
-	copy "$f/fastfetch.jsonc" "$t/.config/fastfetch/config.jsonc"
-else
-	copy "$fallback/fastfetch.jsonc" "$t/.config/fastfetch/config.jsonc"
-fi
-
-# TODO:
-# NOTE: fzf
+t="$HOME"
 
 if [ ! -d $HOME/.local/state/theme ]; then
 	mkdir -p $HOME/.local/state/theme 
@@ -100,8 +57,67 @@ fi
 echo "$theme" > $HOME/.local/state/theme/active
 
 # NOTE: hyprpaper
-if [[ "$silent" == "true" ]]; then
-	wallpaper --prep --query $theme --base $base
-else
-	wallpaper --query $theme
+wallpaper "${argv[@]}"
+
+if [[ "$state" == "true" ]]; then
+	exit 0 # NOTE: apply the state and stop
 fi
+
+# NOTE: waybar
+if [[ -f "$f/waybar.css" ]]; then
+	copy "$f/waybar.css" "$HOME/.config/waybar/theme.css"
+else
+	copy "$fallback/waybar.css" "$HOME/.config/waybar/theme.css"
+fi
+
+# NOTE: ghostty
+if [[ -f "$f/ghostty" ]]; then
+	copy "$f/ghostty" "$HOME/.config/ghostty/theme"
+else
+	copy "$fallback/ghostty" "$HOME/.config/ghostty/theme"
+fi
+
+# NOTE: hyprland
+if [[ -f "$f/hyprland.conf" ]]; then
+	copy "$f/hyprland.conf" "$HOME/.config/hypr/theme.conf"
+else
+	copy "$fallback/hyprland.conf" "$HOME/.config/hypr/theme.conf"
+fi
+
+# NOTE: rofi
+if [[ -f "$f/rofi.rasi" ]]; then
+	copy "$f/rofi.rasi" "$HOME/.local/share/rofi/themes/custom-theme.rasi"
+else
+	copy "$fallback/rofi.rasi" "$HOME/.local/share/rofi/themes/custom-theme.rasi"
+fi
+
+# NOTE: tmux
+if [[ -f "$f/.tmux.conf" ]]; then
+	copy "$f/.tmux.conf" "$HOME/.config/tmux/.tmux.theme.conf"
+else
+	copy "$fallback/.tmux.conf" "$HOME/.config/tmux/.tmux.theme.conf"
+fi
+
+# TODO:
+# NOTE: dunst
+
+# NOTE: neovim
+if [[ -f "$f/nvim.lua" ]]; then
+	copy "$f/nvim.lua" "$HOME/.config/nvim/lua/color.lua"
+else
+	copy "$fallback/nvim.lua" "$HOME/.config/nvim/lua/color.lua"
+fi
+
+# NOTE: fastfetch
+if [[ -f "$f/fastfetch.jsonc" ]]; then
+	copy "$f/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+else
+	copy "$fallback/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+fi
+
+# TODO:
+# NOTE: fzf
+
+
+# NOTE: reload config
+reload

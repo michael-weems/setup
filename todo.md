@@ -1,5 +1,7 @@
 # Todo
 
+- [ ] fix nvim config / theme-ing
+- [ ] remove dunst config, not really gonna use it anyway
 - [ ] look through https://github.com/linuxmobile/hyprland-dots
     - [ ] bind screenshot + screen record + color picker to keyboard shortcuts
     - [ ] bind restart / shutdown / etc to keyboard shortcuts

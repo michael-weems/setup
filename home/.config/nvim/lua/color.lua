@@ -1,4 +1,4 @@
-local color = "catppuccin-mocha"
+local color = "rose-pine"
 
 return {
 	color = color, -- the name of the colorscheme

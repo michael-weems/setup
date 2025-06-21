@@ -13,8 +13,4 @@ waybar &
 pkill hyprpaper 
 hyprpaper &
 
-wp="$(cat ~/.config/hypr/wallpaper)"
-
-if [[ ! -z "$wp" ]]; then
-	sleep 0.1 && wallpaper --query "$wp"
-fi
+sleep 0.1 && wallpaper --reapply

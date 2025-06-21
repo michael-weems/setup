@@ -88,7 +88,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- NOTE: color theme init
 local load_theme = function()
   local theme = 'tokyonight-moon' -- sane-default
-  local file, err, errcode = io.open('~/.config/nvim/theme', 'r')
+  local file, err, errcode = io.open('$HOME/.config/nvim/theme', 'r')
   if file then
     theme = file:read '*line'
     file:close()
