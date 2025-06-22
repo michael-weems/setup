@@ -57,7 +57,11 @@ fi
 echo "$theme" > $HOME/.local/state/theme/active
 
 # NOTE: hyprpaper
-wallpaper "${argv[@]}"
+if [[ -z "$query" ]]; then
+	wallpaper "${argv[@]}" --query "$theme"
+else
+	wallpaper "${argv[@]}"
+fi
 
 if [[ "$state" == "true" ]]; then
 	exit 0 # NOTE: apply the state and stop
