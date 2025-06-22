@@ -11,6 +11,7 @@ pushd wallpapers
 git checkout master
 popd 
 
+# TODO: 
 # tmux-sessionizer
 # tmux-catppuccin
 # tmux-rose-pine

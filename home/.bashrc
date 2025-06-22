@@ -117,12 +117,15 @@ export NVM_DIR="$HOME/.nvm"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# Where should I put you?
 function sessionizer() {
     $HOME/.local/scripts/tmux-sessionizer
 }
-
 bind -x '"\C-f": sessionizer'
+
+function change_theme() {
+    $HOME/.local/scripts/theme
+}
+bind -x '"\C-b": change_theme'
 
 sleep 1
 fastfetch # display system info on terminal load

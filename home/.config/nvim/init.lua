@@ -85,28 +85,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 --
 
--- NOTE: color theme init
-local load_theme = function()
-  local theme = 'tokyonight-moon' -- sane-default
-
-  local home_dir = os.getenv 'HOME'
-  local file, err, errcode = io.open(home_dir .. '/.config/nvim/theme', 'r')
-  if file then
-    theme = file:read '*line'
-    file:close()
-    print 'theme found, applying'
-  else
-    print "no theme found, defaulting to 'tokyonight-moon'"
-    print(errcode)
-    print(err)
-  end
-
-  return theme
-end
-
-local base_theme = load_theme()
--- NOTE: END color theme init
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -197,6 +175,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- tmux sessionizer
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 
+-- NOTE: doesn't work just right: kills nvim when theme is applied for some reason
+-- theme switcher
+-- vim.keymap.set('n', '<C-b>', ':term theme<CR>')
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -243,7 +225,35 @@ vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 -- reload config
 vim.keymap.set('n', '<leader><leader>', function()
   vim.cmd 'so'
-end)
+end, { desc = 'Reload config' })
+
+-- NOTE: color theme init
+load_theme = function()
+  local theme = 'tokyonight-moon' -- sane-default
+
+  local home_dir = os.getenv 'HOME'
+  local file, err, errcode = io.open(home_dir .. '/.config/nvim/theme', 'r')
+  if file then
+    theme = file:read '*line'
+    file:close()
+    print('applying ' .. theme)
+  else
+    print('no theme found, defaulting to ' .. theme)
+    print(errcode)
+    print(err)
+  end
+
+  return theme
+end
+
+reload_theme = function()
+  local theme = load_theme()
+  vim.cmd.colorscheme(theme)
+end
+vim.keymap.set('n', '<leader><leader>l', reload_theme, { desc = 'Re[l]oad color theme' })
+
+local base_theme = load_theme()
+-- NOTE: END color theme init
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

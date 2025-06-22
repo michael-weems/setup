@@ -121,3 +121,15 @@ fi
 
 # NOTE: reload config
 reload
+
+function reload_nvim_theme() {
+	# NOTE: <leader><leader>l is bound to lua function 'reload_theme'
+	tmux list-panes -aF "#{pane_id} #{pane_current_command}" | awk '/vim|nvim/ {print $1}' | xargs -I {} tmux send-keys -t {} Space Space l
+	echo "nvim: all open instances theme reloaded"
+}
+reload_nvim_theme
+
+echo "Please perform the following"
+echo "  - ghostty: all open instances --> Ctrl+Shift+r"
+echo "  - tmux --> tmux kill-server (re-sourcing config doesn't quite work right)"
+
