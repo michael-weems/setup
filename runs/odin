@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# https://odin-lang.org/docs/install/
+yes | sudo pacman -S odin
