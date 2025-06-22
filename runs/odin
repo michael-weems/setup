@@ -2,3 +2,11 @@
 
 # https://odin-lang.org/docs/install/
 yes | sudo pacman -S odin
+
+# https://github.com/DanielGavin/ols?tab=readme-ov-file#neovim
+# Odin LSP
+git clone git@github.com:DanielGavin/ols.git $HOME/vendor/odin-lsp
+pushd $HOME/vendor/odin-lsp
+
+./build.sh
+./odinfmt.sh
