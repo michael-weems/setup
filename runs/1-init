@@ -34,7 +34,8 @@ yes | sudo pacman -S fastfetch # print system info
 yes | sudo pacman -S nm-connection-editor # network connection editor
 
 # desktop apps
-yay -Syu zen-browser-bin
+yes | sudo pacman -S zen-browser-bin
+yes | sudo pacman -S gimp
 
 # devtools
 yes | sudo pacman -S man              # for man-pages
