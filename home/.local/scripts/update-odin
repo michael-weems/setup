@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source $HOME/.bashlib
+
+pushd $HOME/vendor/odin
+
+git pull
+make release-native
+
+popd

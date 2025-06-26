@@ -22,9 +22,10 @@ PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/scripts:$PATH"
 PATH="$HOME/vendor/neovim/bin:$PATH"
+PATH="$HOME/vendor/odin:$PATH"
+PATH="$HOME/vendor/sokol-shdc:$PATH"
 PATH=$(echo "$PATH" | tr ':' '\n' | sort | uniq | tr '\n' ':') # deduplicate path
 export PATH
-
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

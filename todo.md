@@ -1,5 +1,7 @@
 # Todo
 
+- [ ] docker credentials-store https://docs.docker.com/go/credential-store/
+    - ~/.docker/config.json --> currently stored here
 - [ ] theme fzf
     - https://vitormv.github.io/fzf-themes/
     - [ ] catppuccin-mocha

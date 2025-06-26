@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # https://odin-lang.org/docs/install/
-yes | sudo pacman -S odin
+yes | sudo pacman -S clang llvm llvm
+git clone https://github.com/odin-lang/Odin $HOME/vendor/odin
+pushd $HOME/vendor/odin
+make release-native
 
 # https://github.com/DanielGavin/ols?tab=readme-ov-file#neovim
 # Odin LSP
@@ -10,3 +13,16 @@ pushd $HOME/vendor/odin-lsp
 
 ./build.sh
 ./odinfmt.sh
+
+# Sokol
+git clone https://github.com/floooh/sokol-odin.git $HOME/vendor/odin-sokol
+pushd $HOME/vendor/odin-sokol
+pushd sokol
+./build_clibs_linux.sh
+popd
+mkdir build
+ln -s $HOME/vendor/odin-sokol/sokol $HOME/vendor/odin/shared/sokol # add odin-sokol as 'sokol' to odin's shared directory
+
+# Sokol Shader-Compiler
+# NOTE: the build process for linux appears to be broken due to missing containers with docker, so we directly download the latest exe
+curl -L -o sokol-shdc https://github.com/floooh/sokol-tools-bin/blob/master/bin/linux/sokol-shdc
