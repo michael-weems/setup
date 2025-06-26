@@ -25,4 +25,5 @@ ln -s $HOME/vendor/odin-sokol/sokol $HOME/vendor/odin/shared/sokol # add odin-so
 
 # Sokol Shader-Compiler
 # NOTE: the build process for linux appears to be broken due to missing containers with docker, so we directly download the latest exe
-curl -L -o sokol-shdc https://github.com/floooh/sokol-tools-bin/blob/master/bin/linux/sokol-shdc
+git clone https://github.com/floooh/sokol-tools-bin.git $HOME/vendor/sokol-shdc
+
