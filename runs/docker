@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+yes | sudo pacman -S docker           # containerized tools / applications
+
+sudo systemctl enable docker.socket
