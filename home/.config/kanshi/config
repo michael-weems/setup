@@ -3,14 +3,17 @@ profile DockDraw {
 	output DP-8 enable
 	output HDMI-A-1 enable
 	exec audio "dock"
+	exec alert "applied docked + drawing config"
 }
 profile Dock {
 	output eDP-1 disable
 	output DP-8 enable
 	exec audio "dock"
+	exec alert "applied docked config"
 }
 
 profile Laptop {
 	output eDP-1 enable
 	exec audio "laptop"
+	exec alert "applied laptop config"
 }
