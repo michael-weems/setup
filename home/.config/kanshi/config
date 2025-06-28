@@ -1,13 +1,27 @@
-profile DockDraw {
+profile DockDraw8 {
 	output eDP-1 disable
 	output DP-8 enable
 	output HDMI-A-1 enable
 	exec audio "dock"
 	exec alert "applied docked + drawing config"
 }
-profile Dock {
+profile DockDraw9 {
+	output eDP-1 disable
+	output DP-9 enable
+	output HDMI-A-1 enable
+	exec audio "dock"
+	exec alert "applied docked + drawing config"
+}
+
+profile Dock8 {
 	output eDP-1 disable
 	output DP-8 enable
+	exec audio "dock"
+	exec alert "applied docked config"
+}
+profile Dock9 {
+	output eDP-1 disable
+	output DP-9 enable
 	exec audio "dock"
 	exec alert "applied docked config"
 }
