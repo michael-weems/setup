@@ -1,4 +1,6 @@
-{
+[
+  {
+  "output": ["eDP-1", "DP-8"],
   "position": "top",
   "layer": "top",
   "modules-left": [
@@ -97,4 +99,5 @@
     "format": "⏻ "
   }
 }
+]
 
