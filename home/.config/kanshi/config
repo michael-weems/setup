@@ -1,0 +1,16 @@
+profile DockDraw {
+	output eDP-1 disable
+	output DP-8 enable
+	output HDMI-A-1 enable
+	exec audio "dock"
+}
+profile Dock {
+	output eDP-1 disable
+	output DP-8 enable
+	exec audio "dock"
+}
+
+profile Laptop {
+	output eDP-1 enable
+	exec audio "laptop"
+}

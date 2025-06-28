@@ -13,4 +13,7 @@ waybar &
 pkill hyprpaper 
 hyprpaper &
 
+# ensure monitors are correct
+pkill kanshi && kanshi
+
 sleep 0.1 && wallpaper --reapply
