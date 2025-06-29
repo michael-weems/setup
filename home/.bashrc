@@ -128,5 +128,31 @@ function change_theme() {
 }
 bind -x '"\C-b": change_theme'
 
+function dlyt() {
+    out="$HOME/Downloads/videos/temp"
+    url=""
+
+    for ((i=1; i<= $#; i++)); do
+	if   [[ "${!i}" == "-u" ]] || [[ "${!i}" == "--url" ]]; then
+	    i=$((i+1))
+	    url="${!i}"
+	elif [[ "${!i}" == "-o" ]] || [[ "${!i}" == "--out" ]]; then
+	    i=$((i+1))
+	    out="${!i}"
+	fi
+    done
+
+    if [[ -z "$url" ]]; then
+	echo "please provide a url via -u or --url"
+	return 1
+    fi
+    
+
+    mkdir -p $(dirname "$out")
+    yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -o "$out.%(ext)s" "$url"
+    echo "done >> ${out}.mp4"
+}
+export -f dlyt
+
 sleep 1
 fastfetch # display system info on terminal load
