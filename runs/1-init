@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+G!/usr/bin/env bash
 
 # make sure yay is available
 yes | sudo pacman -S --needed git base-devel
@@ -34,8 +34,8 @@ yes | sudo pacman -S fastfetch # print system info
 yes | sudo pacman -S nm-connection-editor # network connection editor
 
 # desktop apps
-yes | sudo pacman -S zen-browser-bin
-yes | sudo pacman -S gimp
+yes | sudo pacman -S zen-browser
+yes | sudo pacman -S krita            # drawing app
 
 # devtools
 yes | sudo pacman -S man              # for man-pages
@@ -50,5 +50,5 @@ yes | sudo pacman -S unzip            # unzip things
 yes | sudo pacman -S valgrind         # detect memory leaks in programs
 yes | sudo pacman -S xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
 yes | sudo pacman -S chafa            # terminal image viewer
-yes | sudo pacman -S chafa            # terminal image viewer
+yes | sudo pacman -S mpv              # media player
 

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir -p $HOME/vendor/bin
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o $HOME/vendor/bin/youtube-dl
+sudo chmod a+rx $HOME/vendor/bin/youtube-dl

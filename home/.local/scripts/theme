@@ -119,6 +119,12 @@ else
 	copy "$fallback/fastfetch.jsonc" "$HOME/.config/fastfetch/config.jsonc"
 fi
 
+# get all the ff icons too
+find $f -type f | grep fastfetch | xargs -I {} cp {} "$HOME/.config/fastfetch/"
+
+echo "~/.config/fastfetch/"
+ls ~/.config/fastfetch
+
 # TODO:
 # NOTE: fzf
 
