@@ -21,7 +21,6 @@ export GIT_EDITOR=$EDITOR
 PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/scripts:$PATH"
-PATH="$HOME/vendor/bin:$PATH"
 PATH="$HOME/vendor/neovim/bin:$PATH"
 PATH="$HOME/vendor/odin:$PATH"
 PATH="$HOME/vendor/sokol-shdc/bin/linux:$PATH"
