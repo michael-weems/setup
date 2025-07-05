@@ -1,5 +1,8 @@
 alias vim="nvim"
 
+alias lua51="$HOME/vendor/lua-5.1.5/bin/lua"
+alias luac51="$HOME/vendor/lua-5.1.5/bin/luac"
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

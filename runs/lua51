@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Lua v5.4 is used for most packages, so we leave it installed as is
+# We're using Lua v5.1 for development, so we'll install it locally and alias it
+
+mkdir -p $HOME/vendor/
+
+pushd $HOME
+curl -L -R -O https://www.lua.org/ftp/lua-5.1.5.tar.gz
+tar zxf lua-5.1.5.tar.gz -C $HOME/vendor/lua-5.1.5/
+rm -fr lua-5.1.5.tar.gz
+
+if [ -d $HOME/vendor/lua-5.1.5 ]; then
+	rm -fr $HOME/vendor/lua-5.1.5
+fi
+
+pushd $HOME/vendor/lua-5.1.5
+make linux
+make local
+popd
+
