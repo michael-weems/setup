@@ -58,3 +58,14 @@ Note that since this does not use symlinks, if you go to modify a script / confi
 
 - [UTF-8 Icons](https://www.nerdfonts.com/cheat-sheet)
     - waybar workspaces icons
+
+## Connect to new network
+
+```bash
+iwctl
+device list # most likely looking for 'wlan0', will use that in the rest of the example
+station wlan0 power on
+station wlan0 get-networks # to find the network SSID to connect to
+station wlan0 connect <SSID> # if you already k
+exit
+```
