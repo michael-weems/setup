@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-TOOL_DIR="$HOME/projects/mpv-playlists"
-PLAYLIST_DIR="$HOME/playlists"
-
-python3 "${TOOL_DIR}/play.py" -c "${PLAYLIST_DIR}/pi-windowed.json" $@
-

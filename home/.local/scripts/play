@@ -3,5 +3,17 @@
 TOOL_DIR="$HOME/projects/mpv-playlists"
 PLAYLIST_DIR="$HOME/playlists"
 
-python3 "${TOOL_DIR}/play.py" -c "${PLAYLIST_DIR}/pi.json" $@
+playlist=$(find $PLAYLIST_DIR -type f -name "*.m3u" | basename | sed 's/\.[^.]*$//' | fzf)
+if [[ -z "$playlist" ]]; then
+	echo "no playlist selected"
+	exit 0
+fi
+
+config=$(find $PLAYLIST_DIR -type f -name "*.json" | basename | sed 's/\.[^.]*$//' | fzf)
+if [[ -z "$config" ]]; then
+	echo "no config selected, using default"
+	config="${PLAYLIST_DIR}/pi.json"
+fi
+
+python3 "${TOOL_DIR}/play.py" -c "${PLAYLIST_DIR}/${config}.json" "${PLAYLIST_DIR}/${playlist}.m3u"
 
