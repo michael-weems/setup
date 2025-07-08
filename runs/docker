@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-yes | sudo pacman -S docker           # containerized tools / applications
-
-sudo systemctl enable docker.socket
-sudo systemctl start docker.socket
-sudo usermod -aG docker ${USER} # add me to docker user-group
-newgrp docker # apply user-group changes to current terminal / login
