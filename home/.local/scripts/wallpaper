@@ -2,6 +2,10 @@
 
 source $HOME/.bashlib
 
+if [[ -z "$DEV_ENV" ]]; then
+	DEV_ENV="/home/blackstar/projects/setup"
+fi
+
 query=""
 state="false"
 reapply="false"
