@@ -81,6 +81,13 @@ else
 	copy "$fallback/ghostty" "$HOME/.config/ghostty/theme"
 fi
 
+# NOTE: kitty
+if [[ -f "$f/kitty.conf" ]]; then
+	copy "$f/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+else
+	copy "$fallback/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+fi
+
 # NOTE: hyprland
 if [[ -f "$f/hyprland.conf" ]]; then
 	copy "$f/hyprland.conf" "$HOME/.config/hypr/theme.conf"
