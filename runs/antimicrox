@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+yes | sudo apt install g++ gcc
+yes | sudo apt install cmake
+yes | sudo apt install extra-cmake-modules
+yes | sudo apt install qt6-base-dev qt6-tools-dev-tools libqt6core5compat6-dev qt6-tools-dev
+yes | sudo apt install libsdl2-dev
+yes | sudo apt install libxi-dev
+yes | sudo apt install libxtst-dev
+yes | sudo apt install libx11-dev
+yes | sudo apt install itstool
+yes | sudo apt install gettext
+
+git clone https://github.com/AntiMicroX/antimicrox.git $HOME/vendor/antimicrox
+pushd $HOME/vendor/antimicrox
+mkdir build
+pushd build
+cmake ..
+cmake --build .
+popd
+
