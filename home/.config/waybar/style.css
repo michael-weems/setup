@@ -29,7 +29,7 @@
 
 #custom-os-logo {
     /* https://docs.gtk.org/gtk3/css-overview.html#scaled-images-in-css */
-    background-image: url('/usr/share/pixmaps/archlinux-logo.svg');
+    background-image: url('/home/blackstar/Pictures/blackstar.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
