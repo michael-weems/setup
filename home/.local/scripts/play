@@ -3,13 +3,13 @@
 TOOL_DIR="$HOME/projects/mpv-playlists"
 PLAYLIST_DIR="$HOME/playlists"
 
-playlist=$(find $PLAYLIST_DIR -type f -name "*.m3u" | awk -F"/" '{ print $NF }' | sed 's/\.[^.]*$//' | fzf --preview 'bat {}' --preview-window=right,50%)
+playlist=$(find $PLAYLIST_DIR -type f -name "*.m3u" | awk -F"/" '{ print $NF }' | sed 's/\.[^.]*$//' | fzf --preview 'batcat --colors=always --style=numbers {}' --preview-window=right,50%)
 if [[ -z "$playlist" ]]; then
 	echo "no playlist selected"
 	exit 0
 fi
 
-config=$(find $PLAYLIST_DIR -type f -name "*.json" | awk -F"/" '{ print $NF }' | sed 's/\.[^.]*$//' | fzf --preview 'bat {}' --preview-window=right,50%)
+config=$(find $PLAYLIST_DIR -type f -name "*.json" | awk -F"/" '{ print $NF }' | sed 's/\.[^.]*$//' | fzf --preview 'batcat --colors=always --plain {}' --preview-window=right,50%)
 if [[ -z "$config" ]]; then
 	echo "no config selected, using default"
 	config="${PLAYLIST_DIR}/pi.json"
