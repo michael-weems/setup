@@ -1,5 +1,6 @@
 alias vim="nvim"
 
+alias python="python3"
 alias lua51="$HOME/vendor/lua-5.1.5/bin/lua"
 alias luac51="$HOME/vendor/lua-5.1.5/bin/luac"
 
