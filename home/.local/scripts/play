@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+pushd $HOME/playlists 
+python $HOME/projects/mpv-playlists/play.py -c pi.json $@
+popd
+
