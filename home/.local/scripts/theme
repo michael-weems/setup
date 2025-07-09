@@ -143,3 +143,27 @@ echo "Please perform the following"
 echo "  - ghostty: all open instances --> Ctrl+Shift+r"
 echo "  - tmux --> tmux kill-server (re-sourcing config doesn't quite work right)"
 
+# reload everything
+pkill hyprpaper 
+pkill waybar 
+
+# hypr
+hyprctl reload
+
+# waybar
+waybar &
+
+# hyprpaper
+pkill hyprpaper 
+hyprpaper &
+
+# ensure monitors are correct
+pkill kanshi 
+kanshi &
+
+pkill antimicrox
+antimicrox --profile $HOME/play.gamecontroller.amgp --hidden &
+
+sleep 0.1 
+wallpaper --reapply
+
