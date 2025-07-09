@@ -17,5 +17,8 @@ hyprpaper &
 pkill kanshi 
 kanshi &
 
+pkill antimicrox
+antimicrox --profile $HOME/play.gamecontroller.amgp --hidden &
+
 sleep 0.1 
 wallpaper --reapply
