@@ -56,6 +56,7 @@ copy $DEV_ENV/home/.bash_logout $HOME/.bash_logout
 copy $DEV_ENV/home/.tmux-sessionizer $HOME/.tmux-sessionizer
 copy $DEV_ENV/.bashlib $HOME/.bashlib
 copy $DEV_ENV/home/.config/tmux/.tmux.conf $HOME/.tmux.conf # TMUX is also supposed to find the conf under $XDG_CONFIG_HOME/tmux, so why can't it?
+copy $DEV_ENV/home/play.gamecontroller.amgp $HOME/play.gamecontroller.amgp
 
 source $HOME/.profile
 source $HOME/.bashrc
