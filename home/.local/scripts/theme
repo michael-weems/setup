@@ -30,10 +30,10 @@ if [[ "$reapply" == "true" ]]; then
 	fi
 elif [[ ! -z "$query" ]]; then 
 	# NOTE: find a theme based on input query
-	theme=$(ls $base/.local/themes | fzf -q $query --bind one:accept)
+	theme=$(ls $base/.local/themes | fzf --cycle -q $query --bind one:accept)
 else 
 	# NOTE: find a theme based on input query
-	theme=$(ls $base/.local/themes | fzf)
+	theme=$(ls $base/.local/themes | fzf --cycle)
 fi
 
 if [[ -z "$theme" ]]; then
