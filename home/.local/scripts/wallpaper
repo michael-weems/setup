@@ -3,7 +3,7 @@
 source $HOME/.bashlib
 
 if [[ -z "$DEV_ENV" ]]; then
-	DEV_ENV="/home/blackstar/projects/setup"
+	export DEV_ENV="$HOME/projects/setup"
 fi
 
 query=""
@@ -28,10 +28,10 @@ if [[ "$reapply" == "true" ]]; then
 
 	wp=$(cat $HOME/.local/state/theme/wallpaper)
 elif [[ -z "$query" ]]; then
-        wp=$(find $DEV_ENV/wallpapers -mindepth 1 -maxdepth 1 -type f | xargs basename | fzf --preview '$HOME/.local/scripts/fzf-preview $DEV_ENV/wallpapers/{}' --preview-window=right,70%)
+        wp=$(find $DEV_ENV/wallpapers -mindepth 1 -maxdepth 1 -type f -exec basename {} \; | sort | fzf --cycle --preview '$HOME/.local/scripts/fzf-preview $HOME/projects/setup/wallpapers/{}' --preview-window=right,70%)
 	wp="$DEV_ENV/wallpapers/$wp"
 else
-        wp=$(find $DEV_ENV/wallpapers -mindepth 1 -maxdepth 1 -type f | xargs basename | fzf --preview '$HOME/.local/scripts/fzf-preview $DEV_ENV/wallpapers/{}' --preview-window=right,70% -q $query --bind one:accept)
+        wp=$(find $DEV_ENV/wallpapers -mindepth 1 -maxdepth 1 -type f -exec basename {} \; | sort | fzf --cycle --preview '$HOME/.local/scripts/fzf-preview $HOME/projects/setup/wallpapers/{}' --preview-window=right,70% -q $query --bind one:accept)
 	wp="$DEV_ENV/wallpapers/$wp"
 fi
 
@@ -54,8 +54,14 @@ fi
 echo "$wp" > $HOME/.local/state/theme/wallpaper
 
 if [[ "$state" == "false" ]]; then
+
+	pkill hyprpaper
+	sleep 0.1
+	nohup hyprpaper &
+	sleep 0.1
+	
 	# actually set the wallpaper
 	hyprctl hyprpaper preload "$wp"
-	hyprctl hyprpaper wallpaper "HDMI-A-1,${wp}"
+	hyprctl hyprpaper wallpaper " , ${wp}"
 fi
 
