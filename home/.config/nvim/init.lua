@@ -175,6 +175,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- tmux sessionizer
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 
+-- tmux todo popup
+vim.keymap.set('n', '<C-g>', '<cmd>silent !tmux display-popup -E "vim ~/todo.md" <CR>')
+
 -- NOTE: doesn't work just right: kills nvim when theme is applied for some reason
 -- theme switcher
 -- vim.keymap.set('n', '<C-b>', ':term theme<CR>')
