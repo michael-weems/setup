@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# NOTE: funnily enough, python lsp 'pyright' relies on node.js, and is developed by microsoft
+
+yes | sudo pacman -S nodejs npm
