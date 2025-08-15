@@ -123,6 +123,17 @@ function sessionizer() {
 }
 bind -x '"\C-f": sessionizer'
 
+function global_todo() {
+    tmux_running=$(pgrep tmux)
+    if [[ -z $tmux_running ]]; then
+	vim ~/todo.md
+    else
+	tmux popup -h 95% -w 95% -E "tmux attach -t todo:global || tmux new -s todo:global 'vim ~/todo.md'"
+    fi
+}
+export -f global_todo
+bind -x '"\C-g": global_todo'
+
 function change_theme() {
     $HOME/.local/scripts/theme
 }
