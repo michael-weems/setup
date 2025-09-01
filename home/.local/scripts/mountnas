@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "run the below command:"
+echo
+echo "  sudo mount <ip.address>:</mnt/shared/dir/on/nas> /mnt/path/to/local/dir"

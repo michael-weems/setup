@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+mkdir -p $HOME/vendor
+pushd $HOME/vendor
+[ ! -d sokol ] && git clone https://github.com/floooh/sokol.git
+cd sokol
+cd bindgen
+
+[ ! -d sokol-zig ] && git clone https://github.com/floooh/sokol-zig
+[ ! -d sokol-nim ] && git clone https://github.com/floooh/sokol-nim
+[ ! -d sokol-odin ] && git clone https://github.com/floooh/sokol-odin
+[ ! -d sokol-rust ] && git clone https://github.com/floooh/sokol-rust
+[ ! -d sokol-d ] && git clone https://github.com/kassane/sokol-d
+[ ! -d sokol-jai ] && git clone https://github.com/colinbellino/sokol-jai
+[ ! -d sokol-c3 ] && git clone https://github.com/floooh/sokol-c3
+
+python3 gen_all.py
