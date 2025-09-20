@@ -26,3 +26,4 @@ alias l='ls -CF'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias pf="fzf --preview='bat --color=always {}' --bind shift-up:preview-up,shift-down:preview-down"
+alias pngdir="fzf --preview='chafa -f kitty {}' --bind shift-up:preview-up,shift-down:preview-down"
