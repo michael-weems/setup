@@ -35,8 +35,4 @@ export PATH
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# directly launch hyprland on systemd boot
-if uwsm check may-start; then
-    exec uwsm start hyprland.desktop
-fi
 

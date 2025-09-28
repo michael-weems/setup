@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-yes | sudo pacman -S rpi-imager

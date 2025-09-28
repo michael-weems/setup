@@ -4,12 +4,3 @@
 [submodule "tmux-sessionizer"]
 	path = tmux-sessionizer
 	url = git@github.com:ThePrimeagen/tmux-sessionizer.git
-[submodule "wallpapers"]
-	path = wallpapers
-	url = git@github.com:michael-weems/wallpapers-personal.git
-[submodule "home/.config/tmux/plugins/rose-pine/tmux"]
-	path = home/.config/tmux/plugins/rose-pine/tmux
-	url = git@github.com:rose-pine/tmux.git
-[submodule "home/.config/tmux/plugins/catppuccin/tmux"]
-	path = home/.config/tmux/plugins/catppuccin/tmux
-	url = git@github.com:catppuccin/tmux.git
