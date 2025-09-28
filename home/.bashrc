@@ -15,6 +15,7 @@ export DEV_ENV="$HOME/projects/setup"
 
 export EDITOR=$VIM
 export GIT_EDITOR=$EDITOR
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
