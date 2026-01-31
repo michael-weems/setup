@@ -11,7 +11,7 @@ esac
 eval "$(starship init bash)"
 
 export XDG_CONFIG_HOME=$HOME/.config
-VIM="nvim"
+VIM="vim"
   
 export DEV_ENV="$HOME/projects/setup"
 

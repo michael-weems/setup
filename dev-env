@@ -48,6 +48,7 @@ fi
 
 log "copy config files to runtime locations"
 
+copy $DEV_ENV/home/.vimrc $HOME/.vimrc
 copy $DEV_ENV/home/.profile $HOME/.profile
 copy $DEV_ENV/home/.bashrc $HOME/.bashrc
 copy $DEV_ENV/home/.bash_profile $HOME/.bash_profile
@@ -63,11 +64,13 @@ source $HOME/.bash_profile
 source $HOME/.bash_aliases
 source $HOME/.bash_logout
 
+copy_dir $DEV_ENV/home/.vim $HOME/.vim
 copy_dir $DEV_ENV/home/.config $XDG_CONFIG_HOME
 copy_dir $DEV_ENV/home/.local $HOME/.local
 
 copy $DEV_ENV/tmux-sessionizer/tmux-sessionizer $HOME/.local/scripts/tmux-sessionizer 
 copy $DEV_ENV/dev-env $HOME/.local/scripts/dev-env
+
 
 toggledock # create monitor config for current setup
 
