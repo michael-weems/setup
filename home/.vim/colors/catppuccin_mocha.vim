@@ -8,7 +8,7 @@ if exists('syntax on')
 endif
 
 let g:colors_name='catppuccin_mocha'
-set t_Co=256
+set termguicolors
 
 let s:rosewater = "#F5E0DC"
 let s:flamingo = "#F2CDCD"

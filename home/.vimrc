@@ -3,8 +3,7 @@
 
 "" ----------------------------------------------
 "" Imports
-syntax on
-colorscheme "catppuccin_mocha"
+source ~/.vim/colors/catppuccin_mocha.vim
 
 "" ----------------------------------------------
 "" Set
@@ -134,15 +133,15 @@ noremap <silent> <expr> <C-k> (line('.') - search('^\n.\+$', 'Wenb')) . 'kzv^'
 noremap <silent> <expr> <C-j> (search('^\n.\+$', 'Wenb') - line('.')) . 'jzv^'
 
 " Create file's directory before saving, if it doesn't exist.
-augroup BWCCreateDir
-	autocmd!
-	autocmd BufWritePre * :call s:MkNonExdir(expand('<afile>'), +expand('<abuf>'))
-augroup END
-fun! s:MkNonExDir(file, buf)
-	if empty(getbufvar(a:buf, '&buftype')) && a:file !~# '\v^\w+\:\/'
-		call mkdir(fnamemodify(a:file, ':h'), 'p')
-	endif
-endfun
+"augroup BWCCreateDir
+"	autocmd!
+"	autocmd BufWritePre * :call s:MkNonExdir(expand('<afile>'), +expand('<abuf>'))
+"augroup END
+"fun! s:MkNonExDir(file, buf)
+"	if empty(getbufvar(a:buf, '&buftype')) && a:file !~# '\v^\w+\:\/'
+"		call mkdir(fnamemodify(a:file, ':h'), 'p')
+"	endif
+"endfun
 
 " remap <C-^> to always switch to a buffer, even if the previous one doesn't
 " exist
@@ -186,14 +185,19 @@ nnoremap <Leader>8 :call Switch_to_pins(8)<CR>
 nnoremap <Leader>9 :call Switch_to_pins(9)<CR>
 nnoremap <Leader>0 :call Switch_to_pins(0)<CR>
 
-fun s:Add_to_pins() 
+fun Add_to_pins() 
    let file_info = expand('%:p') . line('.')
    call writefile(file_info, "~/.vim/pins", "a")
 endfun
-fun s:Show_pins()
+fun Show_pins()
    execute "find ~/.vim/pins"
 endfun
-fun s:Switch_to_pin(idx)
+fun Switch_to_pin(idx)
    let file_info = system("sed -n '" . a:idx . "p' ~/.vim/pins")  
    execute "find " . file_info
 endfun
+
+"" ----------------------------------------------
+"" Color Scheme
+set termguicolors
+syntax on
