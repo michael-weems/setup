@@ -18,6 +18,9 @@ export DEV_ENV="$HOME/projects/setup"
 export EDITOR=$VIM
 export GIT_EDITOR=$EDITOR
 
+mkdir -p ~/.vim
+touch ~/.vim/pins
+
 PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/scripts:$PATH"

@@ -172,3 +172,28 @@ fun! ReverseLines(type) abort
         let l2 -= 1
     endfor
 endfun
+
+nnoremap <Leader>ma :call Add_to_pins()<CR>
+nnoremap <Leader>ms :call Show_pins()<CR>
+nnoremap <Leader>1 :call Switch_to_pins(1)<CR>
+nnoremap <Leader>2 :call Switch_to_pins(2)<CR>
+nnoremap <Leader>3 :call Switch_to_pins(3)<CR>
+nnoremap <Leader>4 :call Switch_to_pins(4)<CR>
+nnoremap <Leader>5 :call Switch_to_pins(5)<CR>
+nnoremap <Leader>6 :call Switch_to_pins(6)<CR>
+nnoremap <Leader>7 :call Switch_to_pins(7)<CR>
+nnoremap <Leader>8 :call Switch_to_pins(8)<CR>
+nnoremap <Leader>9 :call Switch_to_pins(9)<CR>
+nnoremap <Leader>0 :call Switch_to_pins(0)<CR>
+
+fun s:Add_to_pins() 
+   let file_info = expand('%:p') . line('.')
+   call writefile(file_info, "~/.vim/pins", "a")
+endfun
+fun s:Show_pins()
+   execute "find ~/.vim/pins"
+endfun
+fun s:Switch_to_pin(idx)
+   let file_info = system("sed -n '" . a:idx . "p' ~/.vim/pins")  
+   execute "find " . file_info
+endfun
