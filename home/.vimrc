@@ -102,14 +102,13 @@ function! SourceDynamicFile(filename)
 	execute "source" a:filename
 endfunction
 
+" TODO: function and mapping to clean sessions (delete all existing session files)
+
 function! LoadSession(file)
 	" Cache off existing session
         let fwr = system("find_workspace_root")
-        echo "workspace root: " . fwr
 	let project_name = system("basename $(find_workspace_root)")
-        echo "project name: " . project_name
 	let session_file = trim(fnameescape(project_name))
-        echo "session file: " . session_file
 
 	" update session for current project
 	let base_dir = '~/.vim/sessions'
