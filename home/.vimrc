@@ -208,7 +208,7 @@ fun Add_to_pins()
    call writefile([file_info], "/home/dang/.vim/pins", "a")
 endfun
 fun Show_pins()
-   execute "split /home/dang/.vim/pins"
+   exe "split" . "/home/dang/.vim/pins"
 endfun
 fun Switch_to_pin(idx)
    let file_info = system("sed -n '" . a:idx . "p' /home/dang/.vim/pins")  
