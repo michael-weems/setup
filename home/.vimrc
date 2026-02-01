@@ -66,21 +66,23 @@ nnoremap <Leader>sf :cexpr system('find_file "" $(find_workspace_root)')<Left><L
 nnoremap <Leader>sk :map<CR>
 
 " git
-nnoremap <Leader>gc :cexpr system('list_git_conflicts')<Cr><Leader>q
+nnoremap <Leader>gc :cexpr system('list_git_conflicts')<Cr>:copen<CR>
 " todos
 nnoremap <Leader>st :vimgrep /todo\c/ **/*<Cr>
 nnoremap <Leader>bt :vimgrep /todo\c/ %<Cr>
 " list files
 nnoremap <Leader>lpf :call <SID>Cd_to_repo_root()<CR>:call All_files_to_qflist()<CR>:copen<CR>
 nnoremap <Leader>ldf :call All_files_to_qflist()<CR>:copen<CR>
-
+" quit
+nnoremap <Leader>q :q<Cr>
+nnoremap <Leader>w :w<Cr>
 " Quick Fix List
-nnoremap <Leader>qq :copen<Cr>
-nnoremap <Leader>qw :cclose<Cr>
-nnoremap <Leader>qj :cnext<Cr>
-nnoremap <Leader>qk :cprevious<Cr>
-nnoremap <Leader>qG :clast<Cr>
-nnoremap <Leader>qgg :first<Cr>
+nnoremap <Leader>cq :copen<Cr>
+nnoremap <Leader>cw :cclose<Cr>
+nnoremap <Leader>cj :cnext<Cr>
+nnoremap <Leader>ck :cprevious<Cr>
+nnoremap <Leader>cG :clast<Cr>
+nnoremap <Leader>cgg :first<Cr>
 " 'fzf' like switcher
 nnoremap <C-f> :SwitchProject ~/projects/
 " global todos
@@ -206,7 +208,7 @@ fun Add_to_pins()
    call writefile([file_info], "/home/dang/.vim/pins", "a")
 endfun
 fun Show_pins()
-   execute "find /home/dang/.vim/pins"
+   execute "hnew /home/dang/.vim/pins"
 endfun
 fun Switch_to_pin(idx)
    let file_info = system("sed -n '" . a:idx . "p' /home/dang/.vim/pins")  
