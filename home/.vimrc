@@ -28,7 +28,7 @@ let g:netrw_banner = 0
 let g:netrw_keepdir = 0
 let g:netrw_localcopydircmd = 'cp -r'
 
-" all yank operations use the system clipboard
+" all yank/delete operations use the system clipboard
 set clipboard=unnamed,unnamedplus
 
 " for find, recursively look for files in dir
@@ -208,7 +208,7 @@ fun Add_to_pins()
    call writefile([file_info], "/home/dang/.vim/pins", "a")
 endfun
 fun Show_pins()
-   execute "hnew /home/dang/.vim/pins"
+   execute "split /home/dang/.vim/pins"
 endfun
 fun Switch_to_pin(idx)
    let file_info = system("sed -n '" . a:idx . "p' /home/dang/.vim/pins")  
