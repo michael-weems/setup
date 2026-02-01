@@ -59,9 +59,10 @@ nnoremap <Leader>d :b *
 " Find/edit files using the quickfix list
 nnoremap <Leader>sg :cexpr system('grep -rn "" $(find_workspace_root)')<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 nnoremap <Leader>sf :cexpr system('find_file "" $(find_workspace_root)')<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <Leader>sk :map<CR>
 
 " git
-nnoremap <Leader>sc :cexpr system('list_git_conflicts')<Cr><Leader>q
+nnoremap <Leader>gc :cexpr system('list_git_conflicts')<Cr><Leader>q
 " todos
 nnoremap <Leader>st :vimgrep /todo\c/ **/*<Cr>
 nnoremap <Leader>bt :vimgrep /todo\c/ %<Cr>
