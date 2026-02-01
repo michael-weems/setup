@@ -101,8 +101,12 @@ endfunction
 
 function! LoadSession(file)
 	" Cache off existing session
+        let fwr = system("find_workspace_root")
+        echo "workspace root: " . fwr
 	let project_name = system("basename $(find_workspace_root)")
+        echo "project name: " . project_name
 	let session_file = trim(fnameescape(project_name))
+        echo "session file: " . session_file
 
 	" update session for current project
 	let base_dir = '~/.vim/sessions'
@@ -127,6 +131,9 @@ command! -nargs=1 -complete=file SwitchProject call LoadSession(<q-args>)
 
 " open command mode with running shell command
 nnoremap <Leader>e :!
+
+" terminal
+nnoremap <Leader>to :terminal<CR>
 
 " jump over paragraphs
 noremap <silent> <expr> <C-k> (line('.') - search('^\n.\+$', 'Wenb')) . 'kzv^'

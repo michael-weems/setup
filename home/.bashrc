@@ -177,14 +177,25 @@ find_file() {
 }
 export -f find_file
 
+search_up_for_dir() {
+    # Function to search up the directory tree for a specific folder
+    local look=${PWD%/}
+    while [[ -n $look ]]; do
+        if [[ -d "$look/$1" ]]; then
+            printf '%s\n' "$look"
+            return 0
+        fi
+        if [[ "$look" == "/" ]]; then
+            break
+        fi
+        look=${look%/*}
+    done
+    return 1
+}
+export -f search_up_for_dir
+
 find_workspace_root() {
-   while [ "$PWD" != "/" ]; do
-       if [ -d ".git" ]; then
-           break
-       fi
-       cd ..
-   done
-   pwd
+   search_up_for_dir ".git" && return 0 || return 1
 }
 export -f find_workspace_root
 
