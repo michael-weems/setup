@@ -11,6 +11,10 @@ let mapleader = " "
 set number
 set relativenumber
 
+" split defaults
+set splitright
+set splitbelow
+
 " turn off persistent search highlighting
 set nohlsearch
 
@@ -197,16 +201,15 @@ fun! ReverseLines(type) abort
     endfor
 endfun
 
-
 fun Add_to_pins() 
    let file_info = expand('%:p') . line('.')
-   call writefile(file_info, "~/.vim/pins", "a")
+   call writefile([file_info], "/home/dang/.vim/pins", "a")
 endfun
 fun Show_pins()
-   execute "find ~/.vim/pins"
+   execute "find /home/dang/.vim/pins"
 endfun
 fun Switch_to_pin(idx)
-   let file_info = system("sed -n '" . a:idx . "p' ~/.vim/pins")  
+   let file_info = system("sed -n '" . a:idx . "p' /home/dang/.vim/pins")  
    execute "find " . file_info
 endfun
 
