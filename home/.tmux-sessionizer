@@ -1,23 +1,12 @@
 #!/usr/bin/env bash
 
-windows=$(tmux display-message -p '#{session_windows}')
-if [[ $windows == "3" ]]; then
-	exit 0
-fi
-
 tmux kill-window -a # kill all but currently active window
 
-# window 2 (access via <prefix> 2 --> C-a 2)
-tmux neww -d -n notes
-tmux send-keys -t notes "vim todo.md" ^M
-
 # window 3 (access via <prefix> 3 --> C-a 3)
-tmux neww -n vim
-tmux send-keys -t vim "vim ." ^M
+project_name=$(basename $(pwd))
+tmux neww -d -n "${project_name}"
+tmux send-keys -t "${project_name}" "vim ." ^M
 
-# window 4 (access via <prefix> 4 --> C-a 4)
-tmux neww -d -n terminal
-
-tmux kill-window -t 2 # kill original window
+tmux kill-window -t 3 # kill original window
 
 tmux select-window -t 3

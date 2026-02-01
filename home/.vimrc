@@ -60,11 +60,59 @@ nnoremap <Leader>d :b *
 nnoremap <Leader>sg :cexpr system('grep -rn "" $(find_workspace_root)')<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 nnoremap <Leader>sf :cexpr system('find_file "" $(find_workspace_root)')<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
+" git
+nnoremap <Leader>sc :cexpr system('list_git_conflicts')<Cr><Leader>q
 " todos
 nnoremap <Leader>st :vimgrep /todo\c/ **/*<Cr>
-nnoremap <Leader>ft :vimgrep /todo\c/ %<Cr>
-nnoremap <Leader>pf :call <SID>Cd_to_repo_root()<CR>:call All_files_to_qflist()<CR>:copen<CR>
-nnoremap <Leader>lf :call All_files_to_qflist()<CR>:copen<CR>
+nnoremap <Leader>bt :vimgrep /todo\c/ %<Cr>
+" list files
+nnoremap <Leader>lpf :call <SID>Cd_to_repo_root()<CR>:call All_files_to_qflist()<CR>:copen<CR>
+nnoremap <Leader>ldf :call All_files_to_qflist()<CR>:copen<CR>
+
+" Quick Fix List
+nnoremap <Leader>qq :copen<Cr>
+nnoremap <Leader>qw :cclose<Cr>
+nnoremap <Leader>qj :cnext<Cr>
+nnoremap <Leader>qk :cprevious<Cr>
+nnoremap <Leader>qG :clast<Cr>
+nnoremap <Leader>qgg :first<Cr>
+" 'fzf' like switcher
+nnoremap <C-f> :SwitchProject ~/projects/
+" global todos
+nnoremap <C-g> :find ~/notes/todo.md<CR>
+" project todos
+nnoremap <Leader>pt :call EditFile(trim(system('find_workspace_root')) . "/todo.md")<CR>
+" open command mode with running shell command
+nnoremap <Leader>e :!
+" terminal
+nnoremap <Leader>to :terminal<CR>
+" jump over paragraphs
+noremap <silent> <expr> <C-k> (line('.') - search('^\n.\+$', 'Wenb')) . 'kzv^'
+noremap <silent> <expr> <C-j> (search('^\n.\+$', 'Wenb') - line('.')) . 'jzv^'
+" remap <C-^> to always switch to a buffer, even if the previous one doesn't
+" exist
+nnoremap <silent> <C-n> :<C-u>exe v:count ? v:count . 'b' : 'b' . (bufloaded(0) ? '#' : 'n')<CR>
+" Sort lines, selected over motion
+" - gsip -> sort inside current paragraph
+" - gsiB -> sort inside closest braces
+xnoremap <silent> gs :sort i<CR>
+nnoremap <silent> gs :set opfunc=SortLines<CR>g@
+" Reverse lines, selected or over motion.
+nnoremap <silent> gr :set opfunc=ReverseLines<CR>g@
+vnoremap <silent> gr :<C-u>call ReverseLines('vis')<CR>
+" File switching
+nnoremap <Leader>ma :call Add_to_pins()<CR>
+nnoremap <Leader>ms :call Show_pins()<CR>
+nnoremap <Leader>1 :call Switch_to_pins(1)<CR>
+nnoremap <Leader>2 :call Switch_to_pins(2)<CR>
+nnoremap <Leader>3 :call Switch_to_pins(3)<CR>
+nnoremap <Leader>4 :call Switch_to_pins(4)<CR>
+nnoremap <Leader>5 :call Switch_to_pins(5)<CR>
+nnoremap <Leader>6 :call Switch_to_pins(6)<CR>
+nnoremap <Leader>7 :call Switch_to_pins(7)<CR>
+nnoremap <Leader>8 :call Switch_to_pins(8)<CR>
+nnoremap <Leader>9 :call Switch_to_pins(9)<CR>
+nnoremap <Leader>0 :call Switch_to_pins(0)<CR>
 
 function! All_files_to_qflist()
 	" Find all .txt files in the current dir and subdirs
@@ -77,26 +125,14 @@ function! All_files_to_qflist()
 	call setqflist(qflist)
 endfunction
 
-nnoremap <Leader>sc :cexpr system('list_git_conflicts')<Cr><Leader>q
 
-nnoremap <Leader>q :copen<Cr>
-nnoremap <Leader>w :cclose<Cr>
-nnoremap <Leader>j :cnext<Cr>
-nnoremap <Leader>k :cprevious<Cr>
-nnoremap <Leader>G :clast<Cr>
-nnoremap <Leader>gg :first<Cr>
-
-" navigate splits with C-hjkl
-"nnoremap <Leader>wh <C-w>h
-"nnoremap <Leader>wj <C-w>j
-"nnoremap <Leader>wk <C-w>k
-"nnoremap <Leader>wl <C-w>l
-
-" 'fzf' like switcher
-nnoremap <C-f> :SwitchProject ~/projects/
-
-" global todo
-nnoremap <C-g> :find ~/notes/todo.md<CR>
+function! EditFile(file)
+   if filereadable(expand(a:file))
+      execute 'find ' . a:file
+   else
+      execute 'e ' . a:file
+   endif
+endfunction
 
 function! SourceDynamicFile(filename)
 	execute "source" a:filename
@@ -131,15 +167,6 @@ endfunction
 
 command! -nargs=1 -complete=file SwitchProject call LoadSession(<q-args>)
 
-" open command mode with running shell command
-nnoremap <Leader>e :!
-
-" terminal
-nnoremap <Leader>to :terminal<CR>
-
-" jump over paragraphs
-noremap <silent> <expr> <C-k> (line('.') - search('^\n.\+$', 'Wenb')) . 'kzv^'
-noremap <silent> <expr> <C-j> (search('^\n.\+$', 'Wenb') - line('.')) . 'jzv^'
 
 " Create file's directory before saving, if it doesn't exist.
 "augroup BWCCreateDir
@@ -152,22 +179,10 @@ noremap <silent> <expr> <C-j> (search('^\n.\+$', 'Wenb') - line('.')) . 'jzv^'
 "	endif
 "endfun
 
-" remap <C-^> to always switch to a buffer, even if the previous one doesn't
-" exist
-nnoremap <silent> <C-n> :<C-u>exe v:count ? v:count . 'b' : 'b' . (bufloaded(0) ? '#' : 'n')<CR>
-
-" Sort lines, selected over motion
-" - gsip -> sort inside current paragraph
-" - gsiB -> sort inside closest braces
-xnoremap <silent> gs :sort i<CR>
-nnoremap <silent> gs :set opfunc=SortLines<CR>g@
 fun! SortLines(type) abort
     '[,']sort i
 endfun
 
-" Reverse lines, selected or over motion.
-nnoremap <silent> gr :set opfunc=ReverseLines<CR>g@
-vnoremap <silent> gr :<C-u>call ReverseLines('vis')<CR>
 fun! ReverseLines(type) abort
     let marks = a:type ==? 'vis' ? '<>' : '[]'
     let [_, l1, c1, _] = getpos("'" . marks[0])
@@ -181,19 +196,6 @@ fun! ReverseLines(type) abort
     endfor
 endfun
 
-" File switching
-nnoremap <Leader>ma :call Add_to_pins()<CR>
-nnoremap <Leader>ms :call Show_pins()<CR>
-nnoremap <Leader>1 :call Switch_to_pins(1)<CR>
-nnoremap <Leader>2 :call Switch_to_pins(2)<CR>
-nnoremap <Leader>3 :call Switch_to_pins(3)<CR>
-nnoremap <Leader>4 :call Switch_to_pins(4)<CR>
-nnoremap <Leader>5 :call Switch_to_pins(5)<CR>
-nnoremap <Leader>6 :call Switch_to_pins(6)<CR>
-nnoremap <Leader>7 :call Switch_to_pins(7)<CR>
-nnoremap <Leader>8 :call Switch_to_pins(8)<CR>
-nnoremap <Leader>9 :call Switch_to_pins(9)<CR>
-nnoremap <Leader>0 :call Switch_to_pins(0)<CR>
 
 fun Add_to_pins() 
    let file_info = expand('%:p') . line('.')
