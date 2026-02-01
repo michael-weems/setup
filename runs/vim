@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Use 'gvim' instead of 'vim' so I can have +clipboard
+yes | sudo pacman -S gvim
