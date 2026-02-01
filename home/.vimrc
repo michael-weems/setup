@@ -202,7 +202,7 @@ fun! ReverseLines(type) abort
 endfun
 
 fun Add_to_pins() 
-   let file_info = expand('%:p') . line('.')
+   let file_info = expand('%:p') . " | " .  line('.')
    call writefile([file_info], "/home/dang/.vim/pins", "a")
 endfun
 fun Show_pins()
