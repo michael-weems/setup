@@ -77,8 +77,8 @@ nnoremap <Leader>ldf :call All_files_to_qflist()<CR>:copen<CR>
 nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>w :w<Cr>
 " Quick Fix List
-nnoremap <Leader>cq :copen<Cr>
-nnoremap <Leader>cw :cclose<Cr>
+nnoremap <Leader>co :copen<Cr>
+nnoremap <Leader>cq :cclose<Cr>
 nnoremap <Leader>cj :cnext<Cr>
 nnoremap <Leader>ck :cprevious<Cr>
 nnoremap <Leader>cG :clast<Cr>
