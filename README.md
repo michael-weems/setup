@@ -15,7 +15,7 @@ curl -s https://raw.githubusercontent.com/michael-weems/setup/refs/heads/master/
 To copy all dotfiles, scripts, and configurations from this repo to the proper places on the computer, run the below command. Overwrites whatever existed there before.
 
 ```bash
-./dev-env # please run with --help first
+source dev-env # please run with --help first
 ```
 
 To install applications and setup application specific configurations, like for neovim or ghostty, run the below command.
