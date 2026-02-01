@@ -95,6 +95,9 @@ nnoremap <Leader>gg :first<Cr>
 " 'fzf' like switcher
 nnoremap <C-f> :SwitchProject ~/projects/
 
+" global todo
+nnoremap <C-g> :find ~/notes/todo.md<CR>
+
 function! SourceDynamicFile(filename)
 	execute "source" a:filename
 endfunction

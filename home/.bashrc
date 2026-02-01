@@ -21,6 +21,9 @@ export GIT_EDITOR=$EDITOR
 mkdir -p ~/.vim
 touch ~/.vim/pins
 
+mkdir -p ~/notes
+touch ~/notes/todo.md
+
 PATH="$PATH:$HOME/bin"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/scripts:$PATH"
@@ -129,9 +132,9 @@ bind -x '"\C-f": sessionizer'
 function global_todo() {
     tmux_running=$(pgrep tmux)
     if [[ -z $tmux_running ]]; then
-	vim ~/todo.md
+	vim ~/notes/todo.md
     else
-	tmux popup -h 95% -w 95% -E "tmux attach -t todo:global || tmux new -s todo:global 'vim ~/todo.md'"
+	tmux popup -h 95% -w 95% -E "tmux attach -t todo:global || tmux new -s todo:global 'vim ~/notes/todo.md'"
     fi
 }
 export -f global_todo
