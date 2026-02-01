@@ -87,10 +87,10 @@ nnoremap <Leader>G :clast<Cr>
 nnoremap <Leader>gg :first<Cr>
 
 " navigate splits with C-hjkl
-nnoremap <Leader>wh <C-w>h
-nnoremap <Leader>wj <C-w>j
-nnoremap <Leader>wk <C-w>k
-nnoremap <Leader>wl <C-w>l
+"nnoremap <Leader>wh <C-w>h
+"nnoremap <Leader>wj <C-w>j
+"nnoremap <Leader>wk <C-w>k
+"nnoremap <Leader>wl <C-w>l
 
 " 'fzf' like switcher
 nnoremap <C-f> :SwitchProject ~/projects/
@@ -172,6 +172,7 @@ fun! ReverseLines(type) abort
     endfor
 endfun
 
+" File switching
 nnoremap <Leader>ma :call Add_to_pins()<CR>
 nnoremap <Leader>ms :call Show_pins()<CR>
 nnoremap <Leader>1 :call Switch_to_pins(1)<CR>
@@ -196,6 +197,10 @@ fun Switch_to_pin(idx)
    let file_info = system("sed -n '" . a:idx . "p' ~/.vim/pins")  
    execute "find " . file_info
 endfun
+
+"" ----------------------------------------------
+"" Automations
+autocmd BufEnter * silent! lcd %:h
 
 "" ----------------------------------------------
 "" Color Scheme

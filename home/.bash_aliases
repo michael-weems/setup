@@ -27,3 +27,5 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias pf="fzf --preview='bat --color=always {}' --bind shift-up:preview-up,shift-down:preview-down"
 alias pngdir="fzf --preview='chafa -f kitty {}' --bind shift-up:preview-up,shift-down:preview-down"
+
+alias dotfiles="source ~/projects/setup/dev-env"

@@ -168,5 +168,25 @@ function dlyt() {
 }
 export -f dlyt
 
+find_file() {
+   local filter="$1"
+   local dir="$2"
+   [[ "$dir" == "" ]] && dir="."
+
+   find "${dir}" -type f -name "*${filter}*" -printf "%p:1:%TY-%Tm-%Td\n"
+}
+export -f find_file
+
+find_workspace_root() {
+   while [ "$PWD" != "/" ]; do
+       if [ -d ".git" ]; then
+           break
+       fi
+       cd ..
+   done
+   pwd
+}
+export -f find_workspace_root
+
 sleep 1
 fastfetch # display system info on terminal load
