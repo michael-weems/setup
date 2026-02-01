@@ -119,7 +119,7 @@ nnoremap <Leader>6 :call Switch_to_pin(6)<CR>
 nnoremap <Leader>7 :call Switch_to_pin(7)<CR>
 nnoremap <Leader>8 :call Switch_to_pin(8)<CR>
 nnoremap <Leader>9 :call Switch_to_pin(9)<CR>
-nnoremap <Leader>0 :call Switch_to_pin(0)<CR>
+nnoremap <Leader>0 :call Switch_to_pin(10)<CR>
 
 function! All_files_to_qflist()
 	" Find all .txt files in the current dir and subdirs
