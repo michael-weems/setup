@@ -176,7 +176,7 @@ find_file() {
    local dir="$2"
    [[ "$dir" == "" ]] && dir="."
 
-   find "${dir}" -type f -name "*${filter}*" -printf "%p:1:%TY-%Tm-%Td\n"
+   find "${dir}" -type f -wholename "*${filter}*" -printf "%p:1:%TY-%Tm-%Td\n"
 }
 export -f find_file
 

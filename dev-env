@@ -49,6 +49,7 @@ fi
 log "copy config files to runtime locations"
 
 copy $DEV_ENV/home/.vimrc $HOME/.vimrc
+copy $DEV_ENV/home/.vim/utils.vim $HOME/.vim/utils.vim
 copy $DEV_ENV/home/.profile $HOME/.profile
 copy $DEV_ENV/home/.bashrc $HOME/.bashrc
 copy $DEV_ENV/home/.bash_profile $HOME/.bash_profile
