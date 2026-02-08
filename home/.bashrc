@@ -197,6 +197,38 @@ search_up_for_dir() {
 }
 export -f search_up_for_dir
 
+append_to_first_open_line() {
+   local argv=("$@")
+   local argc=${#argv[@]}
+
+   local file_path=""
+   local text_content=""
+
+   for ((i=0; i<argc; i++)); do
+      if   [[ "-f" == "${argv[$i]}" ]] || [[ "--file" == "${argv[$i]}" ]]; then
+         i=$((i + 1))
+         file_path="${argv[i]}"
+      elif [[ "-t" == "${argv[$i]}" ]] || [[ "--text" == "${argv[$i]}" ]]; then
+         i=$((i + 1))
+         text_content="${argv[i]}"
+      fi
+   done
+
+   test "$file_path" == "" && echo "append_to_first_open_line: --filepath required" && exit 1
+   test "$text_content" == "" && echo "append_to_first_open_line: --text required" && exit 1
+
+  if grep -q '^$' "$file_path"; then
+       # If an empty line exists, use sed to replace the first occurrence
+       sed -i "0,/^$/s/^$/${text_content}/" "${file_path}"
+   else
+       # If no empty line exists, append to the end of the file
+       echo "${text_content}" >> "${file_path}"
+   fi
+
+   return 0
+}
+export -f append_to_first_open_line
+
 find_workspace_root() {
    search_up_for_dir ".git" && return 0 || return 1
 }

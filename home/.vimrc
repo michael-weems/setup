@@ -182,10 +182,12 @@ nnoremap <Leader>9 :call Switch_to_pin(9)<CR>
 nnoremap <Leader>0 :call Switch_to_pin(10)<CR>
 fun Add_to_pins() 
    let file_info = expand('%:p') . " | " .  line('.')
-   call writefile([file_info], "/home/dang/.vim/pins", "a")
+   let l:cmd = "append_to_first_open_line --file home/dang/.vim/pins --text " . file_info 
+   echo l:cmd
+   system(l:cmd)  
 endfun
 fun Show_pins()
-   exe "split" . "/home/dang/.vim/pins"
+   exe "find /home/dang/.vim/pins"
 endfun
 fun Open_file_under_cursor() 
    let current_line = getline('.')
@@ -195,6 +197,7 @@ fun Switch_to_pin(idx)
    let file_info = system("sed -n '" . a:idx . "p' /home/dang/.vim/pins")  
    execute "find " . file_info
 endfun
+autocmd BufRead,BufNewFile /home/dang/.vim/pins map <buffer> <CR> :call Open_file_under_cursor()<CR>
 
 "" ----------------------------------------------
 "" Automations
