@@ -218,10 +218,9 @@ append_to_first_open_line() {
    test "$text_content" == "" && echo "append_to_first_open_line: --text required" && exit 1
 
   if grep -q '^$' "$file_path"; then
-       # If an empty line exists, use sed to replace the first occurrence
-       sed -i "0,/^$/s/^$/${text_content}/" "${file_path}"
+      touch ~/.tmpreplace
+       awk -v text="${text_content}" '!found && /^$/ {print text; found=1; next} 1' "${file_path}" > ~/.tmpreplace && mv ~/.tmpreplace "${file_path}"
    else
-       # If no empty line exists, append to the end of the file
        echo "${text_content}" >> "${file_path}"
    fi
 

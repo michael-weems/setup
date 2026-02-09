@@ -181,10 +181,10 @@ nnoremap <Leader>8 :call Switch_to_pin(8)<CR>
 nnoremap <Leader>9 :call Switch_to_pin(9)<CR>
 nnoremap <Leader>0 :call Switch_to_pin(10)<CR>
 fun Add_to_pins() 
-   let file_info = expand('%:p') . " | " .  line('.')
-   let l:cmd = "append_to_first_open_line --file home/dang/.vim/pins --text " . file_info 
+   let l:file_info = expand('%:p') . " | " .  line('.')
+   let l:cmd = 'append_to_first_open_line --file /home/dang/.vim/pins --text "' . file_info . '"'
    echo l:cmd
-   system(l:cmd)  
+   let l:output = system(l:cmd)  
 endfun
 fun Show_pins()
    exe "find /home/dang/.vim/pins"
