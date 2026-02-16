@@ -253,5 +253,7 @@ find_workspace_root() {
 }
 export -f find_workspace_root
 
-sleep 1
-fastfetch # display system info on terminal load
+export ff() {
+   fastfetch
+}
+export -f ff
