@@ -94,8 +94,8 @@ nnoremap <Leader>ck :cprevious<Cr>
 nnoremap <Leader>cG :clast<Cr>
 nnoremap <Leader>cgg :first<Cr>
 
-nnoremap <C-s> :SaveSession
-nnoremap <C-f> :SwitchProject g:PROJECTS_DIR
+nnoremap <C-s> :call SaveSession()<CR>
+nnoremap <C-f> :SwitchProject ~/projects/
 " TODO: function and mapping to clean sessions (delete all existing session files)
 function! SourceDynamicFile(filename)
 	execute "source" a:filename
@@ -113,7 +113,7 @@ function! SaveSession()
 	let l:session_file = trim(fnameescape(l:project_name))
 
 	" update session for current project
-	let l:base_dir = '~/.vim/sessions'
+	let l:base_dir = '~/.vim/sessions/'
 	execute 'mksession! ' l:base_dir . l:session_file . ".vim"
 endfunction
 

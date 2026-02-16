@@ -20,6 +20,7 @@ export EDITOR=$VIM
 export GIT_EDITOR=$EDITOR
 
 mkdir -p ~/.vim
+mkdir -p ~/.vim/sessions
 touch ~/.vim/pins
 
 mkdir -p ~/notes
@@ -126,7 +127,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 function sessionizer() {
-    $HOME/.local/scripts/tmux-sessionizer
+    local selection=$(ls "/home/${USER}/projects" | fzf) 
+    local possible_session="/home/${USER}/.vim/sessions/${selection}.vim"
+    cd "/home/${USER}/projects/${selection}"
+    if test -f "${possible_session}"; then
+      vim -S "${possible_session}"
+    else
+      vim .
+    fi
 }
 bind -x '"\C-f": sessionizer'
 
