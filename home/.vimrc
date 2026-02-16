@@ -22,6 +22,7 @@ set scroll=8
 set scrolloff=8
 " turn off persistent search highlighting
 set nohlsearch
+
 " replace tab with spaces and set the tab size to 3
 set shiftwidth=3 smarttab
 set expandtab
@@ -94,6 +95,8 @@ nnoremap <Leader>ck :cprevious<Cr>
 nnoremap <Leader>cG :clast<Cr>
 nnoremap <Leader>cgg :first<Cr>
 
+nnoremap <Leader>so :source ~/.vimrc<CR>
+nnoremap <C-q> :call ClearSessions()<CR>
 nnoremap <C-s> :call SaveSession()<CR>
 nnoremap <C-f> :SwitchProject ~/projects/
 " TODO: function and mapping to clean sessions (delete all existing session files)
@@ -101,7 +104,11 @@ function! SourceDynamicFile(filename)
 	execute "source" a:filename
 endfunction
 
-function! SaveSession()
+function ClearSessions()
+   let l:result = system("rm -fr ~/.vim/sessions/*.vim")
+endfunction
+
+function SaveSession()
 	" Cache off existing session
         let l:fwr = system("find_workspace_root")
         if v:shell_error
@@ -117,10 +124,11 @@ function! SaveSession()
 	execute 'mksession! ' l:base_dir . l:session_file . ".vim"
 endfunction
 
-function! LoadSession(file)
-        SaveSession()
+function LoadSession(file)
+        :call SaveSession()
 
 	let basename = fnamemodify(trim(a:file, '/', 2), ':t')
+	let l:base_dir = '~/.vim/sessions/'
 	let new_session = base_dir . basename . ".vim"
 
 	if filereadable(expand(new_session))
@@ -131,8 +139,6 @@ function! LoadSession(file)
 		execute 'e ' . g:PROJECTS_DIR . basename
 	endif
 
-        " ensure current vim config is applied if old session was loaded
-        source ~/.vimrc
 	return 1
 endfunction
 command! -nargs=1 -complete=file SwitchProject call LoadSession(<q-args>)
@@ -232,6 +238,9 @@ autocmd BufEnter * silent! lcd %:h
 "		call mkdir(fnamemodify(a:file, ':h'), 'p')
 "	endif
 "endfun
+
+" Automatically re-source the vimrc file after loading a session
+autocmd SessionLoadPost * source ~/.vimrc
 
 "" ----------------------------------------------
 "" Color Scheme
