@@ -1,14 +1,16 @@
 "" ----------------------------------------------
-"" Helpful Links
+"" global variables
+
+let g:PROJECTS_DIR="~/projects/"
 
 "" ----------------------------------------------
 "" Imports
 source ~/.vim/colors/catppuccin_mocha.vim
-source ~/.vim/utils.vim
 
 "" ----------------------------------------------
 "" Set
 let mapleader = " "
+
 " line numbers
 set number
 set relativenumber
@@ -53,6 +55,7 @@ fun s:Cd_to_repo_root() abort
 	endfor
 	echoerr 'No repo root found.'
 endfun
+
 " Simple mappings for buffer switching.
 nnoremap <Leader>d :b *
 " Find/edit files using the quickfix list
@@ -60,8 +63,6 @@ nnoremap <Leader>sg :cexpr system('grep -rn "" $(find_workspace_root)')<Left><Le
 nnoremap <Leader>sf :cexpr system('find_file "" $(find_workspace_root)')<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " TODO: get sk --> "keymaps in scratch buffer" working
 nnoremap <Leader>sk :vnew <bar> :normal! :map <bar> :setlocal buftype=nofile bufhidden=wipe noswapfile<CR>
-" go to definition c++
-nnoremap <Leader>gd :call Cxx_go_to_file_on_include_path()<CR>
 " git
 nnoremap <Leader>gc :cexpr system('list_git_conflicts')<Cr>:copen<CR>
 " todos
@@ -80,9 +81,11 @@ function! All_files_to_qflist()
 	" set the quickfix list
 	call setqflist(qflist)
 endfunction
+
 " quit
 nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>w :w<Cr>
+
 " Quick Fix List
 nnoremap <Leader>co :copen<Cr>
 nnoremap <Leader>cc :cclose<Cr>
@@ -90,22 +93,32 @@ nnoremap <Leader>cj :cnext<Cr>
 nnoremap <Leader>ck :cprevious<Cr>
 nnoremap <Leader>cG :clast<Cr>
 nnoremap <Leader>cgg :first<Cr>
-" 'fzf' like switcher
-nnoremap <C-f> :SwitchProject ~/projects/
+
+nnoremap <C-s> :SaveSession
+nnoremap <C-f> :SwitchProject g:PROJECTS_DIR
 " TODO: function and mapping to clean sessions (delete all existing session files)
 function! SourceDynamicFile(filename)
 	execute "source" a:filename
 endfunction
-function! LoadSession(file)
+
+function! SaveSession()
 	" Cache off existing session
-        let fwr = system("find_workspace_root")
-	let project_name = system("basename $(find_workspace_root)")
-	let session_file = trim(fnameescape(project_name))
+        let l:fwr = system("find_workspace_root")
+        if v:shell_error
+            echo "not in project directory, refusing to save session"
+            return
+        endif
+
+        let l:project_name = system("basename " . l:fwr)
+	let l:session_file = trim(fnameescape(l:project_name))
 
 	" update session for current project
-	let base_dir = '~/.vim/sessions'
-	let projects_dir = '~/projects/'
-	execute 'mksession! ' base_dir . session_file . ".vim"
+	let l:base_dir = '~/.vim/sessions'
+	execute 'mksession! ' l:base_dir . l:session_file . ".vim"
+endfunction
+
+function! LoadSession(file)
+        SaveSession()
 
 	let basename = fnamemodify(trim(a:file, '/', 2), ':t')
 	let new_session = base_dir . basename . ".vim"
@@ -114,10 +127,12 @@ function! LoadSession(file)
 		echo "opening: " . new_session
 		:call SourceDynamicFile(new_session)
 	else
-		echo "cd to: " . projects_dir . basename
-		execute 'e ' . projects_dir . basename
+		echo "cd to: " . g:PROJECTS_DIR . basename
+		execute 'e ' . g:PROJECTS_DIR . basename
 	endif
 
+        " ensure current vim config is applied if old session was loaded
+        source ~/.vimrc
 	return 1
 endfunction
 command! -nargs=1 -complete=file SwitchProject call LoadSession(<q-args>)
@@ -151,6 +166,7 @@ nnoremap <silent> gs :set opfunc=SortLines<CR>g@
 fun! SortLines(type) abort
     '[,']sort i
 endfun
+
 " Reverse lines, selected or over motion.
 nnoremap <silent> gr :set opfunc=ReverseLines<CR>g@
 vnoremap <silent> gr :<C-u>call ReverseLines('vis')<CR>
@@ -166,6 +182,7 @@ fun! ReverseLines(type) abort
         let l2 -= 1
     endfor
 endfun
+
 " File switching
 nnoremap <Leader>ma :call Add_to_pins()<CR>
 nnoremap <Leader>ms :call Show_pins()<CR>

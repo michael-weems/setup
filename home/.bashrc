@@ -13,6 +13,7 @@ eval "$(starship init bash)"
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="vim"
   
+export USER="dang"
 export DEV_ENV="$HOME/projects/setup"
 
 export EDITOR=$VIM
@@ -230,6 +231,17 @@ export -f append_to_first_open_line
 
 find_workspace_root() {
    search_up_for_dir ".git" && return 0 || return 1
+   local filepath="$(pwd)"
+   local subpath="/home/${USER}/projects"
+
+   if [[ "$filepath" == "$subpath"* ]]; then
+     local remaining="${filepath#*"$subpath"/}"
+     local next_dir="${remaining%%/*}"
+     echo "${subpath}/${next_dir}"
+     return 0
+   else
+      return 1
+   fi
 }
 export -f find_workspace_root
 

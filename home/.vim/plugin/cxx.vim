@@ -1,3 +1,8 @@
+let maplocalleader = "\\"
+
+" go to definition c++
+nnoremap <LocalLeader>gd :call Cxx_go_to_file_on_include_path()<CR>
+
 function! Extract_text(line_number)
     " Get the content of the specified line
     let line_content = getline(a:line_number)
