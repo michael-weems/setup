@@ -253,7 +253,7 @@ find_workspace_root() {
 }
 export -f find_workspace_root
 
-export ff() {
+ff() {
    fastfetch
 }
 export -f ff
