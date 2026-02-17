@@ -49,6 +49,6 @@ echo "$wp" > $HOME/.local/state/theme/wallpaper
 
 if [[ "$state" == "false" ]]; then
 	# actually set the wallpaper
-	hyprctl hyprpaper reload , $wp
+	hyprctl hyprpaper wallpaper ", ${wp}"
 fi
 
