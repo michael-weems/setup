@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+NEOVIM_VERSION="v0.12.2"
+
+yes | sudo apt install base-devel cmake ninja curl
+
+if [ -d "$HOME/vendor/neovim-source" ]; then
+	# NOTE: update neovim
+	cd $HOME/vendor/neovim-source
+	git fetch 
+	git checkout ${NEOVIM_VERSION}
+else
+	# NOTE: clone neovim
+	git clone --depth 1 -b ${NEOVIM_VERSION} https://github.com/neovim/neovim.git $HOME/vendor/neovim-source
+	cd $HOME/vendor/neovim-source
+	git fetch
+	git checkout ${NEOVIM_VERSION}
+fi
+
+
+cd $HOME/vendor/neovim-source
+rm -r build/
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/vendor/neovim"
+make install
+export PATH="$HOME/vendor/neovim/bin:$PATH"

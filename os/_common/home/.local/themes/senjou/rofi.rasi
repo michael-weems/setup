@@ -1,0 +1,29 @@
+/* ROUNDED THEME FOR ROFI */
+/* Author: Newman Sanchez (https://github.com/newmanls) */
+
+* {
+    hair: #954C8B;
+    skin: #FDEFE4;
+    eye: #1C315E;
+    coat: #516890;
+    lapel: #81374A;
+    scarf: #74ABB2;
+    space: #0E2540;
+    red-space: #2E1B1E;
+    lining: #302435;
+
+    bg0:    @lining;
+    bg1:    @space;
+    bg2:    @red-space;
+    bg3:    @hair;
+    fg0:    @hair;
+    fg1:    @eye;
+    fg2:    @scarf;
+    fg3:    @lapel;
+}
+
+@import "template/rounded-template.rasi"
+
+element selected {
+    text-color: @bg1;
+}

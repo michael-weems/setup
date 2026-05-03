@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+yes | sudo apt update
+yes | sudo apt install git
+
+# dependencies
+yes | sudo apt install meson
+yes | sudo apt install cmake
+
+# desktop environment tools
+yes | sudo apt install ttf-font-awesome # nerd-font
+yes | sudo apt install fastfetch # print system info
+yes | sudo apt install nfs-utils # mount nfs shares for nas
+
+# devtools
+yes | sudo apt install man              # for man-pages
+yes | sudo apt install bat              # 'cat' but with syntax highlighting
+yes | sudo apt install jq               # json query
+yes | sudo apt install 7zip             # archive util
+yes | sudo apt install ripgrep          # alternative to grep, usually better, sometimes worse
+yes | sudo apt install fzf              # search utility
+yes | sudo apt install unzip            # unzip things
+yes | sudo apt install valgrind         # detect memory leaks in programs
+yes | sudo apt install xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
+yes | sudo apt install chafa            # terminal image viewer
+yes | sudo apt install mpv              # media player
+

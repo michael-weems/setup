@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+dir="$HOME/.local/scripts"
+pushd $dir
+
+script=$(fzf --preview='bat --color=always {}' --bind shift-up:preview-up,shift-down:preview-down)
+if [[ ! -z "$script" ]]; then
+	$script
+fi
+
+popd

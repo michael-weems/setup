@@ -1,47 +1,33 @@
 #!/usr/bin/env bash
 
+source ./.bashlib # TODO: expand this
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 if [ -z "$XDG_CONFIG_HOME" ]; then
     echo "no xdg config home, defaulting to: ~/.config"
     XDG_CONFIG_HOME=$HOME/.config
 fi
 
-if [ -z "$DEV_ENV" ]; then
-	echo "error: env var DEV_ENV needs to be present"
-	echo "please temporarily set (eg. 'DEV_ENV=\$(pwd)' ): normally set in ~/.bashrc"
-	exit 1
-fi
+pushd ${SCRIPT_DIR}
 
-source ./.bashlib
-
-usage() {
-	echo "$DEV_ENV/run"
-	echo ""
-	echo "Usage:"
-	echo "Install applications on the computer based on the scripts under $HOME/projects/setup/runs/"
-	echo ""
-	echo "Arguments:"
-	echo "filter          | run only the installation for the applications that match this input filter"
-	echo ""
-	echo "Flags:"
-	_lib_usage
-	echo ""
-	echo "Examples:"
-	echo "./run ghostty   # runs the installation for ghostty"
-}
-if [[ "$usage" == "true" ]]; then
-	usage
-	exit 0
-fi
-
-pushd $DEV_ENV
-
+os=""
 filter=""
 for ((i=0; i<argc; i++)); do
-	if   [[ "-g" == "${argv[$i]}" ]] || [[ "--grep" == "${argv[$i]}" ]]; then
+	if   [[ "-os" == "${argv[$i]}" ]]; then
+		i=$((i + 1))
+		os="${argv[$i]}"
+	elif [[ "-g" == "${argv[$i]}" ]] || [[ "-grep" == "${argv[$i]}" ]]; then
 		i=$((i + 1))
 		filter="${argv[$i]}"
 	fi
 done
+
+if [[ -z "$os" ]]; then
+	echo "please provide an os: arch, wsl-ubuntu, windows, fedora"
+	exit 1
+fi
+
+
 
 echo "run: $filter"
 

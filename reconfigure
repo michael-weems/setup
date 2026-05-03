@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+source ./.bashlib # TODO: expand this
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home, defaulting to: ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+fi
+
+pushd ${SCRIPT_DIR}
+
+os=""
+for ((i=0; i<argc; i++)); do
+	if   [[ "-os" == "${argv[$i]}" ]]; then
+		i=$((i + 1))
+		os="${argv[$i]}"
+	fi
+done
+
+if [[ -z "$os" ]]; then
+	echo "please provide an os: arch, wsl-ubuntu, windows, fedora"
+	exit 1
+fi
+
+copy() {
+	src="$1"
+	dest="$2"
+	rm -fr "$dest"
+	cp -r "$src" "$dest"
+}
+
+
+# TODO: each os has it's own scripts for copying / running? so they can augment what gets copied and all that
+
+# dirs
+copy $DEV_ENV/os/_common/home/.vim $HOME/.vim
+copy $DEV_ENV/os/_common/home/.config $XDG_CONFIG_HOME
+copy $DEV_ENV/os/_common/home/.local $HOME/.local
+
+copy $DEV_ENV/os/${os}/home/.vim $HOME/.vim
+copy $DEV_ENV/os/${os}/home/.config $XDG_CONFIG_HOME
+copy $DEV_ENV/os/${os}/home/.local $HOME/.local
+
+# files
+copy $DEV_ENV/os/_common/home/.vimrc $HOME/.vimrc
+copy $DEV_ENV/os/_common/home/.vim/utils.vim $HOME/.vim/utils.vim
+copy $DEV_ENV/os/_common/home/.profile $HOME/.profile
+copy $DEV_ENV/os/_common/home/.bashrc $HOME/.bashrc
+copy $DEV_ENV/os/_common/home/.bash_profile $HOME/.bash_profile
+copy $DEV_ENV/os/_common/home/.bash_aliases $HOME/.bash_aliases
+copy $DEV_ENV/os/_common/home/.bash_logout $HOME/.bash_logout
+
+copy $DEV_ENV/os/${os}/home/.vimrc $HOME/.vimrc
+copy $DEV_ENV/os/${os}/home/.vim/utils.vim $HOME/.vim/utils.vim
+copy $DEV_ENV/os/${os}/home/.profile $HOME/.profile
+copy $DEV_ENV/os/${os}/home/.bashrc $HOME/.bashrc
+copy $DEV_ENV/os/${os}/home/.bash_profile $HOME/.bash_profile
+copy $DEV_ENV/os/${os}/home/.bash_aliases $HOME/.bash_aliases
+copy $DEV_ENV/os/${os}/home/.bash_logout $HOME/.bash_logout
+
+copy $DEV_ENV/.bashlib $HOME/.bashlib
+
+source $HOME/.profile
+source $HOME/.bashrc
+source $HOME/.bash_profile
+source $HOME/.bash_aliases
+source $HOME/.bash_logout

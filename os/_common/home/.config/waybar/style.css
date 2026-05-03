@@ -1,0 +1,120 @@
+@import "theme.css";
+
+* {
+    /* TODO: change to use same nerd font as everywhere else */
+  font-family: FantasqueSansMono Nerd Font;
+  font-size: 16px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+  margin: 5px;
+}
+
+#custom-playerlabel,
+#backlight,
+#clock,
+#battery,
+#wireplumber,
+#custom-os-logo,
+#custom-hyprpicker,
+#network,
+#custom-power {
+  background-color: @bg;
+  padding: 5px 10px;
+  margin: 5px 0;
+}
+
+#custom-os-logo {
+    /* https://docs.gtk.org/gtk3/css-overview.html#scaled-images-in-css */
+    background-image: url('/usr/share/pixmaps/archlinux-logo.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: @bg;
+    border-radius: 7px;
+    margin-left: 10px;
+    padding: 0px 20px; /* NOTE: padding functions as 'content size' here */
+}
+
+#workspaces {
+  border-radius: 7px;
+  margin: 5px;
+  margin-left: 10px;
+  background-color: @bg;
+  padding-right: 5px;
+}
+
+#workspaces button {
+  color: @inactive;
+  border-radius: 7px;
+  padding: 5px 10px;
+}
+
+#workspaces button.active {
+  color: @active;
+  border-radius: 7px;
+}
+
+#workspaces button:hover {
+  color: @hover;
+  border-radius: 7px;
+}
+
+#custom-playerlabel {
+  color: @sound;
+  border-radius: 7px;
+}
+
+#wireplumber {
+  color: @sound;
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 10px;
+}
+
+#backlight {
+    color: @backlight;
+    border-radius: 0;
+}
+
+#battery {
+    color: @battery;
+    border-radius: 0;
+}
+
+#battery.charging {
+  color: @battery;
+}
+
+#battery.warning:not(.charging) {
+  color: @danger;
+}
+
+#clock {
+  color: @clock;
+  border-radius: 0px 7px 7px 0px;
+}
+
+#custom-hyprpicker {
+    margin-left: 10px;
+    padding-left: 15px;
+    border-radius: 7px 0px 0px 7px;
+    color: @picker;
+}
+
+#network {
+    border-radius: 0;
+    color: @network;
+}
+
+#custom-power {
+    margin-right: 10px;
+    font-size: 24px;
+    padding: 0px;
+    padding-left: 10px;
+    border-radius: 0px 7px 7px 0px;
+    color: @danger;
+}
+

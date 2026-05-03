@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+tmux kill-window -a # kill all but currently active window
+
+# window 3 (access via <prefix> 3 --> C-a 3)
+project_name=$(basename $(pwd))
+tmux neww -d -n "${project_name}"
+tmux send-keys -t "${project_name}" "vim ." ^M
+
+tmux kill-window -t 3 # kill original window
+
+tmux select-window -t 3
