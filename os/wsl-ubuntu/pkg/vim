@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # Use 'gvim' instead of 'vim' so I can have +clipboard
-yes | sudo apt install gvim
+yes | sudo apt-get install gvim

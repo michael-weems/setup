@@ -15,3 +15,18 @@ cd bindgen
 [ ! -d sokol-c3 ] && git clone https://github.com/floooh/sokol-c3.git
 
 python3 gen_all.py
+
+# ? above and below should consolidate
+
+# Sokol
+git clone https://github.com/floooh/sokol-odin.git $HOME/vendor/odin-sokol
+pushd $HOME/vendor/odin-sokol
+pushd sokol
+./build_clibs_linux.sh
+popd
+mkdir build
+
+# Sokol Shader-Compiler
+# NOTE: the build process for linux appears to be broken due to missing containers with docker, so we directly download the latest exe
+git clone https://github.com/floooh/sokol-tools-bin.git $HOME/vendor/sokol-shdc
+

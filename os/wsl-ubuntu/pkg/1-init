@@ -1,28 +1,27 @@
 #!/usr/bin/env bash
 
 yes | sudo apt update
-yes | sudo apt install git
+yes | sudo apt-get install git
 
 # dependencies
-yes | sudo apt install meson
-yes | sudo apt install cmake
+yes | sudo apt-get install meson
+yes | sudo apt-get install cmake
 
 # desktop environment tools
-yes | sudo apt install ttf-font-awesome # nerd-font
-yes | sudo apt install fastfetch # print system info
-yes | sudo apt install nfs-utils # mount nfs shares for nas
+yes | sudo apt-get install ttf-font-awesome # nerd-font
+yes | sudo apt-get install fastfetch # print system info
+yes | sudo apt-get install nfs-utils # mount nfs shares for nas
 
 # devtools
-yes | sudo apt install man              # for man-pages
-yes | sudo apt install bat              # 'cat' but with syntax highlighting
-yes | sudo apt install jq               # json query
-yes | sudo apt install 7zip             # archive util
-yes | sudo apt install ripgrep          # alternative to grep, usually better, sometimes worse
-yes | sudo apt install fzf              # search utility
-yes | sudo apt install unzip            # unzip things
-yes | sudo apt install valgrind         # detect memory leaks in programs
-yes | sudo apt install xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
-yes | sudo apt install chafa            # terminal image viewer
-yes | sudo apt install mpv              # media player
-yes | sudo apt install nodejs npm
-
+yes | sudo apt-get install man              # for man-pages
+yes | sudo apt-get install bat              # 'cat' but with syntax highlighting
+yes | sudo apt-get install jq               # json query
+yes | sudo apt-get install 7zip             # archive util
+yes | sudo apt-get install ripgrep          # alternative to grep, usually better, sometimes worse
+yes | sudo apt-get install fzf              # search utility
+yes | sudo apt-get install unzip            # unzip things
+yes | sudo apt-get install valgrind         # detect memory leaks in programs
+yes | sudo apt-get install xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
+yes | sudo apt-get install chafa            # terminal image viewer
+yes | sudo apt-get install mpv              # media player
+yes | sudo apt-get install nodejs npm
