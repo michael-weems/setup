@@ -3,6 +3,7 @@
 NEOVIM_VERSION="v0.12.2"
 
 yes | sudo apt install base-devel cmake ninja curl
+yes | sudo npm install -g tree-sitter-cli
 
 if [ -d "$HOME/vendor/neovim-source" ]; then
 	# NOTE: update neovim

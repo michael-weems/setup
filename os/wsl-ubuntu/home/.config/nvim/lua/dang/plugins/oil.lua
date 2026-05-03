@@ -1,4 +1,4 @@
-return("oil").setup({
+require("oil").setup({
    default_file_explorer = true,
    columns = { 'icon' },
    keymaps = {
@@ -20,10 +20,3 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 -- Open parent directory in floating window
 vim.keymap.set('n', '<leader>-', require('oil').toggle_float)
-
-vim.api.nvim_create_autocmd("FileType", {
-   pattern = "oil", -- TODO: adjust if oil uses a specific file type identifier
-   callback = function()
-      vim.opt_local.cursorline = true
-   end,
-})

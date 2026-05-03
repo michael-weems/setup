@@ -12,6 +12,5 @@ require('vim._core.ui2').enable({
     },
 })
 
-require("dang.core")
 require("dang.pack")
 require("dang.plugins")

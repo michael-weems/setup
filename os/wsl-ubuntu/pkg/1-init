@@ -24,4 +24,5 @@ yes | sudo apt install valgrind         # detect memory leaks in programs
 yes | sudo apt install xclip            # copy to clipboard (eg. cat file | xclip -selection clipboard)
 yes | sudo apt install chafa            # terminal image viewer
 yes | sudo apt install mpv              # media player
+yes | sudo apt install nodejs npm
 
