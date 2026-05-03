@@ -44,9 +44,5 @@ for script in $scripts; do
 	./$script
 done
 
-echo "done: please run the below command"
-echo ""
-echo "    cd ~/projects/dotfiles && ./reconfigure"
-echo ""
 
-popd
+source ./reconfigure
