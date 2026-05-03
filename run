@@ -31,19 +31,22 @@ fi
 
 echo "run: $filter"
 
-scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
+scripts=$(find ./os/${os}/pkg -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
+echo "scripts: ${scripts}"
+
 for script in $scripts; do
+      echo "script: ${script}"
 	# does this script not contain this filter
 	if echo "$script" | grep -qv "$filter"; then
-		log "filtering $script"
+		echo "filtering $script"
 		continue
 	fi
 	./$script
 done
 
-log "done: please run the below command"
-log ""
-log "    cd ~/projects/setup && ./dev-env"
-log ""
+echo "done: please run the below command"
+echo ""
+echo "    cd ~/projects/dotfiles && ./reconfigure"
+echo ""
 
 popd
