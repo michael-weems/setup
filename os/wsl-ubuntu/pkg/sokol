@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Dependencies
+yes | sudo apt install libx11-dev libxext-dev libxfixes-dev libxi-dev libxcursor-dev libasound2-dev
+
 mkdir -p $HOME/vendor
 pushd $HOME/vendor
 [ ! -d sokol ] && git clone https://github.com/floooh/sokol.git
