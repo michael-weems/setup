@@ -181,7 +181,8 @@ vim.lsp.config('ols', {
     init_options = {
       checker_args = '-strict-style',
       collections = {
-        { name = 'shared', path = vim.fn.expand '$HOME/odin-lib' },
+        { name = 'shared', path = vim.fn.expand '$HOME/vendor/odin/shared' },
+        { name = 'sokol', path = vim.fn.expand '/mnt/c/Users/mweem/projects/beach/sokol' },
       },
     },
   },
