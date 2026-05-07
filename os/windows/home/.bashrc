@@ -1,0 +1,231 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+eval "$(starship init bash)"
+
+export XDG_CONFIG_HOME=$HOME/.config
+VIM="nvim"
+  
+export USER="dang"
+export DEV_ENV="$HOME/projects/dotfiles"
+
+export EDITOR=$VIM
+export GIT_EDITOR=$EDITOR
+
+mkdir -p ~/.vim
+mkdir -p ~/.vim/sessions
+touch ~/.vim/pins
+
+mkdir -p ~/notes
+touch ~/notes/todo.md
+
+PATH="$PATH:$HOME/bin"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/scripts:$PATH"
+PATH="$HOME/vendor/neovim/bin:$PATH"
+PATH="$HOME/vendor/odin:$PATH"
+PATH="$HOME/vendor/sokol-shdc/bin/linux:$PATH"
+PATH=$(echo "$PATH" | tr ':' '\n' | sort | uniq | tr '\n' ':') # deduplicate path
+export PATH
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+function dlyt() {
+    out="$HOME/Downloads/videos/temp"
+    url=""
+
+    for ((i=1; i<= $#; i++)); do
+	if   [[ "${!i}" == "-u" ]] || [[ "${!i}" == "--url" ]]; then
+	    i=$((i+1))
+	    url="${!i}"
+	elif [[ "${!i}" == "-o" ]] || [[ "${!i}" == "--out" ]]; then
+	    i=$((i+1))
+	    out="${!i}"
+	fi
+    done
+
+    if [[ -z "$url" ]]; then
+	echo "please provide a url via -u or --url"
+	return 1
+    fi
+    
+
+    mkdir -p $(dirname "$out")
+    yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -o "$out.%(ext)s" "$url"
+    echo "done >> ${out}.mp4"
+}
+export -f dlyt
+
+find_file() {
+   local filter="$1"
+   local dir="$2"
+   [[ "$dir" == "" ]] && dir="."
+
+   find "${dir}" -type f -wholename "*${filter}*" -printf "%p:1:%TY-%Tm-%Td\n"
+}
+export -f find_file
+
+search_up_for_dir() {
+    # Function to search up the directory tree for a specific folder
+    local look=${PWD%/}
+    while [[ -n $look ]]; do
+        if [[ -d "$look/$1" ]]; then
+            printf '%s\n' "$look"
+            return 0
+        fi
+        if [[ "$look" == "/" ]]; then
+            break
+        fi
+        look=${look%/*}
+    done
+    return 1
+}
+export -f search_up_for_dir
+
+append_to_first_open_line() {
+   local argv=("$@")
+   local argc=${#argv[@]}
+
+   local file_path=""
+   local text_content=""
+
+   for ((i=0; i<argc; i++)); do
+      if   [[ "-f" == "${argv[$i]}" ]] || [[ "--file" == "${argv[$i]}" ]]; then
+         i=$((i + 1))
+         file_path="${argv[i]}"
+      elif [[ "-t" == "${argv[$i]}" ]] || [[ "--text" == "${argv[$i]}" ]]; then
+         i=$((i + 1))
+         text_content="${argv[i]}"
+      fi
+   done
+
+   test "$file_path" == "" && echo "append_to_first_open_line: --filepath required" && exit 1
+   test "$text_content" == "" && echo "append_to_first_open_line: --text required" && exit 1
+
+  if grep -q '^$' "$file_path"; then
+      touch ~/.tmpreplace
+       awk -v text="${text_content}" '!found && /^$/ {print text; found=1; next} 1' "${file_path}" > ~/.tmpreplace && mv ~/.tmpreplace "${file_path}"
+   else
+       echo "${text_content}" >> "${file_path}"
+   fi
+
+   return 0
+}
+export -f append_to_first_open_line
+
+find_workspace_root() {
+   search_up_for_dir ".git" && return 0 || return 1
+   local filepath="$(pwd)"
+   local subpath="/home/${USER}/projects"
+
+   if [[ "$filepath" == "$subpath"* ]]; then
+     local remaining="${filepath#*"$subpath"/}"
+     local next_dir="${remaining%%/*}"
+     echo "${subpath}/${next_dir}"
+     return 0
+   else
+      return 1
+   fi
+}
+export -f find_workspace_root
+
+ff() {
+   fastfetch
+}
+export -f ff
