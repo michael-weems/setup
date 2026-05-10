@@ -22,6 +22,8 @@ set scroll=8
 set scrolloff=8
 " turn off persistent search highlighting
 set nohlsearch
+ 
+set noswapfile
 
 " replace tab with spaces and set the tab size to 3
 set shiftwidth=3 smarttab
