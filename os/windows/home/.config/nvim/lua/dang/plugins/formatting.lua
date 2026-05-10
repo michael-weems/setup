@@ -39,15 +39,6 @@ conform.setup {
   formatters_by_ft = {
     lua = { 'stylua' },
     odin = { 'odinfmt' },
-    javascript = { 'biome-check' },
-    typescript = { 'biome-check' },
-    css = { 'biome-check' },
-    html = { 'prettier' },
-    json = { 'biome-check' },
-    yaml = { 'prettier' },
-    -- python = { "black" },
-    markdown = { 'mdformat', 'markdown-toc' },
-    -- ["markdown.mdx"] = { "prettier", "markdownlint", "markdown-toc" },
   },
   -- format_on_save = {
   -- 	lsp_fallback = true,
