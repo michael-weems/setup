@@ -8,6 +8,7 @@
 - [ ] python
 - [ ] nodejs
 - [ ] ripgrep
+- [ ] fzf `winget install fzf`
 - [ ] a Nerd Font
 - [ ] starship
 - [ ] zig `winget install zig`

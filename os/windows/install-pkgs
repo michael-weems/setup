@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+source ../../.bashlib # TODO: expand this
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home, defaulting to: ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+fi
+
+pushd ${SCRIPT_DIR}
+
+scripts=$(find ./pkg -maxdepth 1 -mindepth 1 -executable -type f | sort) # find every executable in the runs dir
+echo "scripts: ${scripts}"
+
+for script in $scripts; do
+   echo "script: ${script}"
+   ./$script
+done
+
+
+source ./reconfigure

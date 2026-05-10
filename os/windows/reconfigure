@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+source ../../.bashlib # TODO: expand this
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home, defaulting to: ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+fi
+
+pushd ${SCRIPT_DIR}
+
+copy() {
+	src="$1"
+	dest="$2"
+	cp -r "$src" "$dest"
+}
+
+fresh_copy() {
+	src="$1"
+	dest="$2"
+	rm -fr "$dest"
+	cp -r "$src" "$dest"
+}
+
+# dirs
+fresh_copy $SCRIPT_DIR/home/.vim $HOME/.vim
+fresh_copy $SCRIPT_DIR/home/.config $XDG_CONFIG_HOME
+fresh_copy $SCRIPT_DIR/home/.local $HOME/.local
+rm -fr $USERPROFILE/AppData/Local/nvim-data
+# NOTE: ensure we don't blow away tree-sitter parser/ and queries/ folders
+fresh_copy $SCRIPT_DIR/home/.config/nvim/lua $USERPROFILE/AppData/Local/nvim/lua
+fresh_copy $SCRIPT_DIR/home/.config/nvim/ftplugin $USERPROFILE/AppData/Local/nvim/ftplugin
+fresh_copy $SCRIPT_DIR/home/.config/nvim/init.lua $USERPROFILE/AppData/Local/nvim/init.lua
+
+# files
+fresh_copy $SCRIPT_DIR/home/.vimrc $HOME/.vimrc
+fresh_copy $SCRIPT_DIR/home/.profile $HOME/.profile
+fresh_copy $SCRIPT_DIR/home/.bashrc $HOME/.bashrc
+fresh_copy $SCRIPT_DIR/home/.bash_profile $HOME/.bash_profile
+fresh_copy $SCRIPT_DIR/home/.bash_aliases $HOME/.bash_aliases
+fresh_copy $SCRIPT_DIR/home/.bash_logout $HOME/.bash_logout
+
+fresh_copy ../../.bashlib $HOME/.bashlib
+
+source $HOME/.profile
+source $HOME/.bashrc
+source $HOME/.bash_profile
+source $HOME/.bash_aliases
+source $HOME/.bash_logout
+ 
+popd

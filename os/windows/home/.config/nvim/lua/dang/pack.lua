@@ -1,5 +1,3 @@
-require 'dang.plugins.pack-hooks'
-
 -- telescope-fzf-native.nvim is a pain in my rear
 local hooks = function(ev)
   local name, kind = ev.data.spec.name, ev.data.kind
@@ -54,7 +52,6 @@ vim.pack.add {
   { src = 'https://github.com/tpope/vim-fugitive' }, --enabled
   { src = 'https://github.com/kdheepak/lazygit.nvim' }, --enabled
 
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' }, --enabled
   { src = 'https://github.com/windwp/nvim-ts-autotag' }, --enabled
 
   -- completions cmp

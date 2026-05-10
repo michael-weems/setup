@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 source ./.bashlib # TODO: expand this
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -20,6 +19,6 @@ if [[ -z "$os" ]]; then
 fi
 
 pushd ./os/${os}
-./reconfigure
+source ./install-pkgs 
 popd
 

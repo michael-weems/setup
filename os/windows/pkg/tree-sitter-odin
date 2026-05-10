@@ -1,0 +1,31 @@
+#!/bin/bash
+
+mkdir -p ~/projects
+pushd ~/projects
+
+[ ! -d "~/projects/tree-sitter-odin" ] && git clone git@github.com:tree-sitter-grammars/tree-sitter-odin.git
+cd tree-sitter-odin
+
+if [ ! -f bin/odin.dll ]; then
+   echo "running: tree-sitter generate"
+   tree-sitter generate
+   tree-sitter test
+   echo "generated tree-sitter"
+   mkdir -p bin
+   zig cc -shared -o bin/odin.dll src/parser.c src/scanner.c -Isrc
+   echo "built bin/odin.dll"
+fi
+
+nvim_dir=~/AppData/Local/nvim
+
+# copy dll
+mkdir -p ${nvim_dir}/parser
+cp bin/odin.dll ${nvim_dir}/parser/odin.dll
+echo "copied dll to ${nvim_dir}/parser/odin.dll"
+
+# copy queries
+mkdir -p ${nvim_dir}/queries/odin/
+cp -r queries/* ${nvim_dir}/queries/odin/
+echo "copied queries/* to ${nvim_dir}/queries/odin/"
+
+popd
