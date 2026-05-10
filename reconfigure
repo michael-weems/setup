@@ -42,37 +42,40 @@ fresh_copy() {
 if [[ "$os" == "windows" ]]; then
 
 	# dirs
-	copy $SCRIPT_DIR/os/${os}/home/.vim $HOME/.vim
-	copy $SCRIPT_DIR/os/${os}/home/.config $XDG_CONFIG_HOME
-	copy $SCRIPT_DIR/os/${os}/home/.local $HOME/.local
-	copy $SCRIPT_DIR/os/${os}/home/.config/nvim $USERPROFILE/AppData/Local/nvim
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.vim $HOME/.vim
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.config $XDG_CONFIG_HOME
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.local $HOME/.local
+	rm -fr $USERPROFILE/AppData/Local/nvim-data
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.config/nvim $USERPROFILE/AppData/Local/nvim
 
 	# files
-	copy $SCRIPT_DIR/os/${os}/home/.vimrc $HOME/.vimrc
-	copy $SCRIPT_DIR/os/${os}/home/.profile $HOME/.profile
-	copy $SCRIPT_DIR/os/${os}/home/.bashrc $HOME/.bashrc
-	copy $SCRIPT_DIR/os/${os}/home/.bash_profile $HOME/.bash_profile
-	copy $SCRIPT_DIR/os/${os}/home/.bash_aliases $HOME/.bash_aliases
-	copy $SCRIPT_DIR/os/${os}/home/.bash_logout $HOME/.bash_logout
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.vimrc $HOME/.vimrc
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.profile $HOME/.profile
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bashrc $HOME/.bashrc
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bash_profile $HOME/.bash_profile
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bash_aliases $HOME/.bash_aliases
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bash_logout $HOME/.bash_logout
 else
 	# dirs
-	copy $SCRIPT_DIR/os/${os}/home/.vim $HOME/.vim
-	copy $SCRIPT_DIR/os/${os}/home/.config $XDG_CONFIG_HOME
-	copy $SCRIPT_DIR/os/${os}/home/.local $HOME/.local
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.vim $HOME/.vim
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.config $XDG_CONFIG_HOME
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.local $HOME/.local
 
 	# files
-	copy $SCRIPT_DIR/os/${os}/home/.vimrc $HOME/.vimrc
-	copy $SCRIPT_DIR/os/${os}/home/.profile $HOME/.profile
-	copy $SCRIPT_DIR/os/${os}/home/.bashrc $HOME/.bashrc
-	copy $SCRIPT_DIR/os/${os}/home/.bash_profile $HOME/.bash_profile
-	copy $SCRIPT_DIR/os/${os}/home/.bash_aliases $HOME/.bash_aliases
-	copy $SCRIPT_DIR/os/${os}/home/.bash_logout $HOME/.bash_logout
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.vimrc $HOME/.vimrc
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.profile $HOME/.profile
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bashrc $HOME/.bashrc
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bash_profile $HOME/.bash_profile
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bash_aliases $HOME/.bash_aliases
+	fresh_copy $SCRIPT_DIR/os/${os}/home/.bash_logout $HOME/.bash_logout
 fi
 
-copy $SCRIPT_DIR/.bashlib $HOME/.bashlib
+fresh_copy $SCRIPT_DIR/.bashlib $HOME/.bashlib
 
 source $HOME/.profile
 source $HOME/.bashrc
 source $HOME/.bash_profile
 source $HOME/.bash_aliases
 source $HOME/.bash_logout
+ 
+popd

@@ -1,15 +1,12 @@
 local treesitter = require 'nvim-treesitter'
-treesitter.install.compilers = { 'zig' }
+local treesitter_install = require 'nvim-treesitter.install'
+treesitter_install.compilers = { 'zig', 'clangd' }
 
 local languages = {
   'bash',
   'c',
-  'css',
-  'dockerfile',
   'go',
-  'html',
   'javascript',
-  'json',
   'lua',
   'markdown',
   'odin',
@@ -20,7 +17,7 @@ local languages = {
   'yaml',
 }
 
-treesitter.setup({})
+treesitter.setup {}
 
 treesitter.install(languages)
 

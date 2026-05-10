@@ -2,8 +2,6 @@ local telescope = require 'telescope'
 local actions = require 'telescope.actions'
 local builtin = require 'telescope.builtin'
 
-telescope.load_extension 'themes'
-
 telescope.setup {
   defaults = {
     path_display = { 'smart' },
@@ -14,7 +12,22 @@ telescope.setup {
       },
     },
   },
+  pickers = {
+    find_files = {
+      -- This allows you to find hidden files
+      hidden = true,
+      -- This tells telescope to ignore the .git directory
+      file_ignore_patterns = { '.git/' },
+    },
+  },
   extensions = {
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+    },
+    --['ui-select'] = { require('telescope.themes').get_dropdown() },
     --themes = {
     --    enable_previewer = true,
     --    enable_live_preview = true,
@@ -25,8 +38,13 @@ telescope.setup {
     --},
   },
 }
---
+
+telescope.load_extension 'fzf'
+telescope.load_extension 'ui-select'
+--telescope.load_extension 'themes'
+
 -- See `:help telescope.builtin`
+vim.keymap.set('n', '<Leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
